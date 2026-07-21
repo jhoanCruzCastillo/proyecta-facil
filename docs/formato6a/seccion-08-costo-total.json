@@ -1,0 +1,392 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 8 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'COSTO TOTAL')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "8",
+      "nombre": "Costos del proyecto",
+      "hoja": "COSTO TOTAL",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "8.01",
+          "nombre": "Costo de ejecución física de las acciones",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.01",
+              "nombre": "Costo de ejecución física de las acciones",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Filas agrupadas por Componente (Componente 1, Componente 2, ... Componente n), cada uno con sus Acciones. Incluye una fila final 'Medidas de reducción del riesgo y de mitigación ambiental'.",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": true },
+              "columnas": [
+                { "id": "col_componente_accion", "nombre": "Componente/acción", "tipo": "texto_largo" },
+                { "id": "col_activos", "nombre": "Activos", "tipo": "texto_corto" },
+                { "id": "col_factor", "nombre": "Tipo de factor productivo", "tipo": "texto_corto" },
+                { "id": "col_um_fisica", "nombre": "Unidad de medida", "tipo": "texto_corto" },
+                { "id": "col_cant_fisica", "nombre": "Cantidad", "tipo": "numero" },
+                { "id": "col_um_dimension", "nombre": "Unidad de medida", "tipo": "texto_corto" },
+                { "id": "col_cant_dimension", "nombre": "Cantidad", "tipo": "numero" },
+                { "id": "col_costo_unitario", "nombre": "Costo unitario", "tipo": "numero" },
+                { "id": "col_costo_total", "nombre": "Costo total", "tipo": "numero" }
+              ],
+              "cabecera": [
+                { "titulo": "Acción sobre los activos", "hijos": ["col_componente_accion", "col_activos"] },
+                { "titulo": "Unidad Física", "hijos": ["col_um_fisica", "col_cant_fisica"] },
+                { "titulo": "Dimensión física", "hijos": ["col_um_dimension", "col_cant_dimension"] }
+              ],
+              "captura": {
+                "fila_inicial": 10,
+                "columnas": [
+                  { "id": "col_componente_accion", "columna": "B", "abarca_columnas": 3 },
+                  { "id": "col_activos", "columna": "E", "abarca_columnas": 2 },
+                  { "id": "col_factor", "columna": "G", "abarca_columnas": 2 },
+                  { "id": "col_um_fisica", "columna": "I" },
+                  { "id": "col_cant_fisica", "columna": "J" },
+                  { "id": "col_um_dimension", "columna": "K" },
+                  { "id": "col_cant_dimension", "columna": "L" },
+                  { "id": "col_costo_unitario", "columna": "M" },
+                  { "id": "col_costo_total", "columna": "N" }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.02",
+              "nombre": "SubTotal de costos de inversión",
+              "tipo": "calculado",
+              "editable": false,
+              "nota": "Suma la columna 'Costo total' de la tabla 8.01.01 en todas sus filas (SUM dinámico, no expresable como fórmula de referencia simple entre campos).",
+              "captura": { "columna": "M", "fila": 24, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.03",
+              "nombre": "Gestión del proyecto",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 33, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.04",
+              "nombre": "Expediente técnico o documento equivalente",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 34, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.05",
+              "nombre": "Supervisión",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 35, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.06",
+              "nombre": "Liquidación",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 36, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.07",
+              "nombre": "Otros (línea de base, etc.)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 37, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.08",
+              "nombre": "Subtotal de otros costos de inversión",
+              "tipo": "calculado",
+              "editable": false,
+              "valor": "=8.01.03+8.01.04+8.01.05+8.01.06+8.01.07",
+              "captura": { "columna": "E", "fila": 39, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.01.09",
+              "nombre": "Costo Total de inversión",
+              "tipo": "calculado",
+              "editable": false,
+              "valor": "=8.01.02+8.01.08",
+              "captura": { "columna": "E", "fila": 41, "abarca_columnas": 2 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "8.02",
+          "nombre": "Costos de reinversiones",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "8.02.01",
+              "nombre": "Costos de reinversiones",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_reinversion", "nombre": "Reinversiones", "tipo": "texto_corto", "combina_vertical": true },
+                { "id": "nivel_activos", "nombre": "Activos", "tipo": "texto_corto", "combina_vertical": false },
+                { "id": "nivel_factor", "nombre": "Tipo de factor productivo", "tipo": "texto_corto", "combina_vertical": false },
+                { "id": "columnas_dinamicas", "nombre": "Año", "tipo": "numero", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 48,
+                "columnas": [
+                  { "id": "nivel_reinversion", "columna": "B", "abarca_columnas": 2 },
+                  { "id": "nivel_activos", "columna": "D", "abarca_columnas": 2 },
+                  { "id": "nivel_factor", "columna": "F", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "H", "columnas_base": ["1", "2", "3", "4", "5"] }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "8.03",
+          "nombre": "Costos de operación y mantenimiento con y sin proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "8.03.01",
+              "nombre": "Fecha prevista de inicio de operaciones (mes/año)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 59, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.03.02",
+              "nombre": "Horizonte de funcionamiento (años)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 60, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.03.03",
+              "nombre": "Costos de operación y mantenimiento",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Grupos: Sin proyecto, Con proyecto, Incremental — cada uno con Operación y Mantenimiento.",
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_costos", "nombre": "Costos", "tipo": "texto_corto", "combina_vertical": true },
+                { "id": "nivel_item", "nombre": "Ítem", "tipo": "texto_corto", "combina_vertical": false },
+                { "id": "columnas_dinamicas", "nombre": "Año", "tipo": "numero", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 66,
+                "columnas": [
+                  { "id": "nivel_costos", "columna": "B", "abarca_columnas": 2 },
+                  { "id": "nivel_item", "columna": "D", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "F", "columnas_base": ["1", "2", "3", "4", "5"] }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "8.04",
+          "nombre": "Cronograma de inversión de metas financieras",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.01",
+              "nombre": "Fecha prevista de inicio de ejecución (mes y año)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 77, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.02",
+              "nombre": "Tipo de periodo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 78, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.03",
+              "nombre": "Número de periodos",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 79, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.04",
+              "nombre": "Cronograma de inversión de metas financieras",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Filas agrupadas por Componente (Componente 1, Componente 2, ... Componente n), igual que 8.01.01. Incluye fila final 'Medidas de la gestión del riesgo y de las medidas de mitigación'.",
+              "config": { "filas": "planas", "columnas": "dinamicas", "agrupador": true },
+              "columnas": [
+                { "id": "col_componente_accion", "nombre": "Componente/acción", "tipo": "texto_largo" },
+                { "id": "col_activos", "nombre": "Activos", "tipo": "texto_corto" },
+                { "id": "col_factor", "nombre": "Tipo de factor productivo", "tipo": "texto_corto" },
+                { "id": "columnas_dinamicas", "nombre": "Cronograma de inversión", "tipo": "numero" },
+                { "id": "col_costo_estimado", "nombre": "Costo estimado de inversión a precios de mercado (Soles)", "tipo": "numero" }
+              ],
+              "cabecera": [
+                { "titulo": "Acción sobre los activos", "hijos": ["col_componente_accion", "col_activos"] }
+              ],
+              "captura": {
+                "fila_inicial": 85,
+                "columnas": [
+                  { "id": "col_componente_accion", "columna": "B", "abarca_columnas": 3 },
+                  { "id": "col_activos", "columna": "E", "abarca_columnas": 2 },
+                  { "id": "col_factor", "columna": "G", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "I", "columnas_base": ["1", "2", "3"] },
+                  { "id": "col_costo_estimado", "columna": "Q", "abarca_columnas": 2 }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.05",
+              "nombre": "Sub total",
+              "tipo": "calculado",
+              "editable": false,
+              "nota": "Suma la columna 'Costo estimado de inversión a precios de mercado' de la tabla 8.04.04 en todas sus filas.",
+              "captura": { "columna": "Q", "fila": 98, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.06",
+              "nombre": "Otros costos",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "dinamicas", "agrupador": false },
+              "columnas": [
+                { "id": "col_item", "nombre": "Otros costos", "tipo": "texto_corto" },
+                { "id": "columnas_dinamicas", "nombre": "Año", "tipo": "numero" },
+                { "id": "col_costo_mercado", "nombre": "Costos a precio de mercado", "tipo": "numero" }
+              ],
+              "captura": {
+                "fila_inicial": 102,
+                "columnas": [
+                  { "id": "col_item", "columna": "B", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "D", "columnas_base": ["1", "2", "3"] },
+                  { "id": "col_costo_mercado", "columna": "L", "abarca_columnas": 2 }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.07",
+              "nombre": "Sub total (otros costos)",
+              "tipo": "calculado",
+              "editable": false,
+              "nota": "Suma la columna 'Costos a precio de mercado' de la tabla 8.04.06 en todas sus filas.",
+              "captura": { "columna": "L", "fila": 107, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.08",
+              "nombre": "Costo total de la Inversión",
+              "tipo": "calculado",
+              "editable": false,
+              "valor": "=8.04.05+8.04.07",
+              "captura": { "columna": "L", "fila": 108, "abarca_columnas": 2 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.09",
+              "nombre": "¿Tiene aporte de los beneficiarios? — Sí",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": { "columna": "C", "fila": 115 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.10",
+              "nombre": "Aporte de los beneficiarios (S/)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 115 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.11",
+              "nombre": "¿Tiene aporte de los beneficiarios? — No",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": { "columna": "C", "fila": 117 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "8.04.12",
+              "nombre": "Financiado con fondos públicos (S/)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 117 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "8.05",
+          "nombre": "Cronograma de metas físicas",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "8.05.01",
+              "nombre": "Cronograma de metas físicas",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "dinamicas", "agrupador": false },
+              "columnas": [
+                { "id": "col_accion", "nombre": "Acción", "tipo": "texto_corto" },
+                { "id": "col_activos", "nombre": "Activos", "tipo": "texto_corto" },
+                { "id": "col_factor", "nombre": "Tipo de factor productivo", "tipo": "texto_corto" },
+                { "id": "col_unidad", "nombre": "Unidad de medida representativa", "tipo": "texto_corto" },
+                { "id": "columnas_dinamicas", "nombre": "Meta física", "tipo": "numero" },
+                { "id": "col_total", "nombre": "Total Meta Física", "tipo": "numero" }
+              ],
+              "cabecera": [
+                { "titulo": "Acción sobre los activos", "hijos": ["col_accion", "col_activos"] },
+                { "titulo": "Periodo", "hijos": ["columnas_dinamicas"] }
+              ],
+              "captura": {
+                "fila_inicial": 126,
+                "columnas": [
+                  { "id": "col_accion", "columna": "B", "abarca_columnas": 2 },
+                  { "id": "col_activos", "columna": "D", "abarca_columnas": 2 },
+                  { "id": "col_factor", "columna": "F", "abarca_columnas": 2 },
+                  { "id": "col_unidad", "columna": "H", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "J", "columnas_base": ["Periodo 1", "Periodo 2"] },
+                  { "id": "col_total", "columna": "Q" }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

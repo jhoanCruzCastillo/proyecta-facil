@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCircleQuestion, faTrash, faPlus } from '@/lib/icons';
 import FieldCard from './FieldCard.vue';
 import AyudaSubseccionModal from './AyudaSubseccionModal.vue';
-import type { Campo, Seccion } from '@/types';
+import type { Campo, ConfigTabla, Seccion } from '@/types';
 
 // Edición de nombre de sección/subsección, hoja de Excel, agregar/eliminar subsecciones y campos,
 // y edición del valor por defecto y del valor de ejemplo (tab Ejemplos).
@@ -38,6 +38,7 @@ const emit = defineEmits<{
   'delete-subsection': [subseccionId: string, seccionId: string];
   'update-default-value': [campoId: string, value: string];
   'update-example-value': [identificador: string, value: string];
+  'update-config-tabla': [campoId: string, config: ConfigTabla];
 }>();
 
 const ayudaAbiertaId = ref<string | null>(null);
@@ -123,6 +124,7 @@ const subseccionAyuda = computed(() => props.seccion.subsecciones.find((s) => s.
           @delete="emit('delete-campo', campo.id, sub.id)"
           @update-default-value="emit('update-default-value', campo.id, $event)"
           @update-example-value="emit('update-example-value', campo.identificador, $event)"
+          @update-config-tabla="emit('update-config-tabla', campo.id, $event)"
         />
         <button
           v-if="editable"

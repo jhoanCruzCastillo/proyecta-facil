@@ -34,6 +34,7 @@ const emit = defineEmits<{
   delete: [];
   'update-default-value': [value: string];
   'update-example-value': [value: string];
+  'update-config-tabla': [config: ConfigTabla];
 }>();
 
 const icon = computed(() => fieldTypeIcons[props.campo.tipo]);
@@ -145,13 +146,13 @@ function handleClick() {
           <div v-if="isCoordField" class="mt-1.5">
             <CampoCoordenadasInput :value="campo.valorEjemplo || ''" @change="emit('update-default-value', $event)" />
           </div>
-          <textarea
-            v-else-if="isTableField"
-            :value="campo.valorEjemplo || ''"
-            @input="emit('update-default-value', ($event.target as HTMLTextAreaElement).value)"
-            rows="3"
-            placeholder="JSON de filas — el editor visual llega en la siguiente unidad"
-            class="w-full mt-1 px-2 py-1.5 rounded border border-gray-200 bg-white text-xs font-mono resize-y focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400"
+          <ExampleTableEditor
+            v-else-if="isTableField && campo.configTabla"
+            :config="(campo.configTabla as ConfigTabla)"
+            :model-value="campo.valorEjemplo || ''"
+            :puede-editar-periodos="true"
+            @update:model-value="emit('update-default-value', $event)"
+            @update:config="emit('update-config-tabla', $event)"
           />
           <input
             v-else

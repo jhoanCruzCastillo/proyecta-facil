@@ -1,17 +1,21 @@
+import { apiFetch } from './_shared';
 import type { TiposUsuarioApi } from '../contracts/tiposUsuario';
+import type { TipoUsuario } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/tipos-usuario exista.
 export const tiposUsuarioHttp: TiposUsuarioApi = {
-  async list() {
-    throw new Error('tiposUsuarioHttp.list: backend real aún no implementado');
+  list() {
+    return apiFetch<TipoUsuario[]>('tipos-usuario');
   },
-  async create() {
-    throw new Error('tiposUsuarioHttp.create: backend real aún no implementado');
+
+  create(tipo) {
+    return apiFetch<TipoUsuario>('tipos-usuario', { method: 'POST', body: JSON.stringify(tipo) });
   },
-  async update() {
-    throw new Error('tiposUsuarioHttp.update: backend real aún no implementado');
+
+  update(id, data) {
+    return apiFetch<TipoUsuario>(`tipos-usuario/${id}`, { method: 'PUT', body: JSON.stringify(data) });
   },
-  async remove() {
-    throw new Error('tiposUsuarioHttp.remove: backend real aún no implementado');
+
+  async remove(id) {
+    await apiFetch<unknown>(`tipos-usuario/${id}`, { method: 'DELETE' });
   },
 };

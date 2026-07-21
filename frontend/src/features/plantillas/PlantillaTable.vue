@@ -6,6 +6,7 @@ import { instrumentoLabels, tipologiaIoarrLabels } from '@/lib/icons';
 import InstrumentoTabs from './InstrumentoTabs.vue';
 import FichasTecnicasAgrupadas from './FichasTecnicasAgrupadas.vue';
 import PracticaToggle from './PracticaToggle.vue';
+import EstadoPlantillaToggle from './EstadoPlantillaToggle.vue';
 import ExcelCatalogModal from './ExcelCatalogModal.vue';
 import type { Plantilla, Sector, TipoInstrumento, TipologiaIoarr } from '@/types';
 
@@ -138,6 +139,7 @@ const excelPlantilla = computed(() => props.plantillas.find((p) => p.id === exce
           <td class="px-4 py-4 text-sm text-gray-500">{{ p.fechaActualizacion }}</td>
           <td class="px-6 py-4">
             <div class="flex items-center justify-center gap-2">
+              <EstadoPlantillaToggle :plantilla="p" />
               <RouterLink
                 :to="`/sectores/${p.sectorId}/plantilla/${p.id}`"
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-brand-600 hover:bg-brand-50 transition-colors"

@@ -2,10 +2,13 @@
 
 namespace App\Database\Migrations;
 
+use App\Database\Migrations\Support\PortableEnumTrait;
 use CodeIgniter\Database\Migration;
 
 class CreatePlanesYFacturacion extends Migration
 {
+    use PortableEnumTrait;
+
     public function up()
     {
         // planes
@@ -60,7 +63,7 @@ class CreatePlanesYFacturacion extends Migration
             'cancelada' => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 0],
             'fecha_renovacion' => ['type' => 'DATE', 'null' => true],
             'fecha_inicio_plan' => ['type' => 'DATETIME', 'null' => true],
-            'metodo_pago' => ['type' => 'ENUM', 'constraint' => ['tarjeta', 'yape', 'plin', 'mercado_pago', '360pay']],
+            'metodo_pago' => $this->enumField(['tarjeta', 'yape', 'plin', 'mercado_pago', '360pay']),
             'tarjeta_marca' => ['type' => 'VARCHAR', 'constraint' => 30, 'null' => true],
             'tarjeta_ultimos4' => ['type' => 'CHAR', 'constraint' => 4, 'null' => true],
             'telefono_pago' => ['type' => 'VARCHAR', 'constraint' => 20, 'null' => true],
@@ -71,6 +74,7 @@ class CreatePlanesYFacturacion extends Migration
         $this->forge->addForeignKey('usuario_id', 'usuarios', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('plan_id', 'planes', 'id', 'CASCADE', 'RESTRICT');
         $this->forge->createTable('facturaciones');
+        $this->addEnumCheck('facturaciones', 'metodo_pago', ['tarjeta', 'yape', 'plin', 'mercado_pago', '360pay']);
 
         // facturas
         $this->forge->addField([
@@ -78,11 +82,12 @@ class CreatePlanesYFacturacion extends Migration
             'facturacion_usuario_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
             'fecha' => ['type' => 'DATE'],
             'total' => ['type' => 'DECIMAL', 'constraint' => '10,2'],
-            'estado' => ['type' => 'ENUM', 'constraint' => ['Pagado', 'Pendiente']],
+            'estado' => $this->enumField(['Pagado', 'Pendiente']),
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('facturacion_usuario_id', 'facturaciones', 'usuario_id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('facturas');
+        $this->addEnumCheck('facturas', 'estado', ['Pagado', 'Pendiente']);
 
         // facturacion_addons — descompone FacturacionMock.addons: Record<addonId, cantidad>
         $this->forge->addField([

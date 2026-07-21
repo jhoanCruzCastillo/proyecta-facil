@@ -1,0 +1,50 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 9 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'EVALUACION SOCIAL')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "9",
+      "nombre": "Evaluación social",
+      "hoja": "EVALUACION SOCIAL",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "9.01",
+          "nombre": "Indicadores de rentabilidad social",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "9.01.01",
+              "nombre": "Indicadores de rentabilidad social",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Grupos fijos por Tipo: Costo/Beneficio (VAN, TIR, VAE) y Costo/Eficiencia (VAC, CAE, Costo por capacidad de producción, Costo por beneficiario directo). A precios sociales.",
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_tipo", "nombre": "Tipo", "tipo": "texto_corto", "combina_vertical": true },
+                { "id": "nivel_criterio", "nombre": "Criterio de elección", "tipo": "texto_corto", "combina_vertical": false },
+                { "id": "columnas_dinamicas", "nombre": "Alternativa", "tipo": "numero", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 9,
+                "columnas": [
+                  { "id": "nivel_tipo", "columna": "B" },
+                  { "id": "nivel_criterio", "columna": "C", "abarca_columnas": 3 },
+                  { "id": "columnas_dinamicas", "columna": "F", "columnas_base": ["Alternativa 1", "Alternativa 2"] }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faGear, faPlus, faCircleCheck } from '@/lib/icons';
+import { faGear, faPlus, faCircleCheck, faFileImport } from '@/lib/icons';
 import type { Seccion } from '@/types';
 
 defineProps<{
@@ -11,16 +11,29 @@ defineProps<{
   showEditHoja?: boolean;
   /** Cantidad de campos pendientes/inválidos por sección — si se pasa, se muestra un indicador de avance (solo modo cliente) */
   erroresPorSeccion?: Record<string, number>;
+  /** true = muestra el botón sutil para importar/reemplazar toda la estructura desde JSON (solo tab Estructura) */
+  showImportEstructura?: boolean;
 }>();
 
-const emit = defineEmits<{ select: [seccionId: string]; 'add-section': []; 'edit-hoja': [seccionId: string] }>();
+const emit = defineEmits<{ select: [seccionId: string]; 'add-section': []; 'edit-hoja': [seccionId: string]; 'import-estructura': [] }>();
 </script>
 
 <template>
   <div class="flex flex-col h-full">
-    <h3 class="text-xs font-semibold uppercase tracking-widest text-muted mb-3 px-2">
-      Secciones · {{ secciones.length }}
-    </h3>
+    <div class="flex items-center justify-between mb-3 px-2">
+      <h3 class="text-xs font-semibold uppercase tracking-widest text-muted">
+        Secciones · {{ secciones.length }}
+      </h3>
+      <button
+        v-if="showImportEstructura"
+        @click="emit('import-estructura')"
+        type="button"
+        title="Importar estructura desde JSON (reemplaza todo)"
+        class="w-6 h-6 rounded-full flex items-center justify-center text-gray-300 hover:text-brand-600 hover:bg-brand-50 transition-colors shrink-0"
+      >
+        <FontAwesomeIcon :icon="faFileImport" class="w-3 h-3" />
+      </button>
+    </div>
     <nav class="flex-1 overflow-y-auto space-y-0.5">
       <div
         v-for="seccion in secciones"

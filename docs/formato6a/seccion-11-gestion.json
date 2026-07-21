@@ -1,0 +1,196 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 11 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'GESTIÓN')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "11",
+      "nombre": "Gestión del proyecto",
+      "hoja": "GESTIÓN",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "11.01",
+          "nombre": "Plan de implementación",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "11.01.01",
+              "nombre": "Años",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "11.01.02",
+              "nombre": "Meses",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "11.01.03",
+              "nombre": "Actividades del Plan de Implementación",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Grupos y filas de actividades precargados por defecto (ver 'valor'), tal como aparecen en el Excel original. El usuario completa Inicio/Fin/Órgano Responsable/Periodo por fila.",
+              "config": { "filas": "planas", "columnas": "dinamicas", "agrupador": true },
+              "columnas": [
+                { "id": "col_actividad", "nombre": "Actividades del Plan de Implementación", "tipo": "texto_largo" },
+                { "id": "col_fecha_inicio", "nombre": "Inicio", "tipo": "fecha" },
+                { "id": "col_fecha_fin", "nombre": "Fin", "tipo": "fecha" },
+                { "id": "col_organo", "nombre": "Órgano Responsable", "tipo": "texto_corto" },
+                { "id": "columnas_dinamicas", "nombre": "Periodo", "tipo": "numero" }
+              ],
+              "cabecera": [
+                { "titulo": "Fecha", "hijos": ["col_fecha_inicio", "col_fecha_fin"] }
+              ],
+              "captura": {
+                "fila_inicial": 9,
+                "columnas": [
+                  { "id": "col_actividad", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "col_fecha_inicio", "columna": "F" },
+                  { "id": "col_fecha_fin", "columna": "G" },
+                  { "id": "col_organo", "columna": "H", "abarca_columnas": 2 },
+                  { "id": "columnas_dinamicas", "columna": "J", "columnas_base": ["1", "2", "3"] }
+                ]
+              },
+              "valor": [
+                {
+                  "agrupador": { "nombre": "Expediente Técnico (ET) o Estudio Definitivo (ED)" },
+                  "valores": [
+                    { "col_actividad": "Proceso de selección" },
+                    { "col_actividad": "Convocatoria" },
+                    { "col_actividad": "Integración de Bases" },
+                    { "col_actividad": "Buena Pro" },
+                    { "col_actividad": "Suscripción del Contrato" },
+                    { "col_actividad": "Elaboración del ET o ED" }
+                  ]
+                },
+                {
+                  "agrupador": { "nombre": "Supervisión" },
+                  "valores": [
+                    { "col_actividad": "Proceso de selección" },
+                    { "col_actividad": "Convocatoria" },
+                    { "col_actividad": "Integración de Bases" },
+                    { "col_actividad": "Buena Pro" },
+                    { "col_actividad": "Suscripción del Contrato" },
+                    { "col_actividad": "Supervisión del PI" }
+                  ]
+                },
+                {
+                  "agrupador": { "nombre": "Ejecución" },
+                  "valores": [
+                    { "col_actividad": "Proceso de selección" },
+                    { "col_actividad": "Convocatoria" },
+                    { "col_actividad": "Integración de Bases" },
+                    { "col_actividad": "Buena Pro" },
+                    { "col_actividad": "Suscripción del Contrato" },
+                    { "col_actividad": "Ejecución Contractual" },
+                    { "col_actividad": "Acción 1" },
+                    { "col_actividad": "…" },
+                    { "col_actividad": "Acción \"n\"" },
+                    { "col_actividad": "Recepción" },
+                    { "col_actividad": "Liquidación física y financiera" },
+                    { "col_actividad": "Transferencia" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "11.02",
+          "nombre": "Modalidad de ejecución de proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "11.02.01",
+              "nombre": "Modalidad de ejecución de proyecto",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "La columna 'Tipo de ejecución' viene precargada con las 5 modalidades fijas (ver 'valor'); 'Marcar' es booleano (marcado/no marcado).",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_tipo", "nombre": "Tipo de ejecución", "tipo": "texto_corto" },
+                { "id": "col_marcar", "nombre": "Marcar", "tipo": "booleano" }
+              ],
+              "captura": {
+                "fila_inicial": 41,
+                "columnas": [
+                  { "id": "col_tipo", "columna": "B", "abarca_columnas": 5 },
+                  { "id": "col_marcar", "columna": "G" }
+                ]
+              },
+              "valor": [
+                { "col_tipo": "Administración directa", "col_marcar": false },
+                { "col_tipo": "Administración indirecta – por contrata", "col_marcar": false },
+                { "col_tipo": "Administración indirecta – Asociación Público Privado (APP)", "col_marcar": false },
+                { "col_tipo": "Administración indirecta – Núcleo Ejecutor", "col_marcar": false },
+                { "col_tipo": "Administración indirecta – Ley 29230 (Obras por Impuestos)", "col_marcar": false }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "11.03",
+          "nombre": "Fuente de financiamiento",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "11.03.01",
+              "nombre": "Fuente de financiamiento",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "La columna 'Fuente de Financiamiento' viene precargada con las 5 fuentes fijas (ver 'valor'); 'Marcar' es booleano (marcado/no marcado). Si se marca ROOC, se debe sustentar la estructuración financiera.",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_fuente", "nombre": "Fuente de Financiamiento", "tipo": "texto_corto" },
+                { "id": "col_marcar", "nombre": "Marcar", "tipo": "booleano" }
+              ],
+              "captura": {
+                "fila_inicial": 51,
+                "columnas": [
+                  { "id": "col_fuente", "columna": "B", "abarca_columnas": 5 },
+                  { "id": "col_marcar", "columna": "G" }
+                ]
+              },
+              "valor": [
+                { "col_fuente": "Recursos ordinarios", "col_marcar": false },
+                { "col_fuente": "Recursos directamente recaudados", "col_marcar": false },
+                { "col_fuente": "Recursos por operaciones oficiales de crédito", "col_marcar": false },
+                { "col_fuente": "Donaciones y transferencias", "col_marcar": false },
+                { "col_fuente": "Recursos determinados", "col_marcar": false }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "11.04",
+          "nombre": "Requerimientos institucionales y/o normativos",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "11.04.01",
+              "nombre": "Requerimientos institucionales y/o normativos",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 61, "abarca_columnas": 11 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

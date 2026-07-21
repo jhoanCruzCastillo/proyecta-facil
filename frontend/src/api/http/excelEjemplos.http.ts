@@ -1,11 +1,16 @@
+import { apiFetch } from './_shared';
 import type { ExcelEjemplosApi } from '../contracts/excelEjemplos';
+import type { ArchivoExcel } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/excel-ejemplos exista.
 export const excelEjemplosHttp: ExcelEjemplosApi = {
-  async get() {
-    throw new Error('excelEjemplosHttp.get: backend real aún no implementado');
+  get(ejemploId) {
+    return apiFetch<ArchivoExcel | null>(`ejemplos/${ejemploId}/excel`);
   },
-  async set() {
-    throw new Error('excelEjemplosHttp.set: backend real aún no implementado');
+
+  set(ejemploId, archivo) {
+    return apiFetch<ArchivoExcel>(`ejemplos/${ejemploId}/excel`, {
+      method: 'POST',
+      body: JSON.stringify({ nombre: archivo.nombre, dataUrl: archivo.dataUrl }),
+    });
   },
 };

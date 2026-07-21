@@ -1,0 +1,238 @@
+{
+  "formato": {
+    "codigo": "FS-RIESGO-DESASTRES",
+    "nombre": "Ficha Simplificada — Servicios de Información sobre el Riesgo de Desastres",
+    "directiva": "DS. N° 027-2017-EF",
+    "tipo_version": "estructura",
+    "fuente_archivo": "Ficha_Simplificada.xlsx",
+    "nota": "Sección II de N (ver hoja 'PROYECTO SIMPLIFICADO (2)'). Posiciones de celda extraídas y verificadas directamente del .xlsx real."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "2",
+      "nombre": "Identificación",
+      "hoja": "PROYECTO SIMPLIFICADO (2)",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "2.01",
+          "nombre": "Problema central, causas y efectos",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "2.01.01",
+              "nombre": "Descripción del problema central",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 56, "abarca_columnas": 9 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.01.02",
+              "nombre": "Causas",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_causa_directa", "nombre": "Causas directas", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_causa_indirecta", "nombre": "Causas Indirectas", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 59,
+                "filas_base": 5,
+                "columnas": [
+                  { "id": "nivel_causa_directa", "columna": "C", "abarca_columnas": 3 },
+                  { "id": "nivel_causa_indirecta", "columna": "F", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.01.03",
+              "nombre": "Efectos",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_efecto_directo", "nombre": "Efectos directos", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_efecto_indirecto", "nombre": "Efectos Indirectos", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 67,
+                "filas_base": 5,
+                "columnas": [
+                  { "id": "nivel_efecto_directo", "columna": "C", "abarca_columnas": 3 },
+                  { "id": "nivel_efecto_indirecto", "columna": "F", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "2.02",
+          "nombre": "Población afectada y población objetivo",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.01",
+              "nombre": "Tipo de población (afectada)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 78 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.02",
+              "nombre": "Cantidad (población afectada)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 79 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.03",
+              "nombre": "Fuente de información (población afectada)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 80 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.04",
+              "nombre": "Tipo de población (objetivo)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 84 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.05",
+              "nombre": "Cantidad (población objetivo)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 85 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.02.06",
+              "nombre": "Fuente de información (población objetivo)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "D", "fila": 86 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "2.03",
+          "nombre": "Definición de los objetivos del proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "2.03.01",
+              "nombre": "Descripción del Objetivo central",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 94, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.03.02",
+              "nombre": "Principales Indicadores del Objetivo",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Máximo 3 indicadores según el rótulo de la hoja (B97).",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_indicador", "nombre": "Principales Indicadores del Objetivo (máximo 3)", "tipo": "texto_largo" },
+                { "id": "col_unidad_medida", "nombre": "Unidad de medida", "tipo": "texto_corto" },
+                { "id": "col_meta", "nombre": "Meta", "tipo": "texto_corto" },
+                { "id": "col_fuente_verificacion", "nombre": "Fuente de verificación", "tipo": "texto_corto" }
+              ],
+              "captura": {
+                "fila_inicial": 98,
+                "filas_base": 3,
+                "columnas": [
+                  { "id": "col_indicador", "columna": "B", "abarca_columnas": 3 },
+                  { "id": "col_unidad_medida", "columna": "E" },
+                  { "id": "col_meta", "columna": "F" },
+                  { "id": "col_fuente_verificacion", "columna": "G" }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "2.03.03",
+              "nombre": "Medios fundamentales",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_numero", "nombre": "N°", "tipo": "numero" },
+                { "id": "col_medio", "nombre": "Medios fundamentales", "tipo": "texto_largo" }
+              ],
+              "captura": {
+                "fila_inicial": 106,
+                "filas_base": 3,
+                "columnas": [
+                  { "id": "col_numero", "columna": "B" },
+                  { "id": "col_medio", "columna": "C", "abarca_columnas": 7 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "2.04",
+          "nombre": "Descripción de las alternativas de solución al problema",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "2.04.01",
+              "nombre": "Alternativas más frecuentes",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "En el .xlsx real 'Alternativa 1' ocupa las filas 114-118 y 'Alternativa 2' las filas 119-127 (fusión vertical de altura irregular) — el motor de crecimiento de filas de la app asume incrementos de 1 fila, así que al insertar en este Excel original la fila de 'Alternativa 2' no caerá exactamente en 119. Revisar al implementar el escritor para esta ficha.",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_alternativa", "nombre": "Alternativas más frecuentes", "tipo": "texto_corto" },
+                { "id": "col_descripcion", "nombre": "Descripción", "tipo": "texto_largo" }
+              ],
+              "captura": {
+                "fila_inicial": 114,
+                "filas_base": 2,
+                "columnas": [
+                  { "id": "col_alternativa", "columna": "B" },
+                  { "id": "col_descripcion", "columna": "C", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "2.05",
+          "nombre": "Requerimientos institucionales y/o normativos",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "2.05.01",
+              "nombre": "Requerimientos institucionales y/o normativos",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 133, "abarca_columnas": 6 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

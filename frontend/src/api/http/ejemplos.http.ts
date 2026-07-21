@@ -1,23 +1,33 @@
+import { apiFetch } from './_shared';
 import type { EjemplosApi } from '../contracts/ejemplos';
+import type { Ejemplo } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/ejemplos exista.
 export const ejemplosHttp: EjemplosApi = {
-  async list() {
-    throw new Error('ejemplosHttp.list: backend real aún no implementado');
+  list() {
+    return apiFetch<Ejemplo[]>('ejemplos');
   },
-  async listByPlantilla() {
-    throw new Error('ejemplosHttp.listByPlantilla: backend real aún no implementado');
+
+  listByPlantilla(plantillaId) {
+    return apiFetch<Ejemplo[]>(`plantillas/${plantillaId}/ejemplos`);
   },
-  async get() {
-    throw new Error('ejemplosHttp.get: backend real aún no implementado');
+
+  async get(id) {
+    try {
+      return await apiFetch<Ejemplo>(`ejemplos/${id}`);
+    } catch {
+      return null;
+    }
   },
-  async create() {
-    throw new Error('ejemplosHttp.create: backend real aún no implementado');
+
+  create(ejemplo) {
+    return apiFetch<Ejemplo>('ejemplos', { method: 'POST', body: JSON.stringify(ejemplo) });
   },
-  async update() {
-    throw new Error('ejemplosHttp.update: backend real aún no implementado');
+
+  update(id, data) {
+    return apiFetch<Ejemplo>(`ejemplos/${id}`, { method: 'PUT', body: JSON.stringify(data) });
   },
-  async remove() {
-    throw new Error('ejemplosHttp.remove: backend real aún no implementado');
+
+  async remove(id) {
+    await apiFetch<unknown>(`ejemplos/${id}`, { method: 'DELETE' });
   },
 };

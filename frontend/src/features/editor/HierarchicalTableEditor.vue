@@ -14,9 +14,11 @@ import type { ConfigTabla, CabeceraGrupo, ColumnaTabla } from '@/types';
 const props = defineProps<{
   config: ConfigTabla;
   modelValue: string;
+  /** true = permite agregar/renombrar columnas dinámicas (solo tab Estructura) */
+  puedeEditarPeriodos?: boolean;
 }>();
 
-const emit = defineEmits<{ 'update:modelValue': [string] }>();
+const emit = defineEmits<{ 'update:modelValue': [string]; 'update:config': [ConfigTabla] }>();
 
 function cloneTree(roots: TreeNode[]): TreeNode[] {
   return JSON.parse(JSON.stringify(roots));
@@ -264,6 +266,15 @@ function selectCell(path: number[]) {
   isEditing.value = true;
   focusPath.value = JSON.stringify(path);
 }
+
+function addPeriodo() {
+  emit('update:config', { ...props.config, periodos: [...(props.config.periodos ?? []), ''] });
+}
+function renamePeriodo(pi: number, value: string) {
+  const periodos = [...(props.config.periodos ?? [])];
+  periodos[pi] = value;
+  emit('update:config', { ...props.config, periodos });
+}
 </script>
 
 <template>
@@ -275,29 +286,23 @@ function selectCell(path: number[]) {
             <template v-for="(run, ri) in runs" :key="ri">
               <th
                 v-if="run.grupo"
-                :colspan="run.cols.length"
+                :colspan="run.cols.reduce((s, c) => s + (c.id === dinamicaId ? Math.max(periodos.length, 1) : 1), 0)"
                 class="px-2 py-1.5 text-center font-semibold text-indigo-700 border-2 border-indigo-400 bg-indigo-100 whitespace-nowrap text-[11px]"
               >
                 {{ run.grupo.titulo || 'Sin título' }}
               </th>
-              <th
-                v-for="col in (run.grupo ? [] : run.cols)"
-                :key="col.id"
-                rowspan="2"
-                class="px-3 py-2 text-left font-semibold text-heading border-b-2 border-gray-300 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
-                :class="col.id === columns[numCols - 1].id ? '' : 'border-r border-gray-300'"
-              >
-                {{ col.nombre }}
-              </th>
-            </template>
-            <th rowspan="2" class="w-6 border-b-2 border-gray-300" />
-          </tr>
-          <tr class="bg-gray-100">
-            <template v-if="hasCabeceras">
-              <template v-for="run in runs" :key="run.grupo?.titulo ?? run.cols[0].id">
+              <template v-for="col in (run.grupo ? [] : run.cols)" :key="col.id">
                 <th
-                  v-for="col in (run.grupo ? run.cols : [])"
-                  :key="col.id"
+                  v-if="col.id === dinamicaId && periodos.length > 0"
+                  :colspan="periodos.length"
+                  class="px-3 py-2 text-left font-semibold text-heading border-b border-gray-200 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
+                  :class="col.id === columns[numCols - 1].id ? '' : 'border-r border-gray-300'"
+                >
+                  {{ col.nombre }}
+                </th>
+                <th
+                  v-else
+                  rowspan="2"
                   class="px-3 py-2 text-left font-semibold text-heading border-b-2 border-gray-300 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
                   :class="col.id === columns[numCols - 1].id ? '' : 'border-r border-gray-300'"
                 >
@@ -305,15 +310,91 @@ function selectCell(path: number[]) {
                 </th>
               </template>
             </template>
+            <th rowspan="2" class="w-6 border-b-2 border-gray-300" />
+          </tr>
+          <tr class="bg-gray-100">
+            <template v-if="hasCabeceras">
+              <template v-for="run in runs" :key="run.grupo?.titulo ?? run.cols[0].id">
+                <template v-for="col in (run.grupo ? run.cols : [])" :key="col.id">
+                  <template v-if="col.id === dinamicaId && periodos.length > 0">
+                    <th
+                      v-for="(p, pi) in periodos"
+                      :key="`${col.id}-${pi}`"
+                      class="px-1.5 py-1.5 text-left font-medium text-heading border-b border-amber-300 bg-amber-50 whitespace-nowrap text-[11px]"
+                    >
+                      <div class="flex items-center gap-1">
+                        <input
+                          v-if="puedeEditarPeriodos"
+                          :value="p"
+                          @input="renamePeriodo(pi, ($event.target as HTMLInputElement).value)"
+                          @click.stop
+                          type="text"
+                          placeholder="Nombre..."
+                          class="w-14 px-1 py-0.5 rounded border border-amber-300 bg-white text-[10px] focus:outline-none focus:ring-1 focus:ring-amber-400/40 focus:border-amber-400"
+                        />
+                        <span v-else class="underline decoration-amber-400">{{ p }}</span>
+                        <button
+                          v-if="pi === periodos.length - 1 && puedeEditarPeriodos"
+                          @click.stop="addPeriodo"
+                          type="button"
+                          title="Agregar columna dinámica"
+                          class="w-4 h-4 rounded-full bg-amber-500 hover:bg-amber-600 text-white flex items-center justify-center shrink-0"
+                        >
+                          <FontAwesomeIcon :icon="faPlus" class="w-2 h-2" />
+                        </button>
+                      </div>
+                    </th>
+                  </template>
+                  <th
+                    v-else
+                    class="px-3 py-2 text-left font-semibold text-heading border-b-2 border-gray-300 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
+                    :class="col.id === columns[numCols - 1].id ? '' : 'border-r border-gray-300'"
+                  >
+                    {{ col.nombre }}
+                  </th>
+                </template>
+              </template>
+            </template>
             <template v-else>
-              <th
-                v-for="(col, ci) in columns"
-                :key="col.id"
-                class="px-3 py-2 text-left font-semibold text-heading border-b-2 border-gray-300 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
-                :class="ci === numCols - 1 ? '' : 'border-r border-gray-300'"
-              >
-                {{ col.nombre }}
-              </th>
+              <template v-for="(col, ci) in columns" :key="col.id">
+                <template v-if="col.id === dinamicaId && periodos.length > 0">
+                  <th
+                    v-for="(p, pi) in periodos"
+                    :key="`${col.id}-${pi}`"
+                    class="px-1.5 py-1.5 text-left font-medium text-heading border-b border-amber-300 bg-amber-50 whitespace-nowrap text-[11px]"
+                    :class="ci === numCols - 1 && pi === periodos.length - 1 ? '' : 'border-r border-gray-300'"
+                  >
+                    <div class="flex items-center gap-1">
+                      <input
+                        v-if="puedeEditarPeriodos"
+                        :value="p"
+                        @input="renamePeriodo(pi, ($event.target as HTMLInputElement).value)"
+                        @click.stop
+                        type="text"
+                        placeholder="Nombre..."
+                        class="w-14 px-1 py-0.5 rounded border border-amber-300 bg-white text-[10px] focus:outline-none focus:ring-1 focus:ring-amber-400/40 focus:border-amber-400"
+                      />
+                      <span v-else class="underline decoration-amber-400">{{ p }}</span>
+                      <button
+                        v-if="pi === periodos.length - 1 && puedeEditarPeriodos"
+                        @click.stop="addPeriodo"
+                        type="button"
+                        title="Agregar columna dinámica"
+                        class="w-4 h-4 rounded-full bg-amber-500 hover:bg-amber-600 text-white flex items-center justify-center shrink-0"
+                      >
+                        <FontAwesomeIcon :icon="faPlus" class="w-2 h-2" />
+                      </button>
+                    </div>
+                  </th>
+                </template>
+                <th
+                  v-else
+                  class="px-3 py-2 text-left font-semibold text-heading border-b-2 border-gray-300 whitespace-nowrap text-[11px] uppercase tracking-wider align-top"
+                  :class="ci === numCols - 1 ? '' : 'border-r border-gray-300'"
+                >
+                  {{ col.nombre }}
+                </th>
+              </template>
             </template>
             <th v-if="!hasCabeceras" class="w-6 border-b-2 border-gray-300" />
           </tr>
@@ -322,6 +403,53 @@ function selectCell(path: number[]) {
           <tr v-for="(row, ri) in flatRows" :key="ri" :class="row.isGroupStart ? 'border-t-2 border-gray-400' : 'border-t border-gray-200'">
             <template v-for="(cell, ci) in row.cells" :key="ci">
               <td v-if="cell === null" style="display: none" />
+
+              <template v-else-if="columns[ci]?.id === dinamicaId && periodos.length > 0">
+                <template v-if="cell.type === 'data'">
+                  <td
+                    v-for="(p, pi) in periodos"
+                    :key="`${ci}-${pi}`"
+                    :rowspan="cell.rowSpan > 1 ? cell.rowSpan : undefined"
+                    class="px-1 py-1 align-top group/cell"
+                    :class="[
+                      pi === periodos.length - 1 ? '' : 'border-r border-gray-200',
+                      isPathSelected(cell.path) ? 'bg-brand-100' : isPathAncestor(cell.path) ? 'bg-brand-50/50' : 'bg-amber-50/20',
+                    ]"
+                  >
+                    <div class="flex items-center gap-0.5">
+                      <input
+                        :value="(Array.isArray(cell.value) ? cell.value[pi] : '') || ''"
+                        :title="p"
+                        :placeholder="p || '—'"
+                        type="text"
+                        @input="updateNodePeriodo(cell.path, pi, ($event.target as HTMLInputElement).value)"
+                        @click.stop="selectCell(cell.path)"
+                        class="flex-1 min-w-0 px-1 py-1 rounded border border-transparent hover:border-amber-200 focus:border-amber-400 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-amber-500/30 bg-transparent"
+                      />
+                      <button
+                        v-if="pi === periodos.length - 1"
+                        @click.stop="removeNode(cell.path)"
+                        type="button"
+                        title="Eliminar fila"
+                        class="w-4 h-4 rounded flex items-center justify-center text-gray-300 opacity-0 group-hover/cell:opacity-100 hover:text-red-500 transition-opacity shrink-0"
+                      >
+                        <FontAwesomeIcon :icon="faTrash" class="w-2 h-2" />
+                      </button>
+                    </div>
+                  </td>
+                </template>
+                <td v-else :colspan="periodos.length" class="px-1.5 py-1" :class="cell.type === 'empty' ? 'bg-gray-50/50' : ''">
+                  <button
+                    v-if="cell.type === 'add'"
+                    @click.stop="addChildAt(cell.parentPath)"
+                    type="button"
+                    class="w-full py-1.5 rounded bg-brand-600 hover:bg-brand-700 text-white text-[10px] font-semibold flex items-center justify-center gap-1 transition-colors"
+                  >
+                    <FontAwesomeIcon :icon="faPlus" class="w-2.5 h-2.5" /> {{ columns[ci]?.nombre }}
+                  </button>
+                </td>
+              </template>
+
               <td v-else-if="cell.type === 'add'" class="px-1.5 py-1" :class="ci < numCols - 1 ? 'border-r border-gray-300' : ''">
                 <button
                   @click.stop="addChildAt(cell.parentPath)"
@@ -349,21 +477,7 @@ function selectCell(path: number[]) {
                 @click.stop="selectCell(cell.path)"
               >
                 <div class="flex items-start gap-0.5 group/cell">
-                  <div v-if="columns[ci]?.id === dinamicaId" class="flex-1 flex flex-wrap gap-1 min-w-0">
-                    <input
-                      v-for="(p, pi) in periodos"
-                      :key="pi"
-                      :value="(Array.isArray(cell.value) ? cell.value[pi] : '') || ''"
-                      :title="p"
-                      :placeholder="p || '—'"
-                      type="text"
-                      @input="updateNodePeriodo(cell.path, pi, ($event.target as HTMLInputElement).value)"
-                      @click.stop
-                      class="w-14 px-1 py-0.5 rounded border border-amber-200 bg-amber-50/40 text-[10px] text-heading focus:outline-none focus:ring-1 focus:ring-amber-400/40 focus:border-amber-400"
-                    />
-                  </div>
                   <input
-                    v-else
                     :ref="(el) => setInputRef(JSON.stringify(cell.path), el as Element)"
                     :value="typeof cell.value === 'string' ? cell.value : ''"
                     type="text"

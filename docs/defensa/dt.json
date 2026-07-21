@@ -1,0 +1,3010 @@
+{
+  "schema_version": "1.0",
+  "formato": {
+    "codigo": "FS-RIESGO-DESASTRES",
+    "nombre": "Ficha Simplificada — Servicios de Información sobre el Riesgo de Desastres (≤750 UIT)",
+    "fuente_archivo": "",
+    "tipo_version": "estructura",
+    "nota_secciones": ""
+  },
+  "secciones": [
+    {
+      "id": "1",
+      "nombre": "Datos generales",
+      "tipo_nodo": "seccion",
+      "hoja": "PROYECTO SIMPLIFICADO (2)",
+      "campos": [
+        {
+          "id": "1.01",
+          "nombre": "Articulación con el Programa Multianual de Inversiones (PMI)",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.01.01",
+              "nombre": "Servicios públicos con brecha identificada y priorizada",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "F",
+                "fila": 12,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.01.02",
+              "nombre": "Indicador de producto asociado a la brecha de servicios",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "F",
+                "fila": 14,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.02",
+          "nombre": "Nombre del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.02.01",
+              "nombre": "Naturaleza de intervención",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "B",
+                "fila": 20,
+                "abarca_columnas": 3,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.02.02",
+              "nombre": "Objeto",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 20,
+                "abarca_columnas": 4,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.02.03",
+              "nombre": "Localización",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "I",
+                "fila": 20,
+                "abarca_columnas": 2,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.03",
+          "nombre": "Responsabilidad funcional",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.03.01",
+              "nombre": "Función",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 24,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.03.02",
+              "nombre": "División funcional",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 25,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.03.03",
+              "nombre": "Grupo funcional",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 26,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.03.04",
+              "nombre": "Sector responsable",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 27,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.04",
+          "nombre": "Unidad Formuladora",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.04.01",
+              "nombre": "Nombre",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 31,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.04.02",
+              "nombre": "Persona Responsable de la Unidad Formuladora",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 33,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.05",
+          "nombre": "Unidad Ejecutora de Inversiones Recomendada",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.05.01",
+              "nombre": "Persona Responsable de la Unidad Ejecutora de Inversiones",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 37,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.05.02",
+              "nombre": "Órgano Técnico Responsable",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 39,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.06",
+          "nombre": "Ubicación geográfica",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.06.01",
+              "nombre": "Departamento",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 43,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.06.02",
+              "nombre": "Provincia",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 44,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.06.03",
+              "nombre": "Distrito",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 45,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.06.04",
+              "nombre": "Localidad",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 46,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "1.06.05",
+              "nombre": "Ubigeo",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "E",
+                "fila": 48,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Identificación",
+      "tipo_nodo": "seccion",
+      "hoja": "PROYECTO SIMPLIFICADO (2)",
+      "campos": [
+        {
+          "id": "2.01",
+          "nombre": "Problema central, causas y efectos",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.01.01",
+              "nombre": "Descripción del problema central",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "B",
+                "fila": 56,
+                "abarca_columnas": 9,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "2.01.02",
+              "nombre": "Causas",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 59,
+                "filas_base": 5,
+                "columnas": [
+                  {
+                    "id": "nivel_causa_directa",
+                    "columna": "C",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "nivel_causa_indirecta",
+                    "columna": "F",
+                    "abarca_columnas": 4
+                  }
+                ]
+              },
+              "cabecera": [],
+              "niveles": [
+                {
+                  "id": "nivel_causa_directa",
+                  "nombre": "Causas directas",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_causa_indirecta",
+                  "nombre": "Causas Indirectas",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_causa_directa": "",
+                  "hijos": [
+                    {
+                      "nivel_causa_indirecta": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2.01.03",
+              "nombre": "Efectos",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 67,
+                "filas_base": 5,
+                "columnas": [
+                  {
+                    "id": "nivel_efecto_directo",
+                    "columna": "C",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "nivel_efecto_indirecto",
+                    "columna": "F",
+                    "abarca_columnas": 4
+                  }
+                ]
+              },
+              "cabecera": [],
+              "niveles": [
+                {
+                  "id": "nivel_efecto_directo",
+                  "nombre": "Efectos directos",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_efecto_indirecto",
+                  "nombre": "Efectos Indirectos",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_efecto_directo": "",
+                  "hijos": [
+                    {
+                      "nivel_efecto_indirecto": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.02",
+          "nombre": "Población afectada y población objetivo",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.02.01",
+              "nombre": "Tipo de población (afectada)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 78,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "2.02.02",
+              "nombre": "Cantidad (población afectada)",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 79,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "2.02.03",
+              "nombre": "Fuente de información (población afectada)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 80,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "2.02.04",
+              "nombre": "Tipo de población (objetivo)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 84,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "2.02.05",
+              "nombre": "Cantidad (población objetivo)",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 85,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "2.02.06",
+              "nombre": "Fuente de información (población objetivo)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 86,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "2.03",
+          "nombre": "Definición de los objetivos del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.03.01",
+              "nombre": "Descripción del Objetivo central",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "B",
+                "fila": 94,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "2.03.02",
+              "nombre": "Principales Indicadores del Objetivo",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 98,
+                "filas_base": 3,
+                "columnas": [
+                  {
+                    "id": "col_indicador",
+                    "columna": "B",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "col_unidad_medida",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_meta",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_fuente_verificacion",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_indicador",
+                  "nombre": "Principales Indicadores del Objetivo (máximo 3)",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_unidad_medida",
+                  "nombre": "Unidad de medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_meta",
+                  "nombre": "Meta",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_fuente_verificacion",
+                  "nombre": "Fuente de verificación",
+                  "tipo": "texto_corto"
+                }
+              ],
+              "valor": []
+            },
+            {
+              "id": "2.03.03",
+              "nombre": "Medios fundamentales",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 106,
+                "filas_base": 3,
+                "columnas": [
+                  {
+                    "id": "col_numero",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_medio",
+                    "columna": "C",
+                    "abarca_columnas": 7
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_numero",
+                  "nombre": "N°",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "col_medio",
+                  "nombre": "Medios fundamentales",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": []
+            }
+          ]
+        },
+        {
+          "id": "2.04",
+          "nombre": "Descripción de las alternativas de solución al problema",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.04.01",
+              "nombre": "Alternativas más frecuentes",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 114,
+                "filas_base": 2,
+                "columnas": [
+                  {
+                    "id": "col_alternativa",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_descripcion",
+                    "columna": "C",
+                    "abarca_columnas": 4
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_alternativa",
+                  "nombre": "Alternativas más frecuentes",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_descripcion",
+                  "nombre": "Descripción",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": []
+            }
+          ]
+        },
+        {
+          "id": "2.05",
+          "nombre": "Requerimientos institucionales y/o normativos",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.05.01",
+              "nombre": "Requerimientos institucionales y/o normativos",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "B",
+                "fila": 133,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nombre": "Formulación y Evaluación",
+      "tipo_nodo": "seccion",
+      "hoja": "PROYECTO SIMPLIFICADO (2)",
+      "campos": [
+        {
+          "id": "3.01",
+          "nombre": "Horizonte de evaluación",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.01.01",
+              "nombre": "Número de años del horizonte de evaluación",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "F",
+                "fila": 139,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "3.01.02",
+              "nombre": "Sustento técnico del horizonte de evaluación elegido",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 142,
+                "abarca_columnas": 7,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "3.02",
+          "nombre": "Estudio de mercado del servicio público",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.02.01",
+              "nombre": "Definición del servicio público o de la cartera de servicios",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "B",
+                "fila": 149,
+                "abarca_columnas": 9,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.02.02",
+              "nombre": "Análisis de la demanda",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 155,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "col_servicio",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_descripcion",
+                    "columna": "C",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "col_unidad",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "F",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "Año 1",
+                      "Año 2",
+                      "Año 3",
+                      "....",
+                      "Año 10"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_servicio",
+                  "nombre": "Servicio",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_descripcion",
+                  "nombre": "Descripción",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Año",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "col_servicio": "Servicio 1",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 2",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 3",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio \"n\"",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3.02.03",
+              "nombre": "Enunciar los principales parámetros y supuestos considerados para la proyección de la demanda",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 161,
+                "abarca_columnas": 6,
+                "abarca_filas": 2
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.02.04",
+              "nombre": "Señalar las fuentes de información empleadas (demanda)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 166,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.02.05",
+              "nombre": "Análisis de la oferta",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 171,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "col_servicio",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_descripcion",
+                    "columna": "C",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "col_unidad",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "F",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "Año 1",
+                      "Año 2",
+                      "Año 3",
+                      "....",
+                      "Año 10"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "PERIODO",
+                  "hijos": [
+                    "columnas_dinamicas"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "col_servicio",
+                  "nombre": "Servicio",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_descripcion",
+                  "nombre": "Descripción",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Año",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "col_servicio": "Servicio 1",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 2",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 3",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio \"n\"",
+                  "col_descripcion": "",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3.02.06",
+              "nombre": "Describir los factores de producción que determinan la oferta actual del servicio. Enunciar los principales parámetros y supuestos considerados para la proyección de la oferta",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 179,
+                "abarca_columnas": 7,
+                "abarca_filas": 2
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.02.07",
+              "nombre": "Señalar las fuentes de información empleadas (oferta)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 183,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.02.08",
+              "nombre": "Balance oferta demanda",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 187,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "col_servicio",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_unidad",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "F",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "Año 1",
+                      "Año 2",
+                      "Año 3",
+                      "....",
+                      "Año 10"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_servicio",
+                  "nombre": "Servicios con brecha",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Año",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "col_servicio": "Servicio 1",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 2",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio 3",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "col_servicio": "Servicio \"n\"",
+                  "col_unidad": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.03",
+          "nombre": "Costos del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.03.01",
+              "nombre": "Metas Físicas, Costos y Plazos",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 198,
+                "filas_base": 9,
+                "columnas": [
+                  {
+                    "id": "nivel_producto",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_accion",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_tipo_item",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_um_produccion",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_meta_produccion",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_um_capacidad",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_meta_capacidad",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_costos_mercado",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_inicio_expediente",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_termino_expediente",
+                    "columna": "K",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_inicio_ejecucion",
+                    "columna": "L",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_termino_ejecucion",
+                    "columna": "M",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "UNIDAD DE PRODUCCIÓN",
+                  "hijos": [
+                    "nivel_um_produccion",
+                    "nivel_meta_produccion"
+                  ]
+                },
+                {
+                  "titulo": "CAPACIDAD DE LA UNIDAD DE PRODUCCIÓN",
+                  "hijos": [
+                    "nivel_um_capacidad",
+                    "nivel_meta_capacidad"
+                  ]
+                },
+                {
+                  "titulo": "EXPEDIENTE TECNICO O DOCUMENTO EQUIVALENTE",
+                  "hijos": [
+                    "nivel_fecha_inicio_expediente",
+                    "nivel_fecha_termino_expediente"
+                  ]
+                },
+                {
+                  "titulo": "EJECUCION FISICA",
+                  "hijos": [
+                    "nivel_fecha_inicio_ejecucion",
+                    "nivel_fecha_termino_ejecucion"
+                  ]
+                }
+              ],
+              "niveles": [
+                {
+                  "id": "nivel_producto",
+                  "nombre": "Descripción del producto",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_accion",
+                  "nombre": "Descripción de las acciones",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "nivel_tipo_item",
+                  "nombre": "Tipo de ítem",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "nivel_um_produccion",
+                  "nombre": "Unidad de medida (producción)",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "nivel_meta_produccion",
+                  "nombre": "Meta (producción)",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_um_capacidad",
+                  "nombre": "Unidad de medida (capacidad)",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "nivel_meta_capacidad",
+                  "nombre": "Meta (capacidad)",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_costos_mercado",
+                  "nombre": "Costos a precios de mercado",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_fecha_inicio_expediente",
+                  "nombre": "Expediente técnico — Fecha inicio",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "nivel_fecha_termino_expediente",
+                  "nombre": "Expediente técnico — Fecha término",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "nivel_fecha_inicio_ejecucion",
+                  "nombre": "Ejecución física — Fecha inicio",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "nivel_fecha_termino_ejecucion",
+                  "nombre": "Ejecución física — Fecha término",
+                  "tipo": "fecha"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_producto": "Producto 1:",
+                  "hijos": [
+                    {
+                      "nivel_accion": "Acción 1.1",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 1.2",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 1.n",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nivel_producto": "Producto 2:",
+                  "hijos": [
+                    {
+                      "nivel_accion": "Acción 2.1",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 2.2",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 2.n",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "nivel_producto": "Producto 3",
+                  "hijos": [
+                    {
+                      "nivel_accion": "Acción 3.1",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 3.2",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "nivel_accion": "Acción 3.n",
+                      "hijos": [
+                        {
+                          "nivel_tipo_item": "",
+                          "hijos": [
+                            {
+                              "nivel_um_produccion": "",
+                              "hijos": [
+                                {
+                                  "nivel_meta_produccion": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_um_capacidad": "",
+                                      "hijos": [
+                                        {
+                                          "nivel_meta_capacidad": "",
+                                          "hijos": [
+                                            {
+                                              "nivel_costos_mercado": "",
+                                              "hijos": [
+                                                {
+                                                  "nivel_fecha_inicio_expediente": "",
+                                                  "hijos": [
+                                                    {
+                                                      "nivel_fecha_termino_expediente": "",
+                                                      "hijos": [
+                                                        {
+                                                          "nivel_fecha_inicio_ejecucion": "",
+                                                          "hijos": [
+                                                            {
+                                                              "nivel_fecha_termino_ejecucion": ""
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3.03.02",
+              "nombre": "Sub total",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "H",
+                "fila": 207,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "3.03.03",
+              "nombre": "Cronograma de inversión según componentes (mes y año)",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "F",
+                "fila": 211,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.03.04",
+              "nombre": "Periodo",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 213,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.03.05",
+              "nombre": "Número de periodos",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 214,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "3.03.06",
+              "nombre": "Cronograma de inversión por ítem y periodo",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 218,
+                "filas_base": 11,
+                "columnas": [
+                  {
+                    "id": "col_item",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "D",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "1",
+                      "2",
+                      "3",
+                      "……..",
+                      "n"
+                    ]
+                  },
+                  {
+                    "id": "col_costo_total",
+                    "columna": "I",
+                    "abarca_columnas": 2
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "PERIODO",
+                  "hijos": [
+                    "columnas_dinamicas"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "col_item",
+                  "nombre": "Ítem",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Periodo",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "col_costo_total",
+                  "nombre": "Costo estimado de inversión a precios de mercado (Soles)",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "col_item": "",
+                  "columnas_dinamicas": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "col_costo_total": ""
+                }
+              ]
+            },
+            {
+              "id": "3.03.07",
+              "nombre": "Cronograma de ejecución financiera",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 238,
+                "filas_base": 2,
+                "columnas": [
+                  {
+                    "id": "nivel_producto",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_accion",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_costo_subtotal",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_inicio",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_termino",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "G",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "1",
+                      "2",
+                      "…",
+                      "n"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Cronograma (periodo)",
+                  "hijos": [
+                    "db960f4a-b059-4762-8628-a2b4d0f82f1c"
+                  ]
+                }
+              ],
+              "niveles": [
+                {
+                  "id": "nivel_producto",
+                  "nombre": "Producto",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_accion",
+                  "nombre": "Acción",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "nivel_costo_subtotal",
+                  "nombre": "Costo subtotal (soles)",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_fecha_inicio",
+                  "nombre": "Fecha de inicio",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "nivel_fecha_termino",
+                  "nombre": "Fecha de término",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Cronograma (periodo)",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_producto": "",
+                  "hijos": [
+                    {
+                      "nivel_accion": "",
+                      "hijos": [
+                        {
+                          "nivel_costo_subtotal": "",
+                          "hijos": [
+                            {
+                              "nivel_fecha_inicio": "",
+                              "hijos": [
+                                {
+                                  "nivel_fecha_termino": "",
+                                  "hijos": [
+                                    {
+                                      "columnas_dinamicas": [
+                                        "",
+                                        "",
+                                        "",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3.03.08",
+              "nombre": "Costo total",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 242,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "3.03.09",
+              "nombre": "Cronograma de ejecución física",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 248,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "nivel_producto",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_accion",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_um",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_metas",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_inicio",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_fecha_termino",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "H",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "1",
+                      "…",
+                      "n"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Cronograma (periodo)",
+                  "hijos": [
+                    "595ea322-1888-4d7b-bbab-4f0a91620345"
+                  ]
+                }
+              ],
+              "niveles": [
+                {
+                  "id": "nivel_producto",
+                  "nombre": "Producto",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_accion",
+                  "nombre": "Acción",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "nivel_um",
+                  "nombre": "Unidad de medida representativa",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "nivel_metas",
+                  "nombre": "Metas (asociada a la unidad de acción)",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_fecha_inicio",
+                  "nombre": "Fecha de inicio",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "nivel_fecha_termino",
+                  "nombre": "Fecha de término",
+                  "tipo": "fecha"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Cronograma (periodo)",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_producto": "",
+                  "hijos": [
+                    {
+                      "nivel_accion": "",
+                      "hijos": [
+                        {
+                          "nivel_um": "",
+                          "hijos": [
+                            {
+                              "nivel_metas": "",
+                              "hijos": [
+                                {
+                                  "nivel_fecha_inicio": "",
+                                  "hijos": [
+                                    {
+                                      "nivel_fecha_termino": "",
+                                      "hijos": [
+                                        {
+                                          "columnas_dinamicas": [
+                                            "",
+                                            "",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3.03.10",
+              "nombre": "Cronograma de metas físicas",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 258,
+                "filas_base": 9,
+                "columnas": [
+                  {
+                    "id": "col_item",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "col_um",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "E",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "Periodo 1",
+                      "Periodo 2",
+                      "Periodo 3",
+                      "…",
+                      "Periodo N"
+                    ]
+                  },
+                  {
+                    "id": "col_total_meta",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "PERIODO",
+                  "hijos": [
+                    "d46a1ed0-5aee-46e6-bb08-edc73f3b1bf6"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "col_item",
+                  "nombre": "Ítem",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_um",
+                  "nombre": "Unidad de medida representativa",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Meta",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "col_total_meta",
+                  "nombre": "Total meta",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": []
+            },
+            {
+              "id": "3.03.11",
+              "nombre": "Costo de inversión por beneficiario directo",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "F",
+                "fila": 291,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": null
+            },
+            {
+              "id": "3.03.12",
+              "nombre": "Costos de operación y mantenimiento con y sin proyecto",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "dinamicas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 273,
+                "filas_base": 7,
+                "columnas": [
+                  {
+                    "id": "nivel_tipo_proyecto",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_rubro",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "columnas_dinamicas",
+                    "columna": "D",
+                    "abarca_columnas": 1,
+                    "columnas_base": [
+                      "1",
+                      "2",
+                      "3",
+                      "4",
+                      "5",
+                      "…",
+                      "n"
+                    ]
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "COSTOS",
+                  "hijos": [
+                    "nivel_tipo_proyecto",
+                    "nivel_rubro"
+                  ]
+                },
+                {
+                  "titulo": "AÑOS (Soles)",
+                  "hijos": [
+                    "22d84a2f-a3eb-40d3-858d-02c20d4e4af8"
+                  ]
+                }
+              ],
+              "niveles": [
+                {
+                  "id": "nivel_tipo_proyecto",
+                  "nombre": "Costos",
+                  "tipo": "texto_corto",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_rubro",
+                  "nombre": "Rubro",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "columnas_dinamicas",
+                  "nombre": "Años (Soles)",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_tipo_proyecto": "",
+                  "hijos": [
+                    {
+                      "nivel_rubro": "",
+                      "hijos": [
+                        {
+                          "columnas_dinamicas": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.04",
+          "nombre": "Criterios de decisión de inversión",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.04.01",
+              "nombre": "Criterios de decisión de inversión (Costo/Eficiencia)",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 296,
+                "filas_base": 3,
+                "columnas": [
+                  {
+                    "id": "nivel_tipo",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "nivel_criterio",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_alternativa1",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "nivel_alternativa2",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [],
+              "niveles": [
+                {
+                  "id": "nivel_tipo",
+                  "nombre": "Tipo",
+                  "tipo": "texto_corto",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "nivel_criterio",
+                  "nombre": "Criterio de elección",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "nivel_alternativa1",
+                  "nombre": "Alternativa 1",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "nivel_alternativa2",
+                  "nombre": "Alternativa 2",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "nivel_tipo": "",
+                  "hijos": [
+                    {
+                      "nivel_criterio": "",
+                      "hijos": [
+                        {
+                          "nivel_alternativa1": "",
+                          "hijos": [
+                            {
+                              "nivel_alternativa2": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.05",
+          "nombre": "Sostenibilidad",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.05.01",
+              "nombre": "Responsable de la operación y mantenimiento del proyecto",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 304,
+                "abarca_columnas": 7,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            },
+            {
+              "id": "3.05.02",
+              "nombre": "¿Es la Unidad Ejecutora de Inversiones la responsable de la O&M? — No",
+              "tipo_nodo": "campo",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 308,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": false
+            },
+            {
+              "id": "3.05.03",
+              "nombre": "¿Es la Unidad Ejecutora de Inversiones la responsable de la O&M? — Sí",
+              "tipo_nodo": "campo",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 310,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": false
+            },
+            {
+              "id": "3.05.04",
+              "nombre": "¿Es la Unidad Ejecutora de Inversiones la responsable de la O&M? — Parcialmente",
+              "tipo_nodo": "campo",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 312,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": false
+            },
+            {
+              "id": "3.05.05",
+              "nombre": "Documentos que sustentan los acuerdos institucionales",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 315,
+                "filas_base": 2,
+                "columnas": [
+                  {
+                    "id": "col_documento",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_entidad",
+                    "columna": "E",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "col_compromiso",
+                    "columna": "G",
+                    "abarca_columnas": 4
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_documento",
+                  "nombre": "Documento",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_entidad",
+                  "nombre": "Entidad / Organización",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "col_compromiso",
+                  "nombre": "Compromiso",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": []
+            },
+            {
+              "id": "3.05.06",
+              "nombre": "¿El área donde se ubica el proyecto ha sido afectada por algún desastre? — No",
+              "tipo_nodo": "campo",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 321,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": false
+            },
+            {
+              "id": "3.05.07",
+              "nombre": "¿El área donde se ubica el proyecto ha sido afectada por algún desastre? — Sí",
+              "tipo_nodo": "campo",
+              "tipo": "booleano",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "D",
+                "fila": 323,
+                "abarca_columnas": 1,
+                "abarca_filas": 1
+              },
+              "valor": false
+            },
+            {
+              "id": "3.05.08",
+              "nombre": "Medidas consideradas en el proyecto para mitigar el riesgo de desastre",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 324,
+                "filas_base": 3,
+                "columnas": [
+                  {
+                    "id": "col_medida",
+                    "columna": "F",
+                    "abarca_columnas": 5
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_medida",
+                  "nombre": "Medidas consideradas en el proyecto para mitigar el riesgo de desastre",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": []
+            }
+          ]
+        },
+        {
+          "id": "3.06",
+          "nombre": "Modalidad de ejecución",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.06.01",
+              "nombre": "Modalidad de ejecución",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 335,
+                "filas_base": 5,
+                "columnas": [
+                  {
+                    "id": "col_numero",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_tipo_ejecucion",
+                    "columna": "C",
+                    "abarca_columnas": 4
+                  },
+                  {
+                    "id": "col_seleccion",
+                    "columna": "G",
+                    "abarca_columnas": 2
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_numero",
+                  "nombre": "N°",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "col_tipo_ejecucion",
+                  "nombre": "Tipo de ejecución",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_seleccion",
+                  "nombre": "Elegir Modalidad de Ejecución (X)",
+                  "tipo": "booleano"
+                }
+              ],
+              "valor": []
+            }
+          ]
+        },
+        {
+          "id": "3.07",
+          "nombre": "Impacto ambiental",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.07.01",
+              "nombre": "Impacto ambiental",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": true
+              },
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna_inicial": "",
+                "fila_inicial": 345,
+                "filas_base": 0,
+                "columnas": [
+                  {
+                    "id": "col_impacto",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_medida",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "col_costo",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                {
+                  "id": "col_impacto",
+                  "nombre": "Impactos negativos",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_medida",
+                  "nombre": "Medidas de mitigación",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "col_costo",
+                  "nombre": "Costo (S/)",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "agrupador": {
+                    "inicia": "col_impacto",
+                    "abarca_columnas": 1,
+                    "nombre": "Durante la Ejecución",
+                    "valores": {}
+                  },
+                  "valores": [
+                    {
+                      "col_impacto": "Impacto 1:",
+                      "col_medida": "",
+                      "col_costo": ""
+                    },
+                    {
+                      "col_impacto": "Impacto n:",
+                      "col_medida": "",
+                      "col_costo": ""
+                    }
+                  ]
+                },
+                {
+                  "agrupador": {
+                    "inicia": "col_impacto",
+                    "abarca_columnas": 1,
+                    "nombre": "Durante el Funcionamiento",
+                    "valores": {}
+                  },
+                  "valores": [
+                    {
+                      "col_impacto": "Impacto 1:",
+                      "col_medida": "",
+                      "col_costo": ""
+                    },
+                    {
+                      "col_impacto": "Impacto n:",
+                      "col_medida": "",
+                      "col_costo": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.08",
+          "nombre": "Conclusiones y recomendaciones",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "3.08.01",
+              "nombre": "Conclusiones y recomendaciones",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "hoja": "PROYECTO SIMPLIFICADO (2)",
+                "columna": "C",
+                "fila": 355,
+                "abarca_columnas": 6,
+                "abarca_filas": 1
+              },
+              "valor": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

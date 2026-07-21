@@ -44,6 +44,7 @@ import {
   faMagnifyingGlass,
   faStar,
   faFileCode,
+  faRotate,
   faScrewdriverWrench,
   faBook,
   faArrowLeft,
@@ -110,6 +111,8 @@ import {
   faComments,
   faVideo,
   faArrowRight,
+  faBoxArchive,
+  faCloudArrowUp,
   type IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import type { RolUsuario, TipoInstrumento, TipologiaIoarr, TipoCampo, TipoColumna, SubtipoTabla, MetodoPago } from '@/types';
@@ -263,6 +266,7 @@ export const subtipoTablaLabels: Record<SubtipoTabla, string> = {
   filas_dinamicas: 'Filas dinámicas',
   matriz_por_periodos: 'Columnas dinámicas',
   jerarquica: 'Jerárquica',
+  jerarquica_dinamica: 'Jerárquica + columnas dinámicas',
 };
 
 // Únicamente estos se ofrecen en el selector de tipo de columna — catalogo/catalogo_encadenado/
@@ -308,6 +312,7 @@ export {
   faMagnifyingGlass,
   faStar,
   faFileCode,
+  faRotate,
   faArrowLeft,
   faChevronLeft,
   faCircleQuestion,
@@ -364,4 +369,6 @@ export {
   faCalendarDays,
   faArrowRight,
   faLocationDot,
+  faBoxArchive,
+  faCloudArrowUp,
 };

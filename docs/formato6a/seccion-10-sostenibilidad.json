@@ -1,0 +1,88 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 10 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'SOSTENIBILIDAD')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "10",
+      "nombre": "Sostenibilidad",
+      "hoja": "SOSTENIBILIDAD",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "10.01",
+          "nombre": "Descripción de la capacidad institucional en la sostenibilidad del proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "10.01.01",
+              "nombre": "Descripción de la capacidad institucional en la sostenibilidad del proyecto",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "La columna 'Ítem' viene con 4 filas precargadas por defecto (ver 'valor'); el usuario completa Descripción y Fuente de información para cada una.",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_item", "nombre": "Ítem", "tipo": "texto_largo" },
+                { "id": "col_descripcion", "nombre": "Descripción", "tipo": "texto_largo" },
+                { "id": "col_fuente", "nombre": "Fuente de información", "tipo": "texto_corto" }
+              ],
+              "captura": {
+                "fila_inicial": 7,
+                "columnas": [
+                  { "id": "col_item", "columna": "B", "abarca_columnas": 5 },
+                  { "id": "col_descripcion", "columna": "G", "abarca_columnas": 4 },
+                  { "id": "col_fuente", "columna": "K", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": [
+                { "col_item": "Órgano técnico responsable de la operación y mantenimiento del proyecto", "col_descripcion": "", "col_fuente": "" },
+                { "col_item": "Análisis de la disponibilidad oportuna de recursos para la operación y mantenimiento", "col_descripcion": "", "col_fuente": "" },
+                { "col_item": "Descripción de los arreglos institucionales para la fase de Funcionamiento", "col_descripcion": "", "col_fuente": "" },
+                { "col_item": "Descripción de la capacidad de gestión del operador", "col_descripcion": "", "col_fuente": "" }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "10.02",
+          "nombre": "Gestión integral de los riesgos",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "10.02.01",
+              "nombre": "Gestión integral de los riesgos",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_tipo_riesgo", "nombre": "Tipo de riesgo (operacional, contexto de cambio climático, mercado, financiero, legal, …)", "tipo": "texto_corto" },
+                { "id": "col_descripcion_riesgo", "nombre": "Descripción del riesgo", "tipo": "texto_largo" },
+                { "id": "col_probabilidad", "nombre": "Probabilidad de ocurrencia (baja, media, alta)", "tipo": "texto_corto" },
+                { "id": "col_impacto", "nombre": "Impacto (bajo, moderado, mayor)", "tipo": "texto_corto" },
+                { "id": "col_mitigacion", "nombre": "Medidas de mitigación", "tipo": "texto_largo" }
+              ],
+              "captura": {
+                "fila_inicial": 18,
+                "columnas": [
+                  { "id": "col_tipo_riesgo", "columna": "B", "abarca_columnas": 3 },
+                  { "id": "col_descripcion_riesgo", "columna": "E", "abarca_columnas": 3 },
+                  { "id": "col_probabilidad", "columna": "H", "abarca_columnas": 2 },
+                  { "id": "col_impacto", "columna": "J", "abarca_columnas": 2 },
+                  { "id": "col_mitigacion", "columna": "L", "abarca_columnas": 3 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

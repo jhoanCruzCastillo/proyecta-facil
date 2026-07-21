@@ -1,0 +1,65 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 7 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'ANALISIS TÉCNICO')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "7",
+      "nombre": "Análisis técnico",
+      "hoja": "ANALISIS TÉCNICO",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "7.01",
+          "nombre": "Análisis de tamaño (¿Cuánto producir?)",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "7.01.01",
+              "nombre": "Descripción de la alternativa técnica seleccionada",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 10, "abarca_columnas": 12 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "7.02",
+          "nombre": "Análisis de localización (¿Dónde producir?)",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "7.02.01",
+              "nombre": "Descripción de la alternativa técnica seleccionada",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 16, "abarca_columnas": 12 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "7.03",
+          "nombre": "Análisis de tecnología (¿Cómo producir?)",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "7.03.01",
+              "nombre": "Descripción de la alternativa técnica seleccionada",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 22, "abarca_columnas": 12 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

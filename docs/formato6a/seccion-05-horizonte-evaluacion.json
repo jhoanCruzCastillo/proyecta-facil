@@ -1,0 +1,77 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 5 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'HORIZONTE DE EVALUACIÓN')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "5",
+      "nombre": "Horizonte de evaluación",
+      "hoja": "HORIZONTE DE EVALUACIÓN",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "5.01",
+          "nombre": "Horizonte de evaluación",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.01",
+              "nombre": "Periodo en años de la ejecución del proyecto — Alternativa 1",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 7 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.02",
+              "nombre": "Periodo en años de la ejecución del proyecto — Alternativa n",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "J", "fila": 7 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.03",
+              "nombre": "Periodo en años del funcionamiento del proyecto — Alternativa 1",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.04",
+              "nombre": "Periodo en años del funcionamiento del proyecto — Alternativa n",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "J", "fila": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.05",
+              "nombre": "Número de años del horizonte de evaluación — Alternativa 1",
+              "tipo": "calculado",
+              "editable": false,
+              "valor": "=5.01.01+5.01.03",
+              "captura": { "columna": "H", "fila": 12 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "5.01.06",
+              "nombre": "Número de años del horizonte de evaluación — Alternativa n",
+              "tipo": "calculado",
+              "editable": false,
+              "valor": "=5.01.02+5.01.04",
+              "captura": { "columna": "J", "fila": 12 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

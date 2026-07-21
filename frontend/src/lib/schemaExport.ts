@@ -1,4 +1,4 @@
-import { parseDynamicRows, parseGroupedRows, parseTree, getPeriodos, type FilaDinamica, type TreeNode } from './tableRowHelpers';
+import { parseDynamicRows, parseGroupedRows, parseTree, getPeriodos, esJerarquica, type FilaDinamica, type TreeNode } from './tableRowHelpers';
 import type { Campo, ColumnaTabla, ConfigTabla, Ejemplo, Plantilla, Seccion, TipoCampo, TipoColumna } from '@/types';
 
 export type TipoVersionDocumento = 'estructura' | 'ejemplo';
@@ -96,7 +96,7 @@ function columnasLogicas(config: ConfigTabla) {
     id: idColumna(col, config),
     nombre: col.nombre,
     tipo: mapTipoColumna(col.tipo),
-    ...(config.subtipo === 'jerarquica' && col.nivel === 'padre' ? { combina_vertical: true } : {}),
+    ...(esJerarquica(config.subtipo) && col.nivel === 'padre' ? { combina_vertical: true } : {}),
   }));
 }
 
@@ -129,7 +129,7 @@ function mapTreeNode(node: TreeNode, depth: number, config: ConfigTabla): Record
 
 function valorTabla(config: ConfigTabla, raw: string | undefined): unknown {
   const value = raw ?? '';
-  if (config.subtipo === 'jerarquica') {
+  if (esJerarquica(config.subtipo)) {
     const roots = parseTree(value, config.columnas, config);
     return roots.map((r) => mapTreeNode(r, 0, config));
   }
@@ -163,13 +163,13 @@ function buildCampo(seccion: Seccion, campo: Campo, valorRaw: string | undefined
       tipo: 'tabla',
       editable: campo.editable,
       config: {
-        filas: config.subtipo === 'jerarquica' ? 'jerarquicas' : 'planas',
+        filas: esJerarquica(config.subtipo) ? 'jerarquicas' : 'planas',
         columnas: config.columnaDinamicaId ? 'dinamicas' : 'fijas',
         agrupador: Boolean(config.agrupador),
       },
       captura: capturaTabla(seccion, config),
       cabecera: (config.cabeceras ?? []).map((g) => ({ titulo: g.titulo, hijos: g.hijoIds })),
-      [config.subtipo === 'jerarquica' ? 'niveles' : 'columnas']: columnasLogicas(config),
+      [esJerarquica(config.subtipo) ? 'niveles' : 'columnas']: columnasLogicas(config),
       valor: valorTabla(config, valorRaw),
     };
   }

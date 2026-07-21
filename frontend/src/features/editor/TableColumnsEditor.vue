@@ -7,6 +7,7 @@ import FilasDinamicasColumnsEditor from './FilasDinamicasColumnsEditor.vue';
 import MatrizPeriodosEditor from './MatrizPeriodosEditor.vue';
 import JerarquicaColumnsEditor from './JerarquicaColumnsEditor.vue';
 import AgrupadorConfigModal from './AgrupadorConfigModal.vue';
+import { esJerarquica } from '@/lib/tableRowHelpers';
 import type { ConfigTabla, SubtipoTabla } from '@/types';
 
 const props = defineProps<{ config: ConfigTabla }>();
@@ -77,7 +78,7 @@ function updateCaptura(patch: Partial<NonNullable<ConfigTabla['captura']>>) {
       </div>
     </div>
 
-    <div v-if="config.subtipo !== 'jerarquica'" class="flex items-center justify-between">
+    <div v-if="!esJerarquica(config.subtipo)" class="flex items-center justify-between">
       <label class="text-xs font-medium text-heading">Agrupar filas bajo encabezados</label>
       <div class="flex items-center gap-2">
         <button
@@ -125,7 +126,7 @@ function updateCaptura(patch: Partial<NonNullable<ConfigTabla['captura']>>) {
     </div>
 
     <MatrizPeriodosEditor v-if="config.subtipo === 'matriz_por_periodos'" v-model:config="config" />
-    <JerarquicaColumnsEditor v-else-if="config.subtipo === 'jerarquica'" v-model:config="config" />
+    <JerarquicaColumnsEditor v-else-if="esJerarquica(config.subtipo)" v-model:config="config" />
     <FilasDinamicasColumnsEditor v-else v-model:config="config" />
 
     <p v-if="columnasSinPosicion > 0" class="flex items-center gap-1.5 text-[11px] text-amber-600 font-medium">

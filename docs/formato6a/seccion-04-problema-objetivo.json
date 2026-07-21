@@ -1,0 +1,226 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 4 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'PROBLEMA-OBJETIVO')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "4",
+      "nombre": "Problema / Objetivo",
+      "hoja": "PROBLEMA-OBJETIVO",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "4.01",
+          "nombre": "Definición del problema, sus causas y efectos",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.01",
+              "nombre": "Descripción del problema central",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 7, "abarca_columnas": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.02",
+              "nombre": "Indicador",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 7, "abarca_columnas": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.03",
+              "nombre": "Descripción del indicador",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "J", "fila": 7, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.04",
+              "nombre": "UM",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "M", "fila": 7 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.05",
+              "nombre": "Valor",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "N", "fila": 7 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.06",
+              "nombre": "Causas Directas (CD)",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_cd", "nombre": "Causa Directa (CD)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_sustento_cd", "nombre": "Sustento (evidencias)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_ci", "nombre": "Causas Indirectas (CI)", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 11,
+                "columnas": [
+                  { "id": "nivel_cd", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "nivel_sustento_cd", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "nivel_ci", "columna": "J", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.01.07",
+              "nombre": "Efectos Directos (ED)",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_ed", "nombre": "Efecto Directo (ED)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_sustento_ed", "nombre": "Sustento (evidencias)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_ei", "nombre": "Efectos Indirectos (EI)", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 23,
+                "columnas": [
+                  { "id": "nivel_ed", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "nivel_sustento_ed", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "nivel_ei", "columna": "J", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "4.02",
+          "nombre": "Definición de los objetivos del proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.01",
+              "nombre": "Descripción del objetivo central",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 39, "abarca_columnas": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.02",
+              "nombre": "Indicador",
+              "tipo": "texto_corto",
+              "editable": false,
+              "captura": { "columna": "F", "fila": 39, "abarca_columnas": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.03",
+              "nombre": "Descripción del indicador",
+              "tipo": "texto_corto",
+              "editable": false,
+              "captura": { "columna": "J", "fila": 39, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.04",
+              "nombre": "UM",
+              "tipo": "texto_corto",
+              "editable": false,
+              "captura": { "columna": "M", "fila": 39 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.05",
+              "nombre": "Valor",
+              "tipo": "numero",
+              "editable": false,
+              "captura": { "columna": "N", "fila": 39 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.06",
+              "nombre": "Medios fundamentales",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_n", "nombre": "N°", "tipo": "numero", "combina_vertical": true },
+                { "id": "nivel_medio", "nombre": "Medios fundamentales (componentes)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_accion", "nombre": "Acciones", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 46,
+                "columnas": [
+                  { "id": "nivel_n", "columna": "B" },
+                  { "id": "nivel_medio", "columna": "C", "abarca_columnas": 4 },
+                  { "id": "nivel_accion", "columna": "G", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "4.02.07",
+              "nombre": "Fines directos (FD)",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "niveles": [
+                { "id": "nivel_fd", "nombre": "Fin Directo (FD)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "nivel_fi", "nombre": "Fines Indirectos (FI)", "tipo": "texto_largo", "combina_vertical": false }
+              ],
+              "captura": {
+                "fila_inicial": 59,
+                "columnas": [
+                  { "id": "nivel_fd", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "nivel_fi", "columna": "F", "abarca_columnas": 4 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "4.03",
+          "nombre": "Descripción de las alternativas de solución al problema",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "4.03.01",
+              "nombre": "Descripción de Alternativas de Solución",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Cada alternativa ocupa 3 filas de Excel (fusión vertical de una sola columna de texto largo).",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "columnas": [
+                { "id": "col_alternativa", "nombre": "Descripción de Alternativas de Solución", "tipo": "texto_largo" }
+              ],
+              "captura": {
+                "fila_inicial": 74,
+                "columnas": [
+                  { "id": "col_alternativa", "columna": "B", "abarca_columnas": 10 }
+                ]
+              },
+              "valor": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

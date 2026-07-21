@@ -1,0 +1,206 @@
+{
+  "formato": {
+    "codigo": "FS-RIESGO-DESASTRES",
+    "nombre": "Ficha Simplificada — Servicios de Información sobre el Riesgo de Desastres",
+    "directiva": "DS. N° 027-2017-EF",
+    "tipo_version": "estructura",
+    "fuente_archivo": "Ficha_Simplificada.xlsx",
+    "nota": "Sección I de N (ver hoja 'PROYECTO SIMPLIFICADO (2)'). Posiciones de celda extraídas y verificadas directamente del .xlsx real."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "1",
+      "nombre": "Datos generales",
+      "hoja": "PROYECTO SIMPLIFICADO (2)",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.01",
+          "nombre": "Articulación con el Programa Multianual de Inversiones (PMI)",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.01",
+              "nombre": "Servicios públicos con brecha identificada y priorizada",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 12 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.02",
+              "nombre": "Indicador de producto asociado a la brecha de servicios",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 14 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.02",
+          "nombre": "Nombre del proyecto",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.01",
+              "nombre": "Naturaleza de intervención",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 20, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.02",
+              "nombre": "Objeto",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 20, "abarca_columnas": 4 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.03",
+              "nombre": "Localización",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 20, "abarca_columnas": 2 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.03",
+          "nombre": "Responsabilidad funcional",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.01",
+              "nombre": "Función",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 24, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.02",
+              "nombre": "División funcional",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 25, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.03",
+              "nombre": "Grupo funcional",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 26, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.04",
+              "nombre": "Sector responsable",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 27, "abarca_columnas": 6 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.04",
+          "nombre": "Unidad Formuladora",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.01",
+              "nombre": "Nombre",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 31, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.02",
+              "nombre": "Persona Responsable de la Unidad Formuladora",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 33, "abarca_columnas": 6 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.05",
+          "nombre": "Unidad Ejecutora de Inversiones Recomendada",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.05.01",
+              "nombre": "Persona Responsable de la Unidad Ejecutora de Inversiones",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 37, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.05.02",
+              "nombre": "Órgano Técnico Responsable",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 39, "abarca_columnas": 6 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.06",
+          "nombre": "Ubicación geográfica",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.06.01",
+              "nombre": "Departamento",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 43, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.06.02",
+              "nombre": "Provincia",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 44, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.06.03",
+              "nombre": "Distrito",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 45, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.06.04",
+              "nombre": "Localidad",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 46, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.06.05",
+              "nombre": "Ubigeo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 48, "abarca_columnas": 6 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

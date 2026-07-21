@@ -1,17 +1,24 @@
+import { apiFetch } from './_shared';
 import type { ArchivosExcelApi } from '../contracts/archivosExcel';
+import type { CatalogoExcelPlantilla } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/archivos-excel exista.
 export const archivosExcelHttp: ArchivosExcelApi = {
-  async getCatalogo() {
-    throw new Error('archivosExcelHttp.getCatalogo: backend real aún no implementado');
+  getCatalogo(plantillaId) {
+    return apiFetch<CatalogoExcelPlantilla>(`plantillas/${plantillaId}/archivos`);
   },
-  async addArchivo() {
-    throw new Error('archivosExcelHttp.addArchivo: backend real aún no implementado');
+
+  addArchivo(plantillaId, archivo) {
+    return apiFetch<CatalogoExcelPlantilla>(`plantillas/${plantillaId}/archivos`, {
+      method: 'POST',
+      body: JSON.stringify({ nombre: archivo.nombre, dataUrl: archivo.dataUrl }),
+    });
   },
-  async deleteArchivo() {
-    throw new Error('archivosExcelHttp.deleteArchivo: backend real aún no implementado');
+
+  deleteArchivo(plantillaId, archivoId) {
+    return apiFetch<CatalogoExcelPlantilla>(`plantillas/${plantillaId}/archivos/${archivoId}`, { method: 'DELETE' });
   },
-  async asignarArchivo() {
-    throw new Error('archivosExcelHttp.asignarArchivo: backend real aún no implementado');
+
+  asignarArchivo(plantillaId, archivoId) {
+    return apiFetch<CatalogoExcelPlantilla>(`plantillas/${plantillaId}/archivos/${archivoId}/asignar`, { method: 'POST' });
   },
 };

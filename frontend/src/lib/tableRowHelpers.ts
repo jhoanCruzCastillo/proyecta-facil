@@ -1,7 +1,14 @@
-import type { ColumnaTabla, ConfigTabla } from '../types';
+import type { ColumnaTabla, ConfigTabla, SubtipoTabla } from '../types';
 
 export interface FilaDinamica { [colId: string]: string | string[] }
 export interface GrupoFilas { grupo: string; filas: FilaDinamica[] }
+
+/** 'jerarquica' y 'jerarquica_dinamica' comparten el mismo árbol de niveles (la variante dinámica
+ * solo agrega una columna que se repite por período) — este helper evita repetir el OR en cada
+ * archivo que necesita distinguir "es alguna variante jerárquica" de las tablas planas. */
+export function esJerarquica(subtipo: SubtipoTabla): boolean {
+  return subtipo === 'jerarquica' || subtipo === 'jerarquica_dinamica';
+}
 
 export interface TreeNode {
   /** Array cuando este nivel de profundidad es `config.columnaDinamicaId` (un valor por período), string en cualquier otro nivel */

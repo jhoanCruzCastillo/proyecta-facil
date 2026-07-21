@@ -1,4 +1,4 @@
-import { parseDynamicRows, parseGroupedRows, parseTree, getPeriodos, type FilaDinamica } from './tableRowHelpers';
+import { parseDynamicRows, parseGroupedRows, parseTree, getPeriodos, esJerarquica, type FilaDinamica } from './tableRowHelpers';
 import { LibroEdits, aplicarEdicionesXlsx } from './xlsxXmlPatcher';
 import { crearResolver, esFormula, evaluarFormula, traducirFormulaAExcel, type ResolucionToken, type ResolucionCelda } from './formula';
 import type { Plantilla, Campo, ConfigTabla, TipoCampo } from '@/types';
@@ -109,7 +109,7 @@ function writeFilaColumnas(ediciones: LibroEdits, hoja: string | undefined, conf
 // Cuántas filas físicas ocupará la tabla con los datos actuales — usado tanto para registrar el
 // crecimiento (antes de escribir nada) como, indirectamente, al escribir (mismo recorrido).
 function filasNecesariasTabla(config: ConfigTabla, raw: string): number {
-  if (config.subtipo === 'jerarquica') {
+  if (esJerarquica(config.subtipo)) {
     const roots = parseTree(raw, config.columnas, config);
     let total = 0;
     const contar = (node: { children: unknown[] }) => {
@@ -195,7 +195,7 @@ function writeCampoTabla(ediciones: LibroEdits, hoja: string | undefined, config
 
   const periodos = getPeriodos(config);
 
-  if (config.subtipo === 'jerarquica') {
+  if (esJerarquica(config.subtipo)) {
     const roots = parseTree(raw, config.columnas, config);
     let row = filaInicial + shift;
     for (const r of roots) {

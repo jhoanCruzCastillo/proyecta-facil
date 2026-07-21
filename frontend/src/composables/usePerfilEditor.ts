@@ -134,7 +134,7 @@ export function usePerfilEditor(plantillaId: Ref<string>, sectorId: Ref<string>)
   }
 
   async function handleCreateExample(nombre: string, subtitulo: string, detalle: string) {
-    const nuevo: Ejemplo = { id: generateId(), nombre, subtitulo, detalle, plantillaId: plantillaId.value, activo: false, valores: {} };
+    const nuevo: Ejemplo = { id: generateId(), nombre, subtitulo, detalle, plantillaId: plantillaId.value, activo: false, valores: {}, estado: 'archivado' };
     await crearEjemplo.mutateAsync(nuevo);
     activeEjemplo.value = nuevo;
     editedValores.value = {};

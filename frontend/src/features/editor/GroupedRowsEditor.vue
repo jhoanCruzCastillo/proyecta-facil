@@ -13,9 +13,11 @@ import type { ConfigTabla } from '@/types';
 const props = defineProps<{
   config: ConfigTabla;
   modelValue: string;
+  /** true = permite agregar/renombrar columnas dinámicas (solo tab Estructura) */
+  puedeEditarPeriodos?: boolean;
 }>();
 
-const emit = defineEmits<{ 'update:modelValue': [string] }>();
+const emit = defineEmits<{ 'update:modelValue': [string]; 'update:config': [ConfigTabla] }>();
 
 const grupos = ref<GrupoFilas[]>(parseGroupedRows(props.modelValue, props.config));
 watch(() => props.modelValue, (v) => { grupos.value = parseGroupedRows(v, props.config); });
@@ -52,6 +54,15 @@ function removeRow(gi: number, ri: number) {
 function addGrupo() { persist([...grupos.value, { grupo: `Grupo ${grupos.value.length + 1}`, filas: [newEmptyRow(props.config)] }]); }
 function removeGrupo(gi: number) { if (grupos.value.length > 1) persist(grupos.value.filter((_, i) => i !== gi)); }
 
+function addPeriodo() {
+  emit('update:config', { ...props.config, periodos: [...(props.config.periodos ?? []), ''] });
+}
+function renamePeriodo(pi: number, value: string) {
+  const periodos = [...(props.config.periodos ?? [])];
+  periodos[pi] = value;
+  emit('update:config', { ...props.config, periodos });
+}
+
 const periodos = computed(() => getPeriodos(props.config));
 // Total de columnas realmente renderizadas en el encabezado (la dinámica se expande por período),
 // para calcular cuántas quedan sueltas a la derecha de la fila de grupo.
@@ -65,7 +76,16 @@ const restCols = computed(() => totalCols.value - abarca.value);
     <div class="overflow-x-auto rounded-lg border border-brand-200">
       <table class="w-full text-xs">
         <thead>
-          <TableHeaderRow :cols="config.columnas" :periodos="periodos" :columna-dinamica-id="config.columnaDinamicaId" :cabeceras="config.cabeceras" />
+          <TableHeaderRow
+            :cols="config.columnas"
+            :periodos="periodos"
+            :columna-dinamica-id="config.columnaDinamicaId"
+            :cabeceras="config.cabeceras"
+            :editable-periodos="puedeEditarPeriodos"
+            :show-add-periodo="puedeEditarPeriodos"
+            @rename-periodo="renamePeriodo"
+            @add-periodo="addPeriodo"
+          />
         </thead>
         <tbody>
           <template v-for="(grupo, gi) in grupos" :key="gi">

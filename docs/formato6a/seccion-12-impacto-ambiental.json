@@ -1,0 +1,65 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 12 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'IMPACTO AMBIENTAL')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "12",
+      "nombre": "Impacto ambiental",
+      "hoja": "IMPACTO AMBIENTAL",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "12.01",
+          "nombre": "Matriz de impacto ambiental",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "12.01.01",
+              "nombre": "Matriz de impacto ambiental",
+              "tipo": "tabla",
+              "editable": true,
+              "nota": "Grupos y filas de 'Impactos negativos' precargados por defecto (ver 'valor'), tal como aparecen en el Excel original: 'Durante la Ejecución' y 'Durante el Funcionamiento', cada uno con Impacto 1 e Impacto n.",
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": true },
+              "columnas": [
+                { "id": "col_impacto", "nombre": "Impactos negativos", "tipo": "texto_largo" },
+                { "id": "col_medida", "nombre": "Medidas de mitigación", "tipo": "texto_largo" },
+                { "id": "col_costo", "nombre": "Costo (S/)", "tipo": "numero" }
+              ],
+              "captura": {
+                "fila_inicial": 8,
+                "columnas": [
+                  { "id": "col_impacto", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "col_medida", "columna": "F", "abarca_columnas": 3 },
+                  { "id": "col_costo", "columna": "I" }
+                ]
+              },
+              "valor": [
+                {
+                  "agrupador": { "nombre": "Durante la Ejecución" },
+                  "valores": [
+                    { "col_impacto": "Impacto 1:" },
+                    { "col_impacto": "Impacto n:" }
+                  ]
+                },
+                {
+                  "agrupador": { "nombre": "Durante el Funcionamiento" },
+                  "valores": [
+                    { "col_impacto": "Impacto 1:" },
+                    { "col_impacto": "Impacto n:" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

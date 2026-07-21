@@ -10,9 +10,11 @@ import type { ConfigTabla } from '@/types';
 const props = defineProps<{
   config: ConfigTabla;
   modelValue: string;
+  /** true = permite agregar/renombrar columnas dinámicas (solo tab Estructura) */
+  puedeEditarPeriodos?: boolean;
 }>();
 
-const emit = defineEmits<{ 'update:modelValue': [string] }>();
+const emit = defineEmits<{ 'update:modelValue': [string]; 'update:config': [ConfigTabla] }>();
 
 const rows = ref<FilaDinamica[]>(parseDynamicRows(props.modelValue, props.config));
 watch(() => props.modelValue, (v) => { rows.value = parseDynamicRows(v, props.config); });
@@ -35,6 +37,15 @@ function updatePeriodo(ri: number, colId: string, pi: number, val: string) {
 }
 function addRow() { persist([...rows.value, newEmptyRow(props.config)]); }
 function removeRow(ri: number) { if (rows.value.length > 1) persist(rows.value.filter((_, i) => i !== ri)); }
+
+function addPeriodo() {
+  emit('update:config', { ...props.config, periodos: [...(props.config.periodos ?? []), ''] });
+}
+function renamePeriodo(pi: number, value: string) {
+  const periodos = [...(props.config.periodos ?? [])];
+  periodos[pi] = value;
+  emit('update:config', { ...props.config, periodos });
+}
 </script>
 
 <template>
@@ -42,7 +53,16 @@ function removeRow(ri: number) { if (rows.value.length > 1) persist(rows.value.f
     <div class="overflow-x-auto rounded-lg border border-brand-200">
       <table class="w-full text-xs">
         <thead>
-          <TableHeaderRow :cols="config.columnas" :periodos="getPeriodos(config)" :columna-dinamica-id="config.columnaDinamicaId" :cabeceras="config.cabeceras" />
+          <TableHeaderRow
+            :cols="config.columnas"
+            :periodos="getPeriodos(config)"
+            :columna-dinamica-id="config.columnaDinamicaId"
+            :cabeceras="config.cabeceras"
+            :editable-periodos="puedeEditarPeriodos"
+            :show-add-periodo="puedeEditarPeriodos"
+            @rename-periodo="renamePeriodo"
+            @add-periodo="addPeriodo"
+          />
         </thead>
         <tbody>
           <TableRow

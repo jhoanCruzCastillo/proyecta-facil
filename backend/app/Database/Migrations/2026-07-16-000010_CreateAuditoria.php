@@ -2,21 +2,25 @@
 
 namespace App\Database\Migrations;
 
+use App\Database\Migrations\Support\PortableEnumTrait;
 use CodeIgniter\Database\Migration;
 
 class CreateAuditoria extends Migration
 {
+    use PortableEnumTrait;
+
     public function up()
     {
         // actividad_reciente — feed global del dashboard
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'mensaje' => ['type' => 'VARCHAR', 'constraint' => 255],
-            'color' => ['type' => 'ENUM', 'constraint' => ['blue', 'green', 'orange', 'gray', 'red']],
+            'color' => $this->enumField(['blue', 'green', 'orange', 'gray', 'red']),
             'created_at' => ['type' => 'DATETIME'],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('actividad_reciente');
+        $this->addEnumCheck('actividad_reciente', 'color', ['blue', 'green', 'orange', 'gray', 'red']);
 
         // historial_cambios — una fila por cada "Guardar" con cambios reales en una ficha
         $this->forge->addField([

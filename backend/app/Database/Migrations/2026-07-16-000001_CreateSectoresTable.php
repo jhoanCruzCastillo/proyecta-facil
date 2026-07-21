@@ -2,10 +2,13 @@
 
 namespace App\Database\Migrations;
 
+use App\Database\Migrations\Support\PortableEnumTrait;
 use CodeIgniter\Database\Migration;
 
 class CreateSectoresTable extends Migration
 {
+    use PortableEnumTrait;
+
     public function up()
     {
         $this->forge->addField([
@@ -15,7 +18,7 @@ class CreateSectoresTable extends Migration
             'icono' => ['type' => 'VARCHAR', 'constraint' => 50],
             'color_accent' => ['type' => 'VARCHAR', 'constraint' => 20],
             'descripcion' => ['type' => 'TEXT', 'null' => true],
-            'tipo_sector' => ['type' => 'ENUM', 'constraint' => ['Sectorial', 'General']],
+            'tipo_sector' => $this->enumField(['Sectorial', 'General']),
             'activo' => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 1],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],
@@ -23,6 +26,7 @@ class CreateSectoresTable extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey('codigo');
         $this->forge->createTable('sectores');
+        $this->addEnumCheck('sectores', 'tipo_sector', ['Sectorial', 'General']);
     }
 
     public function down()

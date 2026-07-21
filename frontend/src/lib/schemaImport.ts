@@ -16,6 +16,8 @@ const tipoCampoReverseMap: Record<string, TipoCampo> = {
   coordenadas: 'mapa_coordenadas',
   calculado: 'calculado',
   tabla: 'tabla',
+  imagen: 'imagen',
+  firma: 'firma',
 };
 
 function mapTipoCampoReverse(tipo: unknown): TipoCampo {
@@ -148,7 +150,7 @@ function nodeFromDoc(rawNode: unknown, depth: number, config: ConfigTabla): Tree
 
 function valorEjemploTabla(config: ConfigTabla, rawValor: unknown): string {
   const items = Array.isArray(rawValor) ? rawValor : [];
-  if (config.subtipo === 'jerarquica') {
+  if (config.subtipo === 'jerarquica' || config.subtipo === 'jerarquica_dinamica') {
     return JSON.stringify(items.map((r) => nodeFromDoc(r, 0, config)));
   }
   if (config.agrupador) {
@@ -174,9 +176,12 @@ function campoFromDoc(rawCampo: unknown): Campo {
 
   if (esTabla) {
     const rawConfig = (raw.config as Record<string, unknown>) ?? {};
-    const subtipo: SubtipoTabla =
-      rawConfig.filas === 'jerarquicas' ? 'jerarquica' : rawConfig.columnas === 'dinamicas' ? 'matriz_por_periodos' : 'filas_dinamicas';
-    const esJerarquica = subtipo === 'jerarquica';
+    const filasJerarquicas = rawConfig.filas === 'jerarquicas';
+    const columnasDinamicas = rawConfig.columnas === 'dinamicas';
+    const subtipo: SubtipoTabla = filasJerarquicas
+      ? (columnasDinamicas ? 'jerarquica_dinamica' : 'jerarquica')
+      : (columnasDinamicas ? 'matriz_por_periodos' : 'filas_dinamicas');
+    const esJerarquica = filasJerarquicas;
     const rawCaptura = (raw.captura as Record<string, unknown>) ?? {};
     const rawCols = raw[esJerarquica ? 'niveles' : 'columnas'];
     const { columnas, columnaDinamicaId } = buildColumnas(rawCols, rawCaptura.columnas, esJerarquica);

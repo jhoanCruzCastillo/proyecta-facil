@@ -1,23 +1,33 @@
+import { apiFetch } from './_shared';
 import type { PlantillasApi } from '../contracts/plantillas';
+import type { Plantilla } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/plantillas exista.
 export const plantillasHttp: PlantillasApi = {
-  async list() {
-    throw new Error('plantillasHttp.list: backend real aún no implementado');
+  list() {
+    return apiFetch<Plantilla[]>('plantillas');
   },
-  async listBySector() {
-    throw new Error('plantillasHttp.listBySector: backend real aún no implementado');
+
+  listBySector(sectorId) {
+    return apiFetch<Plantilla[]>(`sectores/${sectorId}/plantillas`);
   },
-  async get() {
-    throw new Error('plantillasHttp.get: backend real aún no implementado');
+
+  async get(id) {
+    try {
+      return await apiFetch<Plantilla>(`plantillas/${id}`);
+    } catch {
+      return null;
+    }
   },
-  async create() {
-    throw new Error('plantillasHttp.create: backend real aún no implementado');
+
+  create(plantilla) {
+    return apiFetch<Plantilla>('plantillas', { method: 'POST', body: JSON.stringify(plantilla) });
   },
-  async update() {
-    throw new Error('plantillasHttp.update: backend real aún no implementado');
+
+  update(id, data) {
+    return apiFetch<Plantilla>(`plantillas/${id}`, { method: 'PUT', body: JSON.stringify(data) });
   },
-  async remove() {
-    throw new Error('plantillasHttp.remove: backend real aún no implementado');
+
+  async remove(id) {
+    await apiFetch<unknown>(`plantillas/${id}`, { method: 'DELETE' });
   },
 };

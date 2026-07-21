@@ -2,21 +2,25 @@
 
 namespace App\Database\Migrations;
 
+use App\Database\Migrations\Support\PortableEnumTrait;
 use CodeIgniter\Database\Migration;
 
 class CreateTiposUsuarioYPermisos extends Migration
 {
+    use PortableEnumTrait;
+
     public function up()
     {
         // tipos_usuario — etiquetas de rol personalizadas (ej. "Soporte Técnico"), heredan un nivel base
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nombre' => ['type' => 'VARCHAR', 'constraint' => 80],
-            'nivel_base' => ['type' => 'ENUM', 'constraint' => ['administrador', 'cliente']],
+            'nivel_base' => $this->enumField(['administrador', 'cliente']),
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addUniqueKey('nombre');
         $this->forge->createTable('tipos_usuario');
+        $this->addEnumCheck('tipos_usuario', 'nivel_base', ['administrador', 'cliente']);
 
         // Ahora que tipos_usuario existe, se agrega el puntero opcional desde usuarios
         $this->forge->addColumn('usuarios', [

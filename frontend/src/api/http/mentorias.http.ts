@@ -1,14 +1,23 @@
+import { apiFetch } from './_shared';
 import type { MentoriasApi } from '../contracts/mentorias';
+import type { SesionMentoria } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/mentorias exista.
 export const mentoriasHttp: MentoriasApi = {
-  async list() {
-    throw new Error('mentoriasHttp.list: backend real aún no implementado');
+  list() {
+    return apiFetch<SesionMentoria[]>('mentorias');
   },
-  async inscribirse() {
-    throw new Error('mentoriasHttp.inscribirse: backend real aún no implementado');
+
+  inscribirse(sesionId, cuentaId) {
+    return apiFetch<SesionMentoria>(`mentorias/${sesionId}/inscribirse`, {
+      method: 'POST',
+      body: JSON.stringify({ cuentaId }),
+    });
   },
-  async enviarPregunta() {
-    throw new Error('mentoriasHttp.enviarPregunta: backend real aún no implementado');
+
+  enviarPregunta(sesionId, usuarioId, pregunta) {
+    return apiFetch<SesionMentoria>(`mentorias/${sesionId}/preguntas`, {
+      method: 'POST',
+      body: JSON.stringify({ usuarioId, pregunta }),
+    });
   },
 };

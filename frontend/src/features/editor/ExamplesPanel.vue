@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faSearch, faPlus, faCheck, faCircle, faInfoCircle, faTrash, faEye, faDownload } from '@/lib/icons';
+import { faSearch, faPlus, faCheck, faCircle, faInfoCircle, faTrash, faEye, faDownload, faBoxArchive, faCloudArrowUp } from '@/lib/icons';
 import type { Ejemplo } from '@/types';
 
 const props = defineProps<{
@@ -15,6 +15,7 @@ const emit = defineEmits<{
   preview: [ejemplo: Ejemplo];
   download: [ejemplo: Ejemplo];
   delete: [ejemplo: Ejemplo];
+  'toggle-estado': [ejemplo: Ejemplo];
 }>();
 
 const search = ref('');
@@ -68,6 +69,16 @@ const filtered = computed(() =>
         </div>
         <div class="flex items-center gap-0.5 shrink-0">
           <FontAwesomeIcon v-if="activeEjemplo?.id === ej.id" :icon="faCheck" class="w-3.5 h-3.5 text-brand-600 mr-1" />
+          <button
+            @click.stop="emit('toggle-estado', ej)"
+            type="button"
+            :title="ej.estado === 'publicado' ? 'Archivar ejemplo' : 'Publicar ejemplo'"
+            class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium transition-colors duration-75 mr-1"
+            :class="ej.estado === 'publicado' ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
+          >
+            <FontAwesomeIcon :icon="ej.estado === 'publicado' ? faCloudArrowUp : faBoxArchive" class="w-2.5 h-2.5" />
+            {{ ej.estado === 'publicado' ? 'Publicado' : 'Archivado' }}
+          </button>
           <button
             @click.stop="emit('preview', ej)"
             type="button"

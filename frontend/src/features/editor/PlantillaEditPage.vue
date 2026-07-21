@@ -10,6 +10,7 @@ import SectionContent from './SectionContent.vue';
 import FieldPropertiesPanel from './FieldPropertiesPanel.vue';
 import EditorTopBar from './EditorTopBar.vue';
 import SeccionHojaModal from './SeccionHojaModal.vue';
+import ImportarEstructuraModal from './ImportarEstructuraModal.vue';
 import ExamplesPanel from './ExamplesPanel.vue';
 import NuevoEjemploModal from './NuevoEjemploModal.vue';
 import JsonPreviewModal from './JsonPreviewModal.vue';
@@ -24,6 +25,7 @@ const plantillaId = computed(() => route.params.plantillaId as string);
 const {
   editData, activeTab, selectedCampo, isNewCampo, editingHojaSeccionId,
   leftWidth, rightWidth, examplesWidth, highlightMissingCaptura, ejemplosCount, jsonPreview,
+  showImportEstructura,
   secciones, safeIdx, seccionActiva, isFirst, isLast, showExamples,
   ejemplos, activeEjemplo, editedValores, showNuevoEjemplo, deleteTarget,
   archivoExcelAsignado, showExcelCatalogModal, showPreview, showInsertConfirm, isInserting, insertProgress,
@@ -32,8 +34,9 @@ const {
   goToPrevSection, goToNextSection, handleFieldUpdate, handleAddCampo, handleDeleteCampo,
   handleSectionNameChange, handleSectionHojaChange, handleSubsectionNameChange,
   handleSubseccionAyudaChange, handleAddSubsection, handleDeleteSubsection, handleAddSection,
-  handleExampleValueChange, handleCreateExample, handleDeleteEjemplo,
+  handleExampleValueChange, handleCreateExample, handleDeleteEjemplo, handleToggleEjemploEstado,
   handleDownloadExcel, handlePreviewExample, handleInsertExcel,
+  handleImportEstructura,
   handleSave, handleViewJson,
 } = usePlantillaEditor(plantillaId);
 
@@ -66,6 +69,7 @@ const mostrarTipologiasIoarr = computed(() => editData.value?.instrumento === 'i
             @preview="handlePreviewExample"
             @download="handleDownloadExcel"
             @delete="deleteTarget = $event"
+            @toggle-estado="handleToggleEjemploEstado"
           />
         </div>
         <ResizeHandle @resize="handleExamplesResize" />
@@ -77,9 +81,11 @@ const mostrarTipologiasIoarr = computed(() => editData.value?.instrumento === 'i
           :active-seccion-id="seccionActiva?.id ?? null"
           show-add-button
           show-edit-hoja
+          :show-import-estructura="!showExamples"
           @select="handleSectionSelect"
           @add-section="handleAddSection"
           @edit-hoja="editingHojaSeccionId = $event"
+          @import-estructura="showImportEstructura = true"
         />
       </div>
 
@@ -107,6 +113,7 @@ const mostrarTipologiasIoarr = computed(() => editData.value?.instrumento === 'i
             @delete-subsection="handleDeleteSubsection"
             @update-default-value="(campoId, value) => handleFieldUpdate(campoId, { valorEjemplo: value })"
             @update-example-value="handleExampleValueChange"
+            @update-config-tabla="(campoId, configTabla) => handleFieldUpdate(campoId, { configTabla })"
           />
         </div>
 
@@ -148,6 +155,12 @@ const mostrarTipologiasIoarr = computed(() => editData.value?.instrumento === 'i
       :seccion="secciones.find((s) => s.id === editingHojaSeccionId) ?? null"
       @close="editingHojaSeccionId = null"
       @change="(hoja) => editingHojaSeccionId && handleSectionHojaChange(editingHojaSeccionId, hoja)"
+    />
+
+    <ImportarEstructuraModal
+      :is-open="showImportEstructura"
+      @close="showImportEstructura = false"
+      @import="handleImportEstructura"
     />
 
     <NuevoEjemploModal

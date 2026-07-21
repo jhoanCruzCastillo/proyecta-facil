@@ -19,7 +19,7 @@ export type TipoSector = 'Sectorial' | 'General';
 
 export type VersionTab = 'estructura' | 'ejemplos' | 'proyecto';
 
-export type SubtipoTabla = 'filas_dinamicas' | 'matriz_por_periodos' | 'jerarquica';
+export type SubtipoTabla = 'filas_dinamicas' | 'matriz_por_periodos' | 'jerarquica' | 'jerarquica_dinamica';
 
 // Primitivos documentados (esquema oficial) + catalogo/catalogo_encadenado/auto_numerico,
 // que se mantienen por compatibilidad con datos existentes pero ya no se ofrecen en el selector de tipo.
@@ -125,6 +125,9 @@ export interface Plantilla {
   /** true = forma parte del catálogo curado de "ejercicios de práctica" del plan Nivel 0
    * (Pedagógico) — debe tener al menos un Ejemplo de referencia (solucionario) cargado por el admin */
   disponibleNivel0?: boolean;
+  /** Nace 'archivado' — el admin decide explícitamente cuándo publicarla. Independiente del
+   * estado de sus Ejemplos (ver Ejemplo.estado). */
+  estado?: 'publicado' | 'archivado';
 }
 
 // Bloque de contenido de un apartado de Perfil
@@ -203,6 +206,10 @@ export interface Ejemplo {
   /** true = visible para todo el equipo de la cuenta, no solo para quien la creó. Solo el titular
    * puede activarlo (ver puedeVerFicha en permisos.ts). */
   compartida?: boolean;
+  /** Nace 'archivado' — el admin decide explícitamente cuándo publicarlo. Independiente del
+   * estado de la Plantilla. Solo se gestiona en el catálogo de ejemplos de referencia del admin
+   * (propietarioId ausente) — las fichas de cliente no muestran este control. */
+  estado?: 'publicado' | 'archivado';
 }
 
 export type RolUsuario = 'superusuario' | 'administrador' | 'cliente';

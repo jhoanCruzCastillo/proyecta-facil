@@ -1,0 +1,200 @@
+{
+  "formato": {
+    "codigo": "06-A",
+    "nombre": "Ficha Técnica General Simplificada",
+    "directiva": "001-2019-EF/63.01",
+    "tipo_version": "estructura",
+    "fuente_archivo": "formato6a_directiva001_2019EF6301.xlsm",
+    "nota": "Sección 1 de 14. Posiciones de celda extraídas y verificadas directamente del .xlsm real (hoja 'DATOS GENERALES')."
+  },
+  "secciones": [
+    {
+      "tipo_nodo": "seccion",
+      "id": "1",
+      "nombre": "Datos generales del proyecto",
+      "hoja": "DATOS GENERALES",
+      "campos": [
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.01",
+          "nombre": "Institucionalidad - Unidad Formuladora (UF)",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.01",
+              "nombre": "Nivel de gobierno",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 9, "abarca_columnas": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.02",
+              "nombre": "Entidad",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 11, "abarca_columnas": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.03",
+              "nombre": "Nombre de la UF (Unidad Orgánica a la que pertenece la UF)",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 13, "abarca_columnas": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.01.04",
+              "nombre": "Responsable de la UF",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 15, "abarca_columnas": 10 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.02",
+          "nombre": "Responsabilidad funcional y tipología del proyecto de inversión",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.01",
+              "nombre": "Función",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 21, "abarca_columnas": 15 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.02",
+              "nombre": "División funcional",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 23, "abarca_columnas": 15 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.03",
+              "nombre": "Grupo funcional",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 25, "abarca_columnas": 15 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.04",
+              "nombre": "Sector responsable",
+              "tipo": "texto_corto",
+              "editable": false,
+              "captura": { "columna": "G", "fila": 27, "abarca_columnas": 15 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.02.05",
+              "nombre": "Tipología de proyecto",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 29, "abarca_columnas": 15 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.03",
+          "nombre": "Nombre del proyecto de inversión",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.01",
+              "nombre": "Naturaleza de intervención",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 36, "abarca_columnas": 7 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.02",
+              "nombre": "Objeto de intervención",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "J", "fila": 36, "abarca_columnas": 6 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.03.03",
+              "nombre": "Localización",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "Q", "fila": 36, "abarca_columnas": 5 }
+            }
+          ]
+        },
+        {
+          "tipo_nodo": "grupo",
+          "id": "1.04",
+          "nombre": "Alineamiento y contribución al cierre de una brecha",
+          "campos": [
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.01",
+              "nombre": "Servicios públicos con brecha identificada y priorizada",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "M", "fila": 43, "abarca_columnas": 15 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.02",
+              "nombre": "Nombre del Indicador de brecha de acceso a servicios",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 47, "abarca_columnas": 10 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.03",
+              "nombre": "Unidad de medida",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "M", "fila": 47, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.04",
+              "nombre": "Espacio geográfico",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "Q", "fila": 47, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.05",
+              "nombre": "Año",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "U", "fila": 47, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.06",
+              "nombre": "Valor",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "Y", "fila": 47, "abarca_columnas": 3 }
+            },
+            {
+              "tipo_nodo": "campo",
+              "id": "1.04.07",
+              "nombre": "Contribución del Cierre de Brecha (Valor)",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "M", "fila": 50, "abarca_columnas": 15 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

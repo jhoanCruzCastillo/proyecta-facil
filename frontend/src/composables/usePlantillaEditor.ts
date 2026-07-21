@@ -10,7 +10,7 @@ import { buildDocumento } from '@/lib/schemaExport';
 import { insertarValoresEnExcel } from '@/lib/excelWriter';
 import { usePushActividad } from '@/composables/useActividad';
 import { useUiStore } from '@/stores/ui';
-import type { VersionTab, Campo, Plantilla, Ejemplo, TipologiaIoarr } from '@/types';
+import type { VersionTab, Campo, Plantilla, Ejemplo, Seccion, TipologiaIoarr } from '@/types';
 
 const MIN_LEFT = 180;
 const MIN_RIGHT = 300;
@@ -57,6 +57,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
   const examplesWidth = ref(DEFAULT_EXAMPLES);
   const highlightMissingCaptura = ref(false);
   const jsonPreview = ref<{ title: string; json: string } | null>(null);
+  const showImportEstructura = ref(false);
 
   const ejemplos = computed(() => ejemplosData.value ?? []);
   const ejemplosCount = computed(() => ejemplos.value.length);
@@ -108,7 +109,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
 
   async function handleCreateExample(nombre: string, subtitulo: string, detalle: string, tipologiasIoarr?: TipologiaIoarr[]) {
     if (!archivoExcelAsignado.value) return; // NuevoEjemploModal ya bloquea la creación sin Excel asignado
-    const nuevo: Ejemplo = { id: generateId(), nombre, subtitulo, detalle, plantillaId: plantillaId.value, activo: false, valores: {}, tipologiasIoarr };
+    const nuevo: Ejemplo = { id: generateId(), nombre, subtitulo, detalle, plantillaId: plantillaId.value, activo: false, valores: {}, tipologiasIoarr, estado: 'archivado' };
     await crearEjemplo.mutateAsync(nuevo);
     activeEjemplo.value = nuevo;
     editedValores.value = {};
@@ -121,6 +122,13 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
 
     await pushActividad.mutateAsync({ mensaje: `Nuevo ejemplo "${nombre}" creado`, color: 'green' });
     ui.toast(`Ejemplo "${nombre}" creado — completa los valores`);
+  }
+
+  function handleToggleEjemploEstado(ejemplo: Ejemplo) {
+    const nuevoEstado = ejemplo.estado === 'publicado' ? 'archivado' : 'publicado';
+    actualizarEjemplo.mutate({ id: ejemplo.id, data: { estado: nuevoEstado } });
+    if (activeEjemplo.value?.id === ejemplo.id) activeEjemplo.value = { ...ejemplo, estado: nuevoEstado };
+    ui.toast(nuevoEstado === 'publicado' ? `Ejemplo "${ejemplo.nombre}" publicado` : `Ejemplo "${ejemplo.nombre}" archivado`);
   }
 
   async function handleDownloadExcel(ejemplo: Ejemplo) {
@@ -296,6 +304,17 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
     ui.toast('Sección agregada');
   }
 
+  function handleImportEstructura(secciones: Seccion[]) {
+    mutate((p) => {
+      p.secciones = secciones;
+      p.cantidadSecciones = secciones.length;
+    });
+    activeSectionIndex.value = 0;
+    selectedCampo.value = null;
+    isNewCampo.value = false;
+    ui.toast(`Estructura reemplazada — ${secciones.length} secciones importadas`);
+  }
+
   async function handleSave() {
     if (!editData.value) return;
     const fechaActualizacion = new Date().toLocaleDateString('es-PE');
@@ -333,6 +352,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
   return {
     editData, activeTab, activeSectionIndex, selectedCampo, isNewCampo, editingHojaSeccionId,
     leftWidth, rightWidth, examplesWidth, highlightMissingCaptura, ejemplosCount, jsonPreview,
+    showImportEstructura,
     secciones, safeIdx, seccionActiva, isFirst, isLast, showExamples,
     ejemplos, activeEjemplo, editedValores, showNuevoEjemplo, deleteTarget,
     archivoExcelAsignado, showExcelCatalogModal, showPreview, showInsertConfirm, isInserting, insertProgress,
@@ -341,8 +361,9 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
     goToPrevSection, goToNextSection, handleFieldUpdate, handleAddCampo, handleDeleteCampo,
     handleSectionNameChange, handleSectionHojaChange, handleSubsectionNameChange,
     handleSubseccionAyudaChange, handleAddSubsection, handleDeleteSubsection, handleAddSection,
-    handleExampleValueChange, handleCreateExample, handleDeleteEjemplo,
+    handleExampleValueChange, handleCreateExample, handleDeleteEjemplo, handleToggleEjemploEstado,
     handleDownloadExcel, handlePreviewExample, handleInsertExcel,
+    handleImportEstructura,
     handleSave, handleViewJson,
   };
 }

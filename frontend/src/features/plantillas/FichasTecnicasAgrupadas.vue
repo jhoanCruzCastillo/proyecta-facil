@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faEye, faPen, faMagnifyingGlass, faStar } from '@/lib/icons';
 import PracticaToggle from './PracticaToggle.vue';
+import EstadoPlantillaToggle from './EstadoPlantillaToggle.vue';
 import type { Plantilla, Sector } from '@/types';
 
 const props = defineProps<{ plantillas: Plantilla[]; sectores: Sector[] }>();
@@ -59,6 +60,7 @@ const grupos = computed(() =>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
             <PracticaToggle :plantilla="mefVisible" />
+            <EstadoPlantillaToggle :plantilla="mefVisible" />
             <RouterLink
               :to="`/sectores/${mefVisible.sectorId}/plantilla/${mefVisible.id}`"
               class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium text-brand-600 hover:bg-brand-50 transition-colors"
@@ -100,6 +102,7 @@ const grupos = computed(() =>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
               <PracticaToggle :plantilla="p" />
+              <EstadoPlantillaToggle :plantilla="p" />
               <RouterLink
                 :to="`/sectores/${p.sectorId}/plantilla/${p.id}`"
                 class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium text-brand-600 hover:bg-brand-50 transition-colors"

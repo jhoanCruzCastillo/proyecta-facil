@@ -1,14 +1,17 @@
+import { apiFetch } from './_shared';
 import type { HistorialCambiosApi } from '../contracts/historialCambios';
+import type { CambioFicha } from '@/types';
 
-// Implementación real contra CodeIgniter — se cablea cuando el endpoint /api/historial-cambios exista.
 export const historialCambiosHttp: HistorialCambiosApi = {
-  async list() {
-    throw new Error('historialCambiosHttp.list: backend real aún no implementado');
+  list() {
+    return apiFetch<CambioFicha[]>('historial-cambios');
   },
-  async listByEjemplo() {
-    throw new Error('historialCambiosHttp.listByEjemplo: backend real aún no implementado');
+
+  listByEjemplo(ejemploId) {
+    return apiFetch<CambioFicha[]>(`ejemplos/${ejemploId}/historial-cambios`);
   },
-  async registrar() {
-    throw new Error('historialCambiosHttp.registrar: backend real aún no implementado');
+
+  registrar(entry) {
+    return apiFetch<CambioFicha>('historial-cambios', { method: 'POST', body: JSON.stringify(entry) });
   },
 };
