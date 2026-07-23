@@ -53,7 +53,7 @@ function abrir(n: NotificacionUsuario) {
     <Transition name="pop">
       <div
         v-if="abierto"
-        class="absolute left-3 right-3 bottom-full mb-2 bg-sidebar-hover rounded-xl shadow-modal border border-white/10 overflow-hidden z-50 max-h-80 overflow-y-auto"
+        class="absolute left-3 right-3 bottom-full mb-2 bg-sidebar rounded-xl shadow-modal border border-white/10 overflow-hidden z-50 max-h-80 overflow-y-auto"
       >
         <p v-if="(notificaciones ?? []).length === 0" class="px-4 py-4 text-xs text-white/50 text-center">Sin notificaciones</p>
         <button

@@ -92,7 +92,7 @@ const mostrarTipologiasIoarr = computed(() => editData.value?.instrumento === 'i
       <ResizeHandle @resize="handleLeftResize" />
 
       <div class="flex-1 min-w-0 flex flex-col overflow-hidden">
-        <div class="flex-1 overflow-y-auto p-6">
+        <div class="flex-1 overflow-y-auto bg-white p-6">
           <SectionContent
             v-if="seccionActiva"
             :key="seccionActiva.id"

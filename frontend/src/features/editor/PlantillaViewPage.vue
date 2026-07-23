@@ -83,7 +83,7 @@ function handleSectionSelect(seccionId: string) {
       <ResizeHandle @resize="handleLeftResize" />
 
       <div class="flex-1 min-w-0 flex flex-col overflow-hidden">
-        <div class="flex-1 overflow-y-auto p-8">
+        <div class="flex-1 overflow-y-auto bg-white p-8">
           <SectionContent v-if="seccionActiva" :key="seccionActiva.id + activeTab" :seccion="seccionActiva" :show-example-values="showExamples" />
         </div>
 

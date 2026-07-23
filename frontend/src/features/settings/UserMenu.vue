@@ -59,7 +59,7 @@ function handleLogout() {
     <Transition name="pop">
       <div
         v-if="menuAbierto"
-        class="absolute left-3 right-3 bottom-full mb-2 bg-sidebar-hover rounded-xl shadow-modal border border-white/10 overflow-hidden z-50"
+        class="absolute left-3 right-3 bottom-full mb-2 bg-sidebar rounded-xl shadow-modal border border-white/10 overflow-hidden z-50"
       >
         <button
           @click="menuAbierto = false; showAjustes = true"

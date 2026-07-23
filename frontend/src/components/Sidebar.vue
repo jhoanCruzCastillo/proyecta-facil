@@ -47,10 +47,12 @@ const emit = defineEmits<{ hide: [] }>();
 
 <template>
   <aside
-    class="fixed left-0 top-0 bottom-0 w-56 bg-sidebar text-white flex flex-col z-40 transition-transform duration-150 ease-out"
+    class="fixed left-0 top-0 bottom-0 w-56 bg-sidebar bg-[url('/sideb.webp')] bg-cover bg-center bg-no-repeat text-white flex flex-col z-40 transition-transform duration-150 ease-out"
     :class="hidden ? '-translate-x-full' : 'translate-x-0'"
   >
-    <div class="px-5 py-5 flex items-center gap-3 border-b border-white/10">
+    <div class="absolute inset-0 bg-black/55 pointer-events-none" />
+
+    <div class="relative px-5 py-5 flex items-center gap-3 border-b border-white/10">
       <img :src="logo" alt="" class="w-9 h-9 object-contain shrink-0" />
       <div class="flex-1 min-w-0">
         <div class="font-bold text-sm leading-tight">
@@ -67,7 +69,7 @@ const emit = defineEmits<{ hide: [] }>();
       </button>
     </div>
 
-    <nav class="flex-1 px-3 pt-6">
+    <nav class="relative flex-1 px-3 pt-6">
       <p class="text-[10px] font-semibold uppercase tracking-widest text-white/40 px-3 mb-3">
         Navegación
       </p>

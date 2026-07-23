@@ -50,8 +50,10 @@ async function handleSubmit() {
 
 <template>
   <div class="min-h-screen flex bg-surface">
-    <div class="hidden lg:flex flex-col justify-between w-[45%] bg-sidebar text-white p-12">
-      <div class="flex items-center gap-3">
+    <div class="relative hidden lg:flex flex-col justify-between w-[45%] bg-sidebar bg-[url('/bg-cont.webp')] bg-cover bg-center text-white p-12 overflow-hidden">
+      <div class="absolute inset-0 bg-black/55 pointer-events-none" />
+
+      <div class="relative flex items-center gap-3">
         <div class="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center font-bold">P</div>
         <div>
           <div class="font-bold leading-tight">Proyecta Fácil</div>
@@ -59,7 +61,7 @@ async function handleSubmit() {
         </div>
       </div>
 
-      <div>
+      <div class="relative">
         <h1 class="text-3xl font-bold leading-snug mb-4">
           Plantillas digitales para la inversión pública
         </h1>
@@ -69,7 +71,7 @@ async function handleSubmit() {
         </p>
       </div>
 
-      <p class="text-[11px] text-white/40">
+      <p class="relative text-[11px] text-white/40">
         Directiva N.º 001-2019-EF/63.01 — Sistema Nacional de Programación Multianual y Gestión de
         Inversiones
       </p>

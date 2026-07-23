@@ -8,7 +8,7 @@ const ui = useUiStore();
 </script>
 
 <template>
-  <div class="min-h-screen bg-page" style="background-image: radial-gradient(ellipse 1200px 600px at 15% -10%, var(--color-page-2), transparent)">
+  <div class="min-h-screen bg-page bg-[url('/bg-cont.webp')] bg-cover bg-top bg-no-repeat bg-fixed">
     <Sidebar :hidden="ui.sidebarHidden" @hide="ui.hideSidebar" />
 
     <Transition name="pop">
