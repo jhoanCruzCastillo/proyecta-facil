@@ -16,6 +16,7 @@ import type { RolUsuario } from '@/types';
 const rolColor: Record<RolUsuario, string> = {
   superusuario: 'text-amber-300',
   administrador: 'text-brand-400',
+  docente: 'text-violet-300',
   cliente: 'text-sky-300',
 };
 

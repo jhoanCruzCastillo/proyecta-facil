@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faMagnifyingGlass, faFilter, faPlus, faGraduationCap, faBriefcase, faList, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
+import { faFileCirclePlus, faMagnifyingGlass, faFilter, faPlus, faGraduationCap, faBriefcase, faList, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
+import PageShell from '@/components/PageShell.vue';
 import { usePlantillasQuery } from '@/composables/usePlantillas';
 import { useSectoresQuery } from '@/composables/useSectores';
 import { useUsuariosQuery } from '@/composables/useUsuarios';
@@ -67,12 +68,9 @@ function motivoBloqueo(p: Plantilla): string | undefined {
 </script>
 
 <template>
-  <div class="p-8">
-    <div class="bg-surface-card rounded-xl shadow-card p-6 mb-6">
-      <h1 class="text-2xl font-bold text-heading leading-tight">Fichas oficiales</h1>
-      <p class="text-sm text-muted">Elige una ficha oficial para crear y empezar a llenar tu propio caso</p>
-
-      <div class="flex gap-2 mt-4">
+  <PageShell :icon="faFileCirclePlus" title="Fichas oficiales" description="Elige una ficha oficial para crear y empezar a llenar tu propio caso">
+    <div>
+      <div class="flex gap-2">
         <button
           @click="tab = 'todas'"
           type="button"
@@ -191,5 +189,5 @@ function motivoBloqueo(p: Plantilla): string | undefined {
       :addon="addOns.find((a) => a.id === 'plantilla-adicional') ?? null"
       @close="showComprarAddon = false"
     />
-  </div>
+  </PageShell>
 </template>

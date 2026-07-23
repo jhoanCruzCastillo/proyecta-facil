@@ -128,7 +128,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
     const nuevoEstado = ejemplo.estado === 'publicado' ? 'archivado' : 'publicado';
     actualizarEjemplo.mutate({ id: ejemplo.id, data: { estado: nuevoEstado } });
     if (activeEjemplo.value?.id === ejemplo.id) activeEjemplo.value = { ...ejemplo, estado: nuevoEstado };
-    ui.toast(nuevoEstado === 'publicado' ? `Ejemplo "${ejemplo.nombre}" publicado` : `Ejemplo "${ejemplo.nombre}" archivado`);
+    ui.toast(nuevoEstado === 'publicado' ? `Ejemplo "${ejemplo.nombre}" publicado` : `Ejemplo "${ejemplo.nombre}" movido a borrador`);
   }
 
   async function handleDownloadExcel(ejemplo: Ejemplo) {

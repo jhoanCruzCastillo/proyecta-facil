@@ -21,7 +21,9 @@ const icon = sectorIcons[props.sector.icono];
       </span>
     </div>
     <h3 class="font-bold text-heading text-base mb-1">{{ sector.nombre }}</h3>
-    <p class="text-xs text-muted mb-5">{{ sector.cantidadEjemplos }} ejemplos cargados</p>
+    <p class="text-xs text-muted mb-1">{{ sector.cantidadEjemplos }} ejemplos cargados</p>
+    <p v-if="sector.descripcion" class="text-xs text-muted/90 mb-5 line-clamp-2">{{ sector.descripcion }}</p>
+    <div v-else class="mb-5" />
     <RouterLink
       :to="`/sectores/${sector.id}`"
       class="mt-auto block text-center py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-brand-600 hover:bg-brand-50 transition-colors"

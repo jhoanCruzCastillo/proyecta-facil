@@ -8,6 +8,7 @@ import {
   entrenamientoVencido,
   diasRestantesEntrenamiento,
   limiteFichasSimultaneas,
+  limiteConsultas,
   numeroNivelDe,
 } from '@/lib/planAcceso';
 
@@ -26,5 +27,6 @@ export function useEstadoEntrenamiento() {
     vencido: computed(() => (facturacionData.value ? entrenamientoVencido(facturacionData.value) : false)),
     diasRestantes: computed(() => (facturacionData.value ? diasRestantesEntrenamiento(facturacionData.value) : 0)),
     limiteFichas: computed(() => (facturacionData.value ? limiteFichasSimultaneas(facturacionData.value) : 3)),
+    limiteConsultas: computed(() => (facturacionData.value ? limiteConsultas(facturacionData.value) : 3)),
   };
 }

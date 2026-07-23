@@ -14,7 +14,7 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink :to="to" class="flex items-center gap-4 p-4 bg-surface-card rounded-xl hover:shadow-md transition-shadow group">
+  <RouterLink :to="to" class="flex items-center gap-4 p-4 bg-surface rounded-xl hover:shadow-md transition-shadow group">
     <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" :style="{ backgroundColor: iconBg, color: iconColor }">
       <FontAwesomeIcon :icon="icon" class="w-4 h-4" />
     </div>

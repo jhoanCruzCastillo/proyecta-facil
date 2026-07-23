@@ -65,4 +65,18 @@ $routes->group('api', ['filter' => 'auth'], static function (RouteCollection $ro
     $routes->get('historial-cambios', 'HistorialCambiosController::index');
     $routes->get('ejemplos/(:num)/historial-cambios', 'HistorialCambiosController::listByEjemplo/$1');
     $routes->post('historial-cambios', 'HistorialCambiosController::registrar');
+
+    $routes->get('docentes', 'DocentesController::index');
+    $routes->put('docentes/(:num)/horario', 'DocentesController::actualizarHorario/$1');
+
+    $routes->get('asesoria/solicitudes', 'AsesoriaController::misSolicitudes');
+    $routes->post('asesoria/solicitudes', 'AsesoriaController::crear');
+    $routes->post('asesoria/solicitudes/(:num)/aceptar', 'AsesoriaController::aceptar/$1');
+    $routes->post('asesoria/solicitudes/(:num)/rechazar', 'AsesoriaController::rechazar/$1');
+    $routes->post('asesoria/solicitudes/(:num)/finalizar', 'AsesoriaController::finalizar/$1');
+    $routes->get('asesoria/solicitudes/(:num)/mensajes', 'AsesoriaController::mensajes/$1');
+    $routes->post('asesoria/solicitudes/(:num)/mensajes', 'AsesoriaController::enviarMensaje/$1');
+
+    $routes->get('notificaciones', 'NotificacionesController::index');
+    $routes->post('notificaciones/(:num)/leida', 'NotificacionesController::marcarLeida/$1');
 });

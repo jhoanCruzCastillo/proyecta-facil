@@ -113,6 +113,12 @@ import {
   faArrowRight,
   faBoxArchive,
   faCloudArrowUp,
+  faFolderOpen,
+  faArrowUpRightFromSquare,
+  faBell,
+  faCalendarWeek,
+  faClock,
+  faCalendarPlus,
   type IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import type { RolUsuario, TipoInstrumento, TipologiaIoarr, TipoCampo, TipoColumna, SubtipoTabla, MetodoPago } from '@/types';
@@ -159,6 +165,7 @@ export const rolUsuarioLabels: Record<RolUsuario, string> = {
   superusuario: 'Superusuario',
   administrador: 'Administrador',
   cliente: 'Cliente',
+  docente: 'Docente',
 };
 
 export const metodoPagoIcons: Record<MetodoPago, IconDefinition> = {
@@ -367,8 +374,14 @@ export {
   faComments,
   faVideo,
   faCalendarDays,
+  faFolderOpen,
   faArrowRight,
   faLocationDot,
   faBoxArchive,
   faCloudArrowUp,
+  faArrowUpRightFromSquare,
+  faBell,
+  faCalendarWeek,
+  faClock,
+  faCalendarPlus,
 };

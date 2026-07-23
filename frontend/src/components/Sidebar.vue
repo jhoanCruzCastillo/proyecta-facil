@@ -1,29 +1,40 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faHouse, faLayerGroup, faAngleLeft, faUserGear, faFileCirclePlus, faChalkboardUser, faLock } from '@/lib/icons';
+import { faHouse, faLayerGroup, faAngleLeft, faUserGear, faFileCirclePlus, faChalkboardUser, faLock, faCalendarWeek } from '@/lib/icons';
 import UserMenu from '@/features/settings/UserMenu.vue';
+import NotificacionesBell from '@/features/asesoria/NotificacionesBell.vue';
 import { useSessionStore } from '@/stores/session';
 import { puedeAccederGestionUsuarios } from '@/lib/permisos';
 import { puedeAccederMentorias } from '@/lib/planAcceso';
 import { useEstadoEntrenamiento } from '@/composables/useEstadoEntrenamiento';
+import logo from '@/assets/logo.png';
 
 const session = useSessionStore();
 const { numeroNivel } = useEstadoEntrenamiento();
 const esCliente = computed(() => session.sesion?.rol === 'cliente');
+const esDocente = computed(() => session.sesion?.rol === 'docente');
 const mentoriasBloqueadas = computed(() => esCliente.value && !puedeAccederMentorias(numeroNivel.value));
 
 const navItems = computed(() => {
-  const items = esCliente.value
-    ? [
-        { to: '/', label: 'Mis fichas', icon: faHouse },
-        { to: '/fichas-oficiales', label: 'Fichas oficiales', icon: faFileCirclePlus },
-        { to: '/mentorias', label: 'Mentorías', icon: faChalkboardUser },
-      ]
-    : [
-        { to: '/', label: 'Inicio', icon: faHouse },
-        { to: '/sectores', label: 'Sectores', icon: faLayerGroup },
-      ];
+  let items: { to: string; label: string; icon: typeof faHouse }[];
+  if (esCliente.value) {
+    items = [
+      { to: '/', label: 'Mis fichas', icon: faHouse },
+      { to: '/fichas-oficiales', label: 'Fichas oficiales', icon: faFileCirclePlus },
+      { to: '/mentorias', label: 'Mentorías', icon: faChalkboardUser },
+    ];
+  } else if (esDocente.value) {
+    items = [
+      { to: '/', label: 'Solicitudes', icon: faHouse },
+      { to: '/docente/horario', label: 'Mi horario', icon: faCalendarWeek },
+    ];
+  } else {
+    items = [
+      { to: '/', label: 'Inicio', icon: faHouse },
+      { to: '/sectores', label: 'Sectores', icon: faLayerGroup },
+    ];
+  }
   if (session.sesion && puedeAccederGestionUsuarios(session.sesion.rol)) {
     items.push({ to: '/usuarios', label: 'Usuarios y permisos', icon: faUserGear });
   }
@@ -40,12 +51,12 @@ const emit = defineEmits<{ hide: [] }>();
     :class="hidden ? '-translate-x-full' : 'translate-x-0'"
   >
     <div class="px-5 py-5 flex items-center gap-3 border-b border-white/10">
-      <div class="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-sm">
-        P
-      </div>
+      <img :src="logo" alt="" class="w-9 h-9 object-contain shrink-0" />
       <div class="flex-1 min-w-0">
-        <div class="font-bold text-sm leading-tight">Proyecta Fácil</div>
-        <div class="text-[11px] text-white/60 leading-tight">Editor de plantillas</div>
+        <div class="font-bold text-sm leading-tight">
+          <span class="text-white">Proyecta</span><span class="text-brand-400">Fácil</span>
+        </div>
+        <div class="text-[11px] text-white/50 leading-tight">Editor de plantillas</div>
       </div>
       <button
         @click="emit('hide')"
@@ -71,7 +82,7 @@ const emit = defineEmits<{ hide: [] }>();
               :href="href"
               @click="navigate"
               class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-              :class="isExactActive ? 'bg-sidebar-active text-white' : 'text-white/70 hover:bg-sidebar-hover hover:text-white'"
+              :class="isExactActive ? 'bg-sidebar-active text-white shadow-card' : 'text-white/65 hover:bg-sidebar-hover hover:text-white'"
             >
               <FontAwesomeIcon :icon="item.icon" class="w-4 text-center" />
               <span class="flex-1">{{ item.label }}</span>
@@ -87,6 +98,7 @@ const emit = defineEmits<{ hide: [] }>();
       </ul>
     </nav>
 
+    <NotificacionesBell v-if="session.sesion" />
     <UserMenu />
   </aside>
 </template>

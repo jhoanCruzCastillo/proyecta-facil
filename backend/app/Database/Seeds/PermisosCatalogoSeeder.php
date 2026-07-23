@@ -21,6 +21,7 @@ class PermisosCatalogoSeeder extends Seeder
             'mentorias.acceder', 'mentorias.preguntas_respuestas',
             'ia.mejora_texto', 'ia.asesor',
             'facturacion.gestionar',
+            'asesoria.solicitar', 'asesoria.atender',
         ];
 
         foreach ($claves as $clave) {

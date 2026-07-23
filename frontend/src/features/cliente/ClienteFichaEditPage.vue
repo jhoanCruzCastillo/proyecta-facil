@@ -10,6 +10,7 @@ import ExcelPreviewModal from '@/features/editor/ExcelPreviewModal.vue';
 import ConfirmModal from '@/components/ConfirmModal.vue';
 import ClienteFichaTopBar from './ClienteFichaTopBar.vue';
 import AsesorIAChat from './AsesorIAChat.vue';
+import AsesoriaHumanaFAB from './AsesoriaHumanaFAB.vue';
 import HistorialFichaModal from './HistorialFichaModal.vue';
 import { useClienteFichaEditor } from '@/composables/useClienteFichaEditor';
 
@@ -81,7 +82,7 @@ const {
       <ResizeHandle @resize="handleLeftResize" />
 
       <div class="flex-1 min-w-0 flex flex-col overflow-hidden">
-        <div class="flex-1 overflow-y-auto p-6">
+        <div class="flex-1 overflow-y-auto bg-white p-6">
           <SectionContent
             v-if="seccionActiva"
             :key="seccionActiva.id"
@@ -123,6 +124,7 @@ const {
     </div>
 
     <AsesorIAChat :plantilla="plantilla" :seccion-activa-id="seccionActiva?.id ?? null" :permitido="permiteMejoraIA" />
+    <AsesoriaHumanaFAB :ejemplo-id="ejemploId" />
 
     <ConfirmModal
       :is-open="showInsertConfirm"

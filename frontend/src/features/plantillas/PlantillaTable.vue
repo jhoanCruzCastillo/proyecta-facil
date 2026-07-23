@@ -71,7 +71,7 @@ const excelPlantilla = computed(() => props.plantillas.find((p) => p.id === exce
 </script>
 
 <template>
-  <div class="bg-surface-card rounded-xl shadow-card overflow-hidden">
+  <div>
     <InstrumentoTabs :active-tab="activeTab" :counts="counts" @change="handleTabChange" />
 
     <div v-if="activeTab === 'ioarr'" class="px-6 py-3 border-b border-gray-100 flex items-center gap-2">

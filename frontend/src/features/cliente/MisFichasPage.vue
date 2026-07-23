@@ -2,7 +2,8 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faPlus, faTrash, faInbox, faGraduationCap, faUserGroup, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
+import { faHouse, faPlus, faTrash, faInbox, faGraduationCap, faUserGroup, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
+import PageShell from '@/components/PageShell.vue';
 import { useEjemplosQuery, useEliminarEjemplo, useActualizarEjemplo } from '@/composables/useEjemplos';
 import { usePlantillasQuery } from '@/composables/usePlantillas';
 import { useSectoresQuery } from '@/composables/useSectores';
@@ -89,12 +90,8 @@ function ultimoCambioDe(ejemploId: string) {
 </script>
 
 <template>
-  <div class="p-8">
-    <div class="bg-surface-card rounded-xl shadow-card p-6 mb-6 flex items-center justify-between">
-      <div>
-        <h1 class="text-2xl font-bold text-heading leading-tight">Mis fichas</h1>
-        <p class="text-sm text-muted">Las fichas técnicas que has creado y llenado</p>
-      </div>
+  <PageShell :icon="faHouse" title="Mis fichas" description="Las fichas técnicas que has creado y llenado">
+    <template #actions>
       <button
         @click="showModal = true"
         :disabled="nuevaFichaBloqueada"
@@ -105,7 +102,7 @@ function ultimoCambioDe(ejemploId: string) {
         <FontAwesomeIcon :icon="faPlus" class="w-3.5 h-3.5" />
         Nueva ficha
       </button>
-    </div>
+    </template>
 
     <div
       class="flex items-center gap-2 px-4 py-2.5 rounded-lg border text-xs mb-6"
@@ -123,7 +120,7 @@ function ultimoCambioDe(ejemploId: string) {
       </template>
     </div>
 
-    <div class="bg-surface-card rounded-xl shadow-card overflow-hidden divide-y divide-gray-50">
+    <div class="rounded-xl border border-gray-100 overflow-hidden divide-y divide-gray-50">
       <div v-if="misFichas.length === 0" class="flex flex-col items-center justify-center py-16 text-center px-6">
         <div class="w-12 h-12 rounded-full bg-gray-50 text-gray-300 flex items-center justify-center mb-3">
           <FontAwesomeIcon :icon="faInbox" class="w-5 h-5" />
@@ -196,5 +193,5 @@ function ultimoCambioDe(ejemploId: string) {
       @confirm="handleEliminar"
       @close="eliminarFicha = null"
     />
-  </div>
+  </PageShell>
 </template>

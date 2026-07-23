@@ -22,6 +22,16 @@ export function limiteFichasSimultaneas(facturacion: FacturacionMock): number {
   return base + extra;
 }
 
+// Cupo de consultas de asesoría 1:1 con un docente — cada solicitud creada (sin importar su
+// estado) consume una, sin importar cuántas plantillas simultáneas tenga el cliente. El add-on
+// "Consultoría 1 a 1" no tiene nivelesDisponibles (se vende desde cualquier nivel, incluido el 0).
+export function limiteConsultas(facturacion: FacturacionMock): number {
+  const plan = planes.find((p) => p.id === facturacion.planId);
+  const base = plan?.limiteConsultasBase ?? 3;
+  const extra = facturacion.addons?.['consultoria-1a1'] ?? 0;
+  return base + extra;
+}
+
 function fechaVencimiento(fechaInicioPlan: string): Date {
   const venc = new Date(fechaInicioPlan);
   venc.setDate(venc.getDate() + DIAS_ENTRENAMIENTO);

@@ -85,6 +85,14 @@ export const catalogoPermisos: CategoriaPermisos[] = [
       { id: 'facturacion.gestionar', etiqueta: 'Gestionar plan y pagos', descripcion: 'Cambiar de plan, método de pago y contratar add-ons.' },
     ],
   },
+  {
+    id: 'asesoria',
+    nombre: 'Asesoría 1:1',
+    permisos: [
+      { id: 'asesoria.solicitar', etiqueta: 'Solicitar asesoría', descripcion: 'Pedirle ayuda a un docente por chat o videollamada mientras se llena una ficha.' },
+      { id: 'asesoria.atender', etiqueta: 'Atender solicitudes de asesoría', descripcion: 'Recibir y responder solicitudes de asesoría de clientes.' },
+    ],
+  },
 ];
 
 export const TODOS_LOS_PERMISOS: PermisoId[] = catalogoPermisos.flatMap((c) => c.permisos.map((p) => p.id));
@@ -101,10 +109,13 @@ const PERMISOS_ADMINISTRADOR: PermisoId[] = [
   'usuarios.gestionar_clientes',
 ];
 
+const PERMISOS_DOCENTE: PermisoId[] = ['asesoria.atender'];
+
 // Espeja las features de cada plan en data/planes.ts — un cliente Nivel 2 acumula también lo de
-// Nivel 0 y 1.
+// Nivel 0 y 1. asesoria.solicitar está disponible desde el Nivel 0 (no es un beneficio de plan
+// pago, es el canal de ayuda base).
 function permisosDefaultCliente(numeroNivel: number): PermisoId[] {
-  const permisos: PermisoId[] = ['fichas.crear', 'facturacion.gestionar'];
+  const permisos: PermisoId[] = ['fichas.crear', 'facturacion.gestionar', 'asesoria.solicitar'];
   if (numeroNivel >= 1) permisos.push('mentorias.acceder', 'ia.mejora_texto', 'ia.asesor');
   if (numeroNivel >= 2) {
     permisos.push('fichas.compartir', 'fichas.ver_historial', 'colaboradores.gestionar', 'mentorias.preguntas_respuestas');
@@ -115,6 +126,7 @@ function permisosDefaultCliente(numeroNivel: number): PermisoId[] {
 export function permisosDefaultPorRol(rol: RolUsuario, numeroNivel: number): PermisoId[] {
   if (rol === 'superusuario') return TODOS_LOS_PERMISOS;
   if (rol === 'administrador') return PERMISOS_ADMINISTRADOR;
+  if (rol === 'docente') return PERMISOS_DOCENTE;
   return permisosDefaultCliente(numeroNivel);
 }
 

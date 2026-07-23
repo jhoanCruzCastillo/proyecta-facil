@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faPlus, faFileImport } from '@/lib/icons';
 import { sectorIcons } from '@/lib/icons';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import PageShell from '@/components/PageShell.vue';
 import PlantillaTable from './PlantillaTable.vue';
 import NuevaPlantillaModal from './NuevaPlantillaModal.vue';
 import ImportarJsonModal from './ImportarJsonModal.vue';
@@ -89,47 +90,40 @@ async function handleImport(data: {
 </script>
 
 <template>
-  <div v-if="!sector" class="p-8 text-muted">Sector no encontrado</div>
-  <div v-else class="p-8">
-    <div class="bg-surface-card rounded-xl shadow-card px-6 py-4 mb-4">
-      <Breadcrumbs class-name="" :items="[{ label: 'Sectores', to: '/sectores' }, { label: sector.nombre }]" />
-    </div>
+  <div v-if="!sector" class="p-8 text-white/60">Sector no encontrado</div>
+  <PageShell
+    v-else
+    :icon="icon"
+    :icon-color="sector.colorAccent"
+    :title="sector.nombre"
+    :description="sector.descripcion || `Gestiona las plantillas del sector ${sector.nombre}`"
+    content-class="overflow-auto"
+  >
+    <template #breadcrumb>
+      <Breadcrumbs dark class-name="" :items="[{ label: 'Sectores', to: '/sectores' }, { label: sector.nombre }]" />
+    </template>
 
-    <div class="bg-surface-card rounded-xl shadow-card p-6 mb-6 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white" :style="{ backgroundColor: sector.colorAccent }">
-          <FontAwesomeIcon v-if="icon" :icon="icon" class="w-7 h-7" />
-        </div>
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-widest text-brand-600">Sector</p>
-          <h1 class="text-2xl font-bold text-heading leading-tight">{{ sector.nombre }}</h1>
-          <p class="text-sm text-brand-600/80">
-            {{ sector.descripcion || `Gestiona las plantillas del sector ${sector.nombre}` }}
-          </p>
-        </div>
-      </div>
-      <div class="flex items-center gap-3">
-        <button
-          v-if="esSuperusuario"
-          @click="showImportModal = true"
-          class="px-5 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors flex items-center gap-2"
-        >
-          <FontAwesomeIcon :icon="faFileImport" class="w-3.5 h-3.5" />
-          Importar JSON
-        </button>
-        <button
-          @click="showModal = true"
-          class="px-5 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors flex items-center gap-2"
-        >
-          <FontAwesomeIcon :icon="faPlus" class="w-3.5 h-3.5" />
-          Nueva plantilla
-        </button>
-      </div>
-    </div>
+    <template #actions>
+      <button
+        v-if="esSuperusuario"
+        @click="showImportModal = true"
+        class="px-5 py-2.5 rounded-lg bg-white/[0.06] border border-white/10 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors flex items-center gap-2"
+      >
+        <FontAwesomeIcon :icon="faFileImport" class="w-3.5 h-3.5" />
+        Importar JSON
+      </button>
+      <button
+        @click="showModal = true"
+        class="px-5 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors flex items-center gap-2"
+      >
+        <FontAwesomeIcon :icon="faPlus" class="w-3.5 h-3.5" />
+        Nueva plantilla
+      </button>
+    </template>
 
     <PlantillaTable :plantillas="plantillas ?? []" :todas-fichas-tecnicas="todasFichasTecnicas" />
 
     <NuevaPlantillaModal :is-open="showModal" @close="showModal = false" @create="handleCreate" />
     <ImportarJsonModal :is-open="showImportModal" @close="showImportModal = false" @import="handleImport" />
-  </div>
+  </PageShell>
 </template>

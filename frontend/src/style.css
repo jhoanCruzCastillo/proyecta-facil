@@ -13,15 +13,23 @@
   --color-brand-800: #166534;
   --color-brand-900: #14532d;
 
-  --color-sidebar: #1e3a4f;
-  --color-sidebar-hover: #264d66;
-  --color-sidebar-active: #2d5f7a;
+  --color-sidebar: #0a1120;
+  --color-sidebar-hover: rgb(255 255 255 / 0.06);
+  --color-sidebar-active: var(--color-brand-600);
 
   --color-surface: #f8fafc;
   --color-surface-card: #ffffff;
 
   --color-heading: #1e3a4f;
   --color-muted: #94a3b8;
+
+  /* Fondo oscuro de página (todo el área fuera del sidebar) y el panel "glass" de cabecera que
+     vive sobre él — el contenido de cada sección se renderiza dentro de un contenedor blanco
+     aparte (bg-surface-card), no directamente sobre este fondo. */
+  --color-page: #0a1120;
+  --color-page-2: #0f1c33;
+  --color-glass: rgb(255 255 255 / 0.045);
+  --color-glass-border: rgb(255 255 255 / 0.08);
 
   /* Colores de acento para sectores */
   --color-accent-teal: #0d9488;
@@ -60,5 +68,5 @@ html {
 }
 
 body {
-  background-color: var(--color-surface);
+  background-color: var(--color-page);
 }

@@ -78,6 +78,12 @@ const router = createRouter({
           component: () => import('@/features/cliente/MentoriasPage.vue'),
           meta: { soloCliente: true },
         },
+        {
+          path: 'docente/horario',
+          name: 'docente-horario',
+          component: () => import('@/features/docente/HorarioDocenteEditor.vue'),
+          meta: { soloDocente: true },
+        },
       ],
     },
   ],
@@ -89,13 +95,16 @@ router.beforeEach((to) => {
   if (to.meta.requiresAuth && !session.sesion) {
     return { name: 'login' };
   }
-  if (to.meta.noCliente && session.sesion?.rol === 'cliente') {
+  if (to.meta.noCliente && (session.sesion?.rol === 'cliente' || session.sesion?.rol === 'docente')) {
     return { name: 'home' };
   }
   if (to.meta.gestionUsuarios && !(session.sesion && puedeAccederGestionUsuarios(session.sesion.rol))) {
     return { name: 'home' };
   }
   if (to.meta.soloCliente && session.sesion?.rol !== 'cliente') {
+    return { name: 'home' };
+  }
+  if (to.meta.soloDocente && session.sesion?.rol !== 'docente') {
     return { name: 'home' };
   }
   if (to.name === 'login' && session.sesion) {

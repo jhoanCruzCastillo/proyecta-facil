@@ -72,12 +72,12 @@ const filtered = computed(() =>
           <button
             @click.stop="emit('toggle-estado', ej)"
             type="button"
-            :title="ej.estado === 'publicado' ? 'Archivar ejemplo' : 'Publicar ejemplo'"
+            :title="ej.estado === 'publicado' ? 'Volver a borrador' : 'Publicar ejemplo'"
             class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium transition-colors duration-75 mr-1"
             :class="ej.estado === 'publicado' ? 'bg-green-100 text-green-700 hover:bg-green-200' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'"
           >
             <FontAwesomeIcon :icon="ej.estado === 'publicado' ? faCloudArrowUp : faBoxArchive" class="w-2.5 h-2.5" />
-            {{ ej.estado === 'publicado' ? 'Publicado' : 'Archivado' }}
+            {{ ej.estado === 'publicado' ? 'Publicado' : 'Borrador' }}
           </button>
           <button
             @click.stop="emit('preview', ej)"

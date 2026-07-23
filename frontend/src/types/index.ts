@@ -212,11 +212,12 @@ export interface Ejemplo {
   estado?: 'publicado' | 'archivado';
 }
 
-export type RolUsuario = 'superusuario' | 'administrador' | 'cliente';
+export type RolUsuario = 'superusuario' | 'administrador' | 'cliente' | 'docente';
 
-// Etiqueta de rol personalizada (ej. "Soporte Técnico", "Docente") que el admin puede crear desde
-// "Gestionar roles" — hereda el nivel de permisos de Administrador o Cliente (nivelBase), no define
-// permisos propios. Superusuario no admite etiquetas personalizadas: es el único rol no-etiqueta.
+// Etiqueta de rol personalizada (ej. "Soporte Técnico", "Coordinador") que el admin puede crear
+// desde "Gestionar roles" — hereda el nivel de permisos de Administrador o Cliente (nivelBase), no
+// define permisos propios. Superusuario y Docente no admiten etiquetas personalizadas: son roles
+// de primera clase, no etiquetas.
 export interface TipoUsuario {
   id: string;
   nombre: string;
@@ -250,7 +251,9 @@ export type PermisoId =
   | 'mentorias.preguntas_respuestas'
   | 'ia.mejora_texto'
   | 'ia.asesor'
-  | 'facturacion.gestionar';
+  | 'facturacion.gestionar'
+  | 'asesoria.solicitar'
+  | 'asesoria.atender';
 
 export interface Usuario {
   id: string;
@@ -300,6 +303,9 @@ export interface Plan {
   /** Cantidad base de fichas simultáneas permitidas (ejercicios en Nivel 0, proyectos reales en Nivel 1+),
    * antes de sumar el add-on "Plantilla adicional". */
   limiteFichasBase: number;
+  /** Cantidad base de consultas de asesoría 1:1 con un docente incluidas en el plan, antes de sumar
+   * el add-on "Consultoría 1 a 1" (cada unidad comprada = 1 consulta extra). */
+  limiteConsultasBase: number;
   /** Cantidad de usuarios (titular + colaboradores) incluidos en el plan, antes de sumar el add-on
    * "Usuario adicional". Nivel 0 y 1 solo incluyen al titular (1); Nivel 2 incluye hasta 3. */
   limiteUsuariosBase: number;
@@ -412,4 +418,68 @@ export interface CambioFicha {
   /** ISO datetime */
   fecha: string;
   campos: CampoCambio[];
+}
+
+// Asesoría 1:1 cliente↔docente (chat o videollamada por link externo) — no confundir con
+// SesionMentoria (grupal, sembrada por admin). diaSemana: 1=lunes .. 7=domingo.
+export interface HorarioDocente {
+  id: string;
+  diaSemana: number;
+  /** "HH:MM" */
+  horaInicio: string;
+  /** "HH:MM" */
+  horaFin: string;
+}
+
+export interface Docente {
+  id: string;
+  nombre: string;
+  /** Bloques semanales de referencia — no es un calendario de citas, solo indica cuándo suele estar disponible */
+  horario: HorarioDocente[];
+}
+
+export type TipoAsesoria = 'chat' | 'video';
+
+export type EstadoSolicitudAsesoria = 'pendiente' | 'aceptada' | 'rechazada' | 'finalizada';
+
+export interface SolicitudAsesoria {
+  id: string;
+  clienteId: string;
+  clienteNombre?: string | null;
+  docenteId: string;
+  docenteNombre?: string | null;
+  /** Ficha que el cliente estaba llenando al pedir ayuda, si aplica */
+  ejemploId?: string | null;
+  tipo: TipoAsesoria;
+  estado: EstadoSolicitudAsesoria;
+  mensajeInicial?: string | null;
+  /** Link externo (Zoom/Meet) que el docente pega al aceptar una solicitud de tipo 'video' — igual mecanismo que SesionMentoria.linkReunion */
+  linkReunion?: string | null;
+  /** ISO datetime */
+  creadoEn: string;
+  /** ISO datetime */
+  actualizadoEn?: string | null;
+}
+
+export interface MensajeAsesoria {
+  id: string;
+  solicitudId: string;
+  autorId: string;
+  texto: string;
+  /** ISO datetime */
+  creadoEn: string;
+}
+
+// Inbox simple por usuario, leído vía polling — hoy solo lo llena el flujo de asesoría.
+export interface NotificacionUsuario {
+  id: string;
+  usuarioId: string;
+  tipo: string;
+  mensaje: string;
+  referenciaTipo?: string | null;
+  referenciaId?: string | null;
+  /** ISO datetime — null si no se ha leído */
+  leidaEn?: string | null;
+  /** ISO datetime */
+  creadoEn: string;
 }

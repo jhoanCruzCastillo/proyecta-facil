@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCartShopping, faDisplay, faUsers, faFileLines } from '@/lib/icons';
+import { faCartShopping, faComments, faUsers, faFileLines } from '@/lib/icons';
 import { addOns } from '@/data/planes';
 import type { AddOn, Plan } from '@/types';
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 const addonIcons: Record<string, IconDefinition> = {
-  'consultoria-1a1': faDisplay,
+  'consultoria-1a1': faComments,
   'usuario-adicional': faUsers,
   'plantilla-adicional': faFileLines,
 };
