@@ -50,7 +50,7 @@ const emit = defineEmits<{ hide: [] }>();
     class="fixed left-0 top-0 bottom-0 w-56 bg-sidebar bg-[url('/sideb.webp')] bg-cover bg-center bg-no-repeat text-white flex flex-col z-40 transition-transform duration-150 ease-out"
     :class="hidden ? '-translate-x-full' : 'translate-x-0'"
   >
-    <div class="absolute inset-0 bg-black/55 pointer-events-none" />
+    <div class="absolute inset-0 bg-blue-900/5 pointer-events-none" />
 
     <div class="relative px-5 py-5 flex items-center gap-3 border-b border-white/10">
       <img :src="logo" alt="" class="w-9 h-9 object-contain shrink-0" />
