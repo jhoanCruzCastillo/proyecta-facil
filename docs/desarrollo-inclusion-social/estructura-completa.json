@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "formato": {
+    "codigo": "06-B",
+    "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
+    "fuente_archivo": "1_plantilla_electronica.xlsx",
+    "tipo_version": "estructura",
+    "nota_secciones": "Estructura acumulada de la Ficha Técnica Estándar CIAI (Desarrollo e Inclusión Social). Se completa hoja por hoja; cada sección se extrae y verifica directamente del .xlsx real antes de agregarse aquí. Avance: 1/17 secciones."
+  },
+  "secciones": [
+    {
+      "id": "1",
+      "nombre": "Datos Generales del Proyecto",
+      "tipo_nodo": "seccion",
+      "hoja": "Datos Generales",
+      "campos": [
+        {
+          "id": "1.01",
+          "nombre": "Institucionalidad",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.01.01",
+              "nombre": "Nivel de gobierno (UF)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "etiquetas": ["Gobierno Nacional", "Gobierno Regional", "Gobierno Local"],
+              "captura": { "columna": "H", "fila": 8, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.02",
+              "nombre": "Entidad (UF)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 10, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.03",
+              "nombre": "Nombre de la UF",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 12, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.04",
+              "nombre": "Responsable de la UF",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 14, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.05",
+              "nombre": "Nivel de gobierno (UEI)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "etiquetas": ["Gobierno Nacional", "Gobierno Regional", "Gobierno Local"],
+              "captura": { "columna": "H", "fila": 18, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.06",
+              "nombre": "Entidad (UEI)",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 20, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.07",
+              "nombre": "Nombre de la UEI",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 22, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.01.08",
+              "nombre": "Responsable de la UEI",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 24, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.02",
+          "nombre": "Responsabilidad funcional y tipología del proyecto de inversión",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.02.01",
+              "nombre": "Función",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 29, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": "23 PROTECCIÓN SOCIAL"
+            },
+            {
+              "id": "1.02.02",
+              "nombre": "División funcional",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 31, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": "051 ASISTENCIA SOCIAL"
+            },
+            {
+              "id": "1.02.03",
+              "nombre": "Grupo funcional",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 33, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": "0115 PROTECCIÓN DE POBLACIONES EN RIESGO"
+            },
+            {
+              "id": "1.02.04",
+              "nombre": "Sector responsable",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 35, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": "DESARROLLO E INCLUSION SOCIAL"
+            },
+            {
+              "id": "1.02.05",
+              "nombre": "Tipología de proyecto",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "H", "fila": 37, "abarca_columnas": 13, "abarca_filas": 1 },
+              "valor": "CENTRO INFANTIL DE ATENCIÓN INTEGRAL"
+            }
+          ]
+        },
+        {
+          "id": "1.03",
+          "nombre": "Nombre del proyecto de inversión",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.03.01",
+              "nombre": "Naturaleza de intervención",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "etiquetas": ["Mejoramiento", "Ampliación", "Mejoramiento y ampliación", "Recuperación"],
+              "captura": { "columna": "B", "fila": 44, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.03.02",
+              "nombre": "Objeto de intervención",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 44, "abarca_columnas": 4, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.03.03",
+              "nombre": "Localización",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 44, "abarca_columnas": 10, "abarca_filas": 1 },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "1.04",
+          "nombre": "Alineamiento y contribución al cierre de una brecha prioritaria",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "1.04.01",
+              "nombre": "Servicios públicos con brecha identificada y priorizada",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "M", "fila": 49, "abarca_columnas": 8, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.02",
+              "nombre": "Nombre del Indicador de brecha de acceso a servicios",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 53, "abarca_columnas": 7, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.03",
+              "nombre": "Unidad de medida",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "J", "fila": 53, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.04",
+              "nombre": "Espacio geográfico",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "N", "fila": 53, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.05",
+              "nombre": "Año",
+              "tipo_nodo": "campo",
+              "tipo": "numero",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 53, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.06",
+              "nombre": "Valor",
+              "tipo_nodo": "campo",
+              "tipo": "decimal",
+              "editable": true,
+              "decimales": 2,
+              "captura": { "columna": "T", "fila": 53, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "1.04.07",
+              "nombre": "Contribución del Cierre de Brecha (Valor)",
+              "tipo_nodo": "campo",
+              "tipo": "decimal",
+              "editable": true,
+              "decimales": 2,
+              "captura": { "columna": "M", "fila": 55, "abarca_columnas": 8, "abarca_filas": 1 },
+              "valor": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

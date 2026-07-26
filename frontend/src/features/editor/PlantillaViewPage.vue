@@ -66,7 +66,7 @@ function handleSectionSelect(seccionId: string) {
           <VersionTabs :active-tab="activeTab" disable-proyecto @change="activeTab = $event" />
           <RouterLink
             :to="`/sectores/${sectorId}/plantilla/${plantillaId}/editar`"
-            class="px-4 py-2 rounded-lg bg-sidebar text-white text-sm font-medium hover:bg-sidebar-hover transition-colors flex items-center gap-2"
+            class="px-4 py-2 rounded-lg bg-sidebar text-white text-sm font-medium hover:bg-heading transition-colors flex items-center gap-2"
           >
             <FontAwesomeIcon :icon="faPen" class="w-3 h-3" />
             Editar

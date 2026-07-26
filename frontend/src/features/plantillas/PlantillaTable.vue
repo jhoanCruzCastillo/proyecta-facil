@@ -149,7 +149,7 @@ const excelPlantilla = computed(() => props.plantillas.find((p) => p.id === exce
               </RouterLink>
               <RouterLink
                 :to="`/sectores/${p.sectorId}/plantilla/${p.id}/${p.instrumento === 'perfil' ? 'perfil' : 'editar'}`"
-                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-sidebar hover:bg-sidebar-hover transition-colors"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-sidebar hover:bg-heading transition-colors"
               >
                 <FontAwesomeIcon :icon="faPen" class="w-3 h-3" />
                 Editar
