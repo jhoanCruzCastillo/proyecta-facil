@@ -246,7 +246,7 @@ function construirFormulaExcel(
   const resolver = (token: string): ResolucionCelda => {
     const ref = tareasPorId.get(token);
     if (!ref?.hoja || !ref.campo.captura?.columna || !ref.campo.captura?.fila) return { tipo: 'no-disponible' };
-    if (ref.campo.tipo !== 'numero' && ref.campo.tipo !== 'decimal') return { tipo: 'no-disponible' };
+    if (ref.campo.tipo !== 'numero' && ref.campo.tipo !== 'decimal' && ref.campo.tipo !== 'fecha') return { tipo: 'no-disponible' };
     const filaReal = ref.campo.captura.fila + ediciones.desplazamientoPara(ref.hoja, ref.campo.captura.fila);
     const celda = `${ref.campo.captura.columna}${filaReal}`;
     return { tipo: 'celda', referencia: ref.hoja !== hojaActual ? `'${ref.hoja}'!${celda}` : celda };

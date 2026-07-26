@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "formato": {
+    "codigo": "06-B",
+    "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
+    "fuente_archivo": "1_plantilla_electronica.xlsx",
+    "tipo_version": "estructura",
+    "nota_secciones": "Sección 6 de 17 (hoja 'Horizonte'), completa solo 6.01 (única indicada) — el gráfico Gantt de filas 28+ queda fuera de alcance por ahora, no se modela. Posiciones de celda verificadas directamente del .xlsx real; no hay celdas fusionadas en esta hoja. Cada 'Fecha de inicio'/'Fecha de finalización' es un campo tipo fecha independiente (columna I / columna K respectivamente); algunas filas solo tienen una de las dos (6.01.01 solo fin, 6.01.10 solo inicio), igual que en el Excel. 6.01.11 y 6.01.12 son campos calculado (editable=false, valor = fórmula que empieza con '='), motivo por el que se extendió formula.ts (2026-07-26) con soporte para MIN()/MAX() y para referenciar campos tipo fecha (se resuelven como días desde época, igual que Excel guarda sus fechas): 6.01.11 = '=6.01.12+6.01.13' (total = fase ejecución + fase funcionamiento) y 6.01.12 = '=(6.01.09-MIN(6.01.02,6.01.04,6.01.06,6.01.08))/365' (años entre la fecha de fin de ejecución física y la más temprana de las 4 fechas de inicio de contratación/elaboración/ejecución). 6.01.13 (Fase de Funcionamiento) es un campo decimal editable normal con valor por defecto 10, no una fórmula."
+  },
+  "secciones": [
+    {
+      "id": "6",
+      "nombre": "Horizonte de Evaluación",
+      "tipo_nodo": "seccion",
+      "hoja": "Horizonte",
+      "campos": [
+        {
+          "id": "6.01",
+          "nombre": "Horizonte de evaluación",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "6.01.01",
+              "nombre": "Fecha prevista para declarar viabilidad del PI — Fecha de finalización",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 8, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.02",
+              "nombre": "Fechas previstas para el proceso de contratación para elaboración del Expediente Técnico — Fecha de inicio",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 10, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.03",
+              "nombre": "Fechas previstas para el proceso de contratación para elaboración del Expediente Técnico — Fecha de finalización",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 10, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.04",
+              "nombre": "Fechas previstas para inicio de elaboración y aprobación del Expediente Técnico — Fecha de inicio",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 12, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.05",
+              "nombre": "Fechas previstas para inicio de elaboración y aprobación del Expediente Técnico — Fecha de finalización",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 12, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.06",
+              "nombre": "Fechas previstas para el proceso de contratación para ejecución física del proyecto — Fecha de inicio",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 14, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.07",
+              "nombre": "Fechas previstas para el proceso de contratación para ejecución física del proyecto — Fecha de finalización",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 14, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.08",
+              "nombre": "Fechas previstas para ejecución física — Fecha de inicio",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 16, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.09",
+              "nombre": "Fechas previstas para ejecución física — Fecha de finalización",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "K", "fila": 16, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.10",
+              "nombre": "Fecha prevista para la fase de Funcionamiento — Fecha de inicio",
+              "tipo_nodo": "campo",
+              "tipo": "fecha",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 18, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "6.01.11",
+              "nombre": "Total de horizonte de evaluación (años)",
+              "tipo_nodo": "campo",
+              "tipo": "calculado",
+              "editable": false,
+              "captura": { "columna": "I", "fila": 21, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": "=6.01.12+6.01.13"
+            },
+            {
+              "id": "6.01.12",
+              "nombre": "Fase de Ejecución",
+              "tipo_nodo": "campo",
+              "tipo": "calculado",
+              "editable": false,
+              "captura": { "columna": "I", "fila": 23, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": "=(6.01.09-MIN(6.01.02,6.01.04,6.01.06,6.01.08))/365"
+            },
+            {
+              "id": "6.01.13",
+              "nombre": "Fase de Funcionamiento",
+              "tipo_nodo": "campo",
+              "tipo": "decimal",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 25, "abarca_columnas": 1, "abarca_filas": 1 },
+              "valor": "10"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

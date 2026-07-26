@@ -1,7 +1,11 @@
 import type { Campo } from '../types';
 
 // Fórmulas tipo Excel para campos calculados (no-tabla): "=1.01.1+1.02.3*2". Los operandos son
-// identificadores de OTROS campos (deben ser tipo numero/decimal) o números literales.
+// identificadores de OTROS campos (deben ser tipo numero/decimal/fecha — fecha se resuelve como
+// número de días desde época, igual que Excel guarda sus fechas) o números literales. También
+// soporta MIN(...)/MAX(...) con argumentos separados por coma, ej. "=(6.01.05-MIN(6.01.02,6.01.03))/365".
+
+const FUNCIONES = new Set(['MIN', 'MAX']);
 
 export function esFormula(valor: string | undefined | null): boolean {
   return !!valor && valor.trim().startsWith('=');
@@ -9,7 +13,7 @@ export function esFormula(valor: string | undefined | null): boolean {
 
 export function tokenizarFormula(formula: string): string[] {
   const expr = formula.trim().replace(/^=/, '').trim();
-  return expr.split(/([+\-*/()])/).map((t) => t.trim()).filter((t) => t !== '');
+  return expr.split(/([+\-*/(),])/).map((t) => t.trim()).filter((t) => t !== '');
 }
 
 export type ResolucionToken =
@@ -45,6 +49,12 @@ export function evaluarFormula(formula: string, resolver: (token: string) => Res
     return 0;
   }
 
+  function parseArgumentos(): number[] {
+    const args: number[] = [parseExpr()];
+    while (!error && peek() === ',') { consume(); args.push(parseExpr()); }
+    return args;
+  }
+
   function parseFactor(): number {
     if (error) return 0;
     const t = peek();
@@ -54,6 +64,17 @@ export function evaluarFormula(formula: string, resolver: (token: string) => Res
       if (peek() === ')') consume();
       else if (!error) error = 'Falta un paréntesis de cierre';
       return v;
+    }
+    if (t !== undefined && FUNCIONES.has(t.toUpperCase())) {
+      const nombre = t.toUpperCase();
+      consume();
+      if (peek() !== '(') { error = `Se esperaba "(" después de ${nombre}`; return 0; }
+      consume();
+      const args = parseArgumentos();
+      if (peek() === ')') consume();
+      else if (!error) error = 'Falta un paréntesis de cierre';
+      if (error || args.length === 0) return 0;
+      return nombre === 'MIN' ? Math.min(...args) : Math.max(...args);
     }
     if (t === '-') { consume(); return -parseFactor(); }
     if (t === '+') { consume(); return parseFactor(); }
@@ -101,13 +122,23 @@ export function traducirFormulaAExcel(formula: string, resolver: (token: string)
   if (tokens.length === 0) return null;
   const partes: string[] = [];
   for (const tok of tokens) {
-    if (/^[+\-*/()]$/.test(tok)) { partes.push(tok); continue; }
+    if (/^[+\-*/(),]$/.test(tok)) { partes.push(tok); continue; }
     if (/^\d+(\.\d+)?$/.test(tok)) { partes.push(tok); continue; }
+    if (FUNCIONES.has(tok.toUpperCase())) { partes.push(tok.toUpperCase()); continue; }
     const r = resolver(tok);
     if (r.tipo !== 'celda') return null;
     partes.push(r.referencia);
   }
   return partes.join('');
+}
+
+// Convierte una fecha ISO ('YYYY-MM-DD') al número de días desde época (1970-01-01) — Excel
+// también guarda sus fechas como un número de días (desde 1899-12-30), así que restar dos de estos
+// números da la misma cantidad de días que restar las celdas de fecha nativas en Excel.
+function fechaANumero(iso: string): number | null {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return Math.floor(d.getTime() / 86400000);
 }
 
 // Crea un resolver a partir de la lista de campos de la plantilla — `obtenerValorRaw` da el valor
@@ -122,12 +153,17 @@ export function crearResolver(
   return (token: string): ResolucionToken => {
     const campo = porId.get(token);
     if (!campo) return { tipo: 'no-existe' };
-    if (campo.tipo !== 'numero' && campo.tipo !== 'decimal') {
-      return { tipo: 'invalido', mensaje: `El campo "${token}" (${campo.etiqueta}) no es de tipo Número o Decimal` };
+    if (campo.tipo !== 'numero' && campo.tipo !== 'decimal' && campo.tipo !== 'fecha') {
+      return { tipo: 'invalido', mensaje: `El campo "${token}" (${campo.etiqueta}) no es de tipo Número, Decimal o Fecha` };
     }
     const raw = obtenerValorRaw(token) ?? '';
     if (esFormula(raw)) {
       return { tipo: 'invalido', mensaje: `El campo "${token}" (${campo.etiqueta}) es a su vez una fórmula — no se pueden encadenar` };
+    }
+    if (campo.tipo === 'fecha') {
+      const dias = raw ? fechaANumero(raw) : 0;
+      if (dias == null) return { tipo: 'invalido', mensaje: `El campo "${token}" (${campo.etiqueta}) no tiene una fecha válida` };
+      return { tipo: 'valor', valor: dias };
     }
     const n = Number(raw);
     return { tipo: 'valor', valor: Number.isFinite(n) ? n : 0 };

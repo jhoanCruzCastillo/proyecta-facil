@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "formato": {
+    "codigo": "06-B",
+    "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
+    "fuente_archivo": "1_plantilla_electronica.xlsx",
+    "tipo_version": "estructura",
+    "nota_secciones": "Sección 5 de 17 (hoja 'Problema-Objetivo'), completa (5.01–5.03). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. 'Valor' (UM/Valor) en 5.01.01 y 5.02.01 se guarda como número crudo ('0'), aunque Excel lo muestra con formato porcentual (0% / 0.00%). En las tablas jerárquicas 'Efectos' (5.01.03) y 'Fines' (5.02.03), el Excel fusiona verticalmente la columna DERECHA (Sustento/Fines Indirectos) sobre 2 filas de la columna IZQUIERDA (Efecto directo 2 y 3 comparten un solo 'Efecto indirecto 2'; igual con Fin directo 2 y 3 compartiendo 'Fin indirecto 2'). Como el editor exige que el orden de 'niveles' sea también el orden de la jerarquía (izquierda=padre), y aquí el padre real es la columna que en Excel aparece a la derecha, se reordenó 'niveles'/'captura.columnas' para que 'ei'/'fi' (Sustento/Fines Indirectos) sea el primer nivel (padre) y 'ed'/'fd' (Efectos/Fines Directos) el segundo — el orden visual en el editor ya NO coincide con el orden de columnas del Excel, pero la posición real de cada columna (captura.columna) sigue apuntando a su letra correcta (B para ed/fd, F para ei/fi) para el export. Así cada Efecto/Fin Indirecto queda como raíz con sus Efectos/Fines Directos como hijos reales (2026-07-26, corregido tras feedback: la primera versión duplicaba el texto compartido en vez de modelar la jerarquía real). 'Medios fundamentales' (5.02.02) en el Excel real permite hasta 4 acciones por medio fundamental (fusiones B40:B43+C40:F43 con 4 celdas G40:J40..G43:J43 sueltas) pero se modela como tabla plana de 1 fila por medio (4 filas totales), tal como se indicó explícitamente — se pierde la multiplicidad de acciones por medio, aceptable porque están vacías en la plantilla. El campo 5.03.01 (F65:N67) tenía en el .xlsx un valor cacheado ', , , , , , , ' (artefacto de fórmula, no contenido real) — se trata como vacío. Recordatorio del fix 2026-07-26: cada nodo del árbol 'valor' en tablas jerárquicas usa como clave el id del nivel correspondiente a su profundidad (no una clave genérica 'valor'); 'columnas' dentro de 'captura' es el nombre correcto para cualquier subtipo de tabla; 'combina_vertical' se declara en cada entrada de 'niveles', no en 'captura.columnas'."
+  },
+  "secciones": [
+    {
+      "id": "5",
+      "nombre": "Problema/Objetivo",
+      "tipo_nodo": "seccion",
+      "hoja": "Problema-Objetivo",
+      "campos": [
+        {
+          "id": "5.01",
+          "nombre": "Definición del problema, sus causas y efectos",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "5.01.01",
+              "nombre": "Definición del problema central",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 8,
+                "filas_base": 1,
+                "columnas": [
+                  { "id": "descripcion_problema", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "indicador", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "descripcion_indicador", "columna": "J", "abarca_columnas": 3 },
+                  { "id": "um", "columna": "M", "abarca_columnas": 1 },
+                  { "id": "valor", "columna": "N", "abarca_columnas": 1 }
+                ]
+              },
+              "columnas": [
+                { "id": "descripcion_problema", "nombre": "Descripción del problema central", "tipo": "texto_largo" },
+                { "id": "indicador", "nombre": "Indicador", "tipo": "texto_corto" },
+                { "id": "descripcion_indicador", "nombre": "Descripción del indicador", "tipo": "texto_largo" },
+                { "id": "um", "nombre": "UM", "tipo": "texto_corto" },
+                { "id": "valor", "nombre": "Valor", "tipo": "decimal" }
+              ],
+              "valor": [
+                { "descripcion_problema": "", "indicador": "", "descripcion_indicador": "", "um": "CIAI", "valor": "0" }
+              ]
+            },
+            {
+              "id": "5.01.02",
+              "nombre": "Causas directas, indirectas y evidencias",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 12,
+                "filas_base": 4,
+                "columnas": [
+                  { "id": "cd", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "ci", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "evidencias", "columna": "J", "abarca_columnas": 4 }
+                ]
+              },
+              "niveles": [
+                { "id": "cd", "nombre": "Causas Directas (CD)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "ci", "nombre": "Causas indirectas (CI)", "tipo": "texto_largo" },
+                { "id": "evidencias", "nombre": "Evidencias", "tipo": "texto_largo" }
+              ],
+              "valor": [
+                {
+                  "cd": "",
+                  "hijos": [
+                    { "ci": "", "hijos": [{ "evidencias": "" }] },
+                    { "ci": "", "hijos": [{ "evidencias": "" }] },
+                    { "ci": "", "hijos": [{ "evidencias": "" }] }
+                  ]
+                },
+                {
+                  "cd": "",
+                  "hijos": [
+                    { "ci": "", "hijos": [{ "evidencias": "" }] }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5.01.03",
+              "nombre": "Efectos directos, sustento y evidencias",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 19,
+                "filas_base": 3,
+                "columnas": [
+                  { "id": "ei", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "ed", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "evidencias", "columna": "J", "abarca_columnas": 4 }
+                ]
+              },
+              "niveles": [
+                { "id": "ei", "nombre": "Sustento (evidencias)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "ed", "nombre": "Efectos Directos (ED)", "tipo": "texto_largo" },
+                { "id": "evidencias", "nombre": "Sustento (evidencias)", "tipo": "texto_largo" }
+              ],
+              "valor": [
+                {
+                  "ei": "Efecto indirecto 1: Inadecuado desarrollo cognitivo de niñas y niños de 6 a 36 meses",
+                  "hijos": [
+                    { "ed": "Efecto directo 1: Menor participación en experiencias de aprendizaje infantil de niñas y niños de 6 a 36 meses", "hijos": [{ "evidencias": "" }] }
+                  ]
+                },
+                {
+                  "ei": "Efecto indirecto 2: Ingesta inadecuada de nutrientes por parte de niñas y niños de 6 a 36 meses",
+                  "hijos": [
+                    { "ed": "Efecto directo 2: Menor acceso de niñas y niños de 6 a 36 meses, a raciones alimentarias y suplemento con hierro", "hijos": [{ "evidencias": "" }] },
+                    { "ed": "Efecto directo 3: Niñas y niños de 6 a 36 meses reciben insuficiente seguimiento al control CRED", "hijos": [{ "evidencias": "" }] }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5.02",
+          "nombre": "Definición de los objetivos del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "5.02.01",
+              "nombre": "Definición del objetivo central",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 33,
+                "filas_base": 1,
+                "columnas": [
+                  { "id": "descripcion_objetivo", "columna": "B", "abarca_columnas": 4 },
+                  { "id": "indicador", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "descripcion_indicador", "columna": "J", "abarca_columnas": 3 },
+                  { "id": "um", "columna": "M", "abarca_columnas": 1 },
+                  { "id": "valor", "columna": "N", "abarca_columnas": 1 }
+                ]
+              },
+              "columnas": [
+                { "id": "descripcion_objetivo", "nombre": "Descripción del objetivo central", "tipo": "texto_largo" },
+                { "id": "indicador", "nombre": "Indicador", "tipo": "texto_corto" },
+                { "id": "descripcion_indicador", "nombre": "Descripción del indicador", "tipo": "texto_largo" },
+                { "id": "um", "nombre": "UM", "tipo": "texto_corto" },
+                { "id": "valor", "nombre": "Valor", "tipo": "decimal" }
+              ],
+              "valor": [
+                { "descripcion_objetivo": "", "indicador": "", "descripcion_indicador": "", "um": "CIAI", "valor": "0" }
+              ]
+            },
+            {
+              "id": "5.02.02",
+              "nombre": "Medios fundamentales",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 40,
+                "filas_base": 4,
+                "columnas": [
+                  { "id": "numero", "columna": "B", "abarca_columnas": 1 },
+                  { "id": "medio", "columna": "C", "abarca_columnas": 4 },
+                  { "id": "acciones", "columna": "G", "abarca_columnas": 4 }
+                ]
+              },
+              "columnas": [
+                { "id": "numero", "nombre": "N°", "tipo": "numero" },
+                { "id": "medio", "nombre": "Medios fundamentales (componentes)", "tipo": "texto_largo" },
+                { "id": "acciones", "nombre": "Acciones", "tipo": "texto_largo" }
+              ],
+              "valor": [
+                { "numero": "1", "medio": "", "acciones": "" },
+                { "numero": "2", "medio": "", "acciones": "" },
+                { "numero": "3", "medio": "", "acciones": "" },
+                { "numero": "4", "medio": "", "acciones": "" }
+              ]
+            },
+            {
+              "id": "5.02.03",
+              "nombre": "Fines directos e indirectos",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "jerarquicas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 52,
+                "filas_base": 3,
+                "columnas": [
+                  { "id": "fi", "columna": "F", "abarca_columnas": 4 },
+                  { "id": "fd", "columna": "B", "abarca_columnas": 4 }
+                ]
+              },
+              "niveles": [
+                { "id": "fi", "nombre": "Fines Indirectos (FI)", "tipo": "texto_largo", "combina_vertical": true },
+                { "id": "fd", "nombre": "Fines directos (FD)", "tipo": "texto_largo" }
+              ],
+              "valor": [
+                {
+                  "fi": "Fin indirecto 1: Adecuado desarrollo cognitivo de niñas y niños de 6 a 36 meses",
+                  "hijos": [
+                    { "fd": "Fin directo 1: Mayor participación en experiencias de aprendizaje infantil de niñas y niños de 6 a 36 meses" }
+                  ]
+                },
+                {
+                  "fi": "Fin indirecto 2: Ingesta adecuada de nutrientes por parte de niñas y niños de 6 a 36 meses",
+                  "hijos": [
+                    { "fd": "Fin directo 2: Mayor acceso de niñas y niños de 6 a 36 meses, a raciones alimentarias y suplemento con hierro" },
+                    { "fd": "Fin directo 3: Niñas y niños de 6 a 36 meses reciben suficiente seguimiento al control CRED" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5.03",
+          "nombre": "Descripción de la alternativa de solución al problema",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "5.03.01",
+              "nombre": "Descripción de la alternativa de solución al problema",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "F", "fila": 65, "abarca_columnas": 9, "abarca_filas": 3 },
+              "valor": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
