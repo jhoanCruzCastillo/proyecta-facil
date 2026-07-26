@@ -2,7 +2,7 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faPlus, faTrash } from '@/lib/icons';
-import { createNodeChain, parseTree, getPeriodos, type TreeNode } from '@/lib/tableRowHelpers';
+import { createNodeChain, parseTree, getPeriodos, agrupadorProfundidad, type TreeNode } from '@/lib/tableRowHelpers';
 import type { ConfigTabla, CabeceraGrupo, ColumnaTabla } from '@/types';
 
 // El componente de mayor riesgo de fidelidad de toda la migración (ver plan): edición de un árbol
@@ -36,26 +36,46 @@ function samePath(a: number[] | null, b: number[]): boolean {
 
 type FlatCell =
   | { type: 'data'; value: string | string[]; path: number[]; rowSpan: number }
+  | { type: 'group-title'; value: string | string[]; path: number[]; colSpan: number }
   | { type: 'add'; parentPath: number[] }
   | { type: 'empty' };
 
 interface FlatRow { cells: (FlatCell | null)[]; isGroupStart?: boolean }
 
-function getNodeSpan(node: TreeNode, colIdx: number, numCols: number, selectedPath: number[] | null, path: number[]): number {
+function getNodeSpan(node: TreeNode, colIdx: number, numCols: number, selectedPath: number[] | null, path: number[], agrupadorDepth: number): number {
   const isLeaf = node.children.length === 0 || colIdx >= numCols - 1;
-  const baseSpan = isLeaf ? 1 : node.children.reduce((s, c, ci) => s + getNodeSpan(c, colIdx + 1, numCols, selectedPath, [...path, ci]), 0);
+  const esNivelAgrupador = !isLeaf && colIdx === agrupadorDepth;
+  const childrenSpan = isLeaf ? 0 : node.children.reduce((s, c, ci) => s + getNodeSpan(c, colIdx + 1, numCols, selectedPath, [...path, ci], agrupadorDepth), 0);
+  const baseSpan = isLeaf ? 1 : esNivelAgrupador ? 1 + childrenSpan : childrenSpan;
   const sel = samePath(selectedPath, path);
   return baseSpan + (sel && colIdx < numCols - 1 ? 1 : 0);
 }
 
-function buildFlatRows(roots: TreeNode[], numCols: number, selectedPath: number[] | null): FlatRow[] {
+function buildFlatRows(roots: TreeNode[], numCols: number, selectedPath: number[] | null, agrupadorDepth: number): FlatRow[] {
   const rows: FlatRow[] = [];
 
   function walkNode(node: TreeNode, colIdx: number, path: number[]) {
     const isLeaf = node.children.length === 0 || colIdx >= numCols - 1;
-    const baseSpan = isLeaf ? 1 : node.children.reduce((s, c, ci) => s + getNodeSpan(c, colIdx + 1, numCols, selectedPath, [...path, ci]), 0);
     const sel = samePath(selectedPath, path);
     const addRowNeeded = sel && colIdx < numCols - 1;
+
+    // Nivel de agrupador: en vez de fusionar su celda a la izquierda de la primera fila hija, esta
+    // celda ocupa su propia fila de título de ancho completo (igual patrón que GroupedRowsEditor).
+    if (!isLeaf && colIdx === agrupadorDepth) {
+      const titleRow: FlatRow = { cells: Array(numCols).fill(null) };
+      titleRow.cells[colIdx] = { type: 'group-title', value: node.value, path, colSpan: numCols - colIdx };
+      rows.push(titleRow);
+      node.children.forEach((child, ci) => walkNode(child, colIdx + 1, [...path, ci]));
+      if (addRowNeeded) {
+        const addRow: FlatRow = { cells: Array(numCols).fill(null) };
+        addRow.cells[colIdx + 1] = { type: 'add', parentPath: path };
+        for (let i = colIdx + 2; i < numCols; i++) addRow.cells[i] = { type: 'empty' };
+        rows.push(addRow);
+      }
+      return;
+    }
+
+    const baseSpan = isLeaf ? 1 : node.children.reduce((s, c, ci) => s + getNodeSpan(c, colIdx + 1, numCols, selectedPath, [...path, ci], agrupadorDepth), 0);
     const totalSpan = baseSpan + (addRowNeeded ? 1 : 0);
 
     if (isLeaf) {
@@ -92,6 +112,7 @@ const columns = computed(() => props.config.columnas);
 const numCols = computed(() => columns.value.length);
 const dinamicaId = computed(() => props.config.columnaDinamicaId);
 const periodos = computed(() => getPeriodos(props.config));
+const agrupadorDepth = computed(() => (props.config.agrupador ? agrupadorProfundidad(columns.value) : -1));
 
 const roots = ref<TreeNode[]>(parseTree(props.modelValue, columns.value, props.config));
 watch(() => props.modelValue, (v) => { roots.value = parseTree(v, columns.value, props.config); });
@@ -100,10 +121,10 @@ const selectedPath = ref<number[] | null>(null);
 const isEditing = ref(false);
 const focusPath = ref<string | null>(null);
 const tableRef = ref<HTMLDivElement | null>(null);
-const inputRefs = new Map<string, HTMLInputElement>();
+const inputRefs = new Map<string, HTMLInputElement | HTMLTextAreaElement>();
 
 function setInputRef(pathStr: string, el: Element | { $el: Element } | null) {
-  if (el instanceof HTMLInputElement) inputRefs.set(pathStr, el);
+  if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) inputRefs.set(pathStr, el);
 }
 
 function persist(next: TreeNode[]) {
@@ -243,7 +264,7 @@ function isPathAncestor(path: number[]) {
   return path.every((v, i) => selectedPath.value![i] === v);
 }
 
-const flatRows = computed(() => buildFlatRows(roots.value, numCols.value, selectedPath.value));
+const flatRows = computed(() => buildFlatRows(roots.value, numCols.value, selectedPath.value, agrupadorDepth.value));
 
 const grupos = computed(() => props.config.cabeceras ?? []);
 const hasCabeceras = computed(() => grupos.value.length > 0);
@@ -450,6 +471,34 @@ function renamePeriodo(pi: number, value: string) {
                 </td>
               </template>
 
+              <td
+                v-else-if="cell.type === 'group-title'"
+                :colspan="cell.colSpan"
+                class="px-2 py-1.5 bg-brand-50/60 border-t-2 border-brand-200"
+                @click.stop="selectCell(cell.path)"
+              >
+                <div class="flex items-center gap-2 group/cell">
+                  <textarea
+                    :ref="(el) => setInputRef(JSON.stringify(cell.path), el as Element)"
+                    :value="typeof cell.value === 'string' ? cell.value : ''"
+                    rows="1"
+                    :readonly="!(isPathSelected(cell.path) && isEditing)"
+                    tabindex="-1"
+                    placeholder="Nombre del grupo..."
+                    @input="updateNodeValue(cell.path, ($event.target as HTMLTextAreaElement).value)"
+                    @click.stop="() => { if (!(isPathSelected(cell.path) && isEditing)) selectCell(cell.path); }"
+                    class="flex-1 min-w-0 px-1.5 py-1 rounded border text-xs font-semibold uppercase tracking-wide text-heading focus:outline-none resize-none overflow-y-auto max-h-[15lh] [field-sizing:content] bg-transparent"
+                    :class="isPathSelected(cell.path) && isEditing ? 'border-brand-400 bg-white ring-1 ring-brand-500/30' : 'border-transparent cursor-pointer'"
+                  />
+                  <button
+                    @click.stop="removeNode(cell.path)"
+                    type="button"
+                    class="w-4 h-4 rounded flex items-center justify-center text-gray-400 opacity-0 group-hover/cell:opacity-100 hover:text-red-500 transition-opacity shrink-0"
+                  >
+                    <FontAwesomeIcon :icon="faTrash" class="w-2.5 h-2.5" />
+                  </button>
+                </div>
+              </td>
               <td v-else-if="cell.type === 'add'" class="px-1.5 py-1" :class="ci < numCols - 1 ? 'border-r border-gray-300' : ''">
                 <button
                   @click.stop="addChildAt(cell.parentPath)"
@@ -477,16 +526,19 @@ function renamePeriodo(pi: number, value: string) {
                 @click.stop="selectCell(cell.path)"
               >
                 <div class="flex items-start gap-0.5 group/cell">
-                  <input
+                  <!-- textarea con field-sizing: crece con el contenido hasta 15 líneas y luego
+                       scrollea. Enter sigue confirmando la edición (handleKeyDown lo intercepta
+                       con preventDefault antes de que inserte un salto de línea). -->
+                  <textarea
                     :ref="(el) => setInputRef(JSON.stringify(cell.path), el as Element)"
                     :value="typeof cell.value === 'string' ? cell.value : ''"
-                    type="text"
+                    rows="1"
                     :readonly="!(isPathSelected(cell.path) && isEditing)"
                     tabindex="-1"
                     :placeholder="`${columns[ci]?.nombre}...`"
-                    @input="updateNodeValue(cell.path, ($event.target as HTMLInputElement).value)"
+                    @input="updateNodeValue(cell.path, ($event.target as HTMLTextAreaElement).value)"
                     @click.stop="() => { if (!(isPathSelected(cell.path) && isEditing)) selectCell(cell.path); }"
-                    class="flex-1 px-1.5 py-1 rounded border text-xs text-heading focus:outline-none min-w-0"
+                    class="flex-1 px-1.5 py-1 rounded border text-xs text-heading focus:outline-none min-w-0 resize-none overflow-y-auto max-h-[15lh] [field-sizing:content]"
                     :class="isPathSelected(cell.path) && isEditing ? 'border-brand-400 bg-white ring-1 ring-brand-500/30' : 'border-transparent bg-transparent cursor-pointer'"
                   />
                   <button

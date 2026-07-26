@@ -44,14 +44,26 @@ function periodoValues(colId: string): string[] {
           />
         </td>
       </template>
-      <td v-else class="px-1 py-0.5">
-        <input
+      <td v-else-if="col.opciones && col.opciones.length > 0" class="px-1 py-0.5 align-top">
+        <select
           :value="(row[col.id] as string) || ''"
-          @input="emit('cell-change', col.id, ($event.target as HTMLInputElement).value)"
+          @change="emit('cell-change', col.id, ($event.target as HTMLSelectElement).value)"
           @click.stop
-          type="text"
+          class="block w-full px-1.5 py-1 rounded border border-transparent hover:border-gray-200 focus:border-brand-300 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-brand-500/30 bg-transparent"
+        >
+          <option value="">—</option>
+          <option v-for="opt in col.opciones" :key="opt" :value="opt">{{ opt }}</option>
+        </select>
+      </td>
+      <td v-else class="px-1 py-0.5 align-top">
+        <!-- textarea con field-sizing: crece con el contenido hasta 15 líneas y luego scrollea -->
+        <textarea
+          :value="(row[col.id] as string) || ''"
+          @input="emit('cell-change', col.id, ($event.target as HTMLTextAreaElement).value)"
+          @click.stop
+          rows="1"
           placeholder="—"
-          class="w-full px-1.5 py-1 rounded border border-transparent hover:border-gray-200 focus:border-brand-300 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-brand-500/30 bg-transparent"
+          class="block w-full px-1.5 py-1 rounded border border-transparent hover:border-gray-200 focus:border-brand-300 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-brand-500/30 bg-transparent resize-none overflow-y-auto max-h-[15lh] [field-sizing:content]"
         />
       </td>
     </template>

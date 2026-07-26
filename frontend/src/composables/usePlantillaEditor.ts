@@ -45,7 +45,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
   const editData = ref<Plantilla | null>(null) as Ref<Plantilla | null>;
   watch(plantillaOriginal, (p) => {
     if (p) editData.value = deepClone(p);
-  });
+  }, { immediate: true });
 
   const activeTab = ref<VersionTab>('estructura');
   const activeSectionIndex = ref(0);

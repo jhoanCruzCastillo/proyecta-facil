@@ -52,6 +52,9 @@ export interface ColumnaTabla {
   columnaExcel?: string;
   /** Cantidad de columnas Excel que abarca esta columna (captura) */
   abarcaColumnasExcel?: number;
+  /** Lista fija de opciones (ej. validación de datos por lista en Excel) — cuando está presente,
+   * la celda se edita con un <select> en vez de texto libre. No requiere un catálogo externo. */
+  opciones?: string[];
 }
 
 export interface CapturaTabla {

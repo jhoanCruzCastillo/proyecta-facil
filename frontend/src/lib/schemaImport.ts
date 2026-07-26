@@ -80,6 +80,7 @@ function buildColumnas(rawCols: unknown, rawCapturaCols: unknown, esJerarquica: 
       abarcaColumnasExcel: typeof capturaCol?.abarca_columnas === 'number' ? capturaCol.abarca_columnas : undefined,
     };
     if (esJerarquica) col.nivel = raw.combina_vertical ? 'padre' : 'hijo';
+    if (Array.isArray(raw.opciones) && raw.opciones.length > 0) col.opciones = raw.opciones.map(String);
     return col;
   });
 

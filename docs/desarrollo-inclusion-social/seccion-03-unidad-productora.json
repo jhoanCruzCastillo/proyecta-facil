@@ -5,7 +5,7 @@
     "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
     "fuente_archivo": "1_plantilla_electronica.xlsx",
     "tipo_version": "estructura",
-    "nota_secciones": "Sección 3 de 17 (hoja 'Unidad Productora'), completa (3.01–3.09). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. Las notas al pie y filas 'Fuente' son texto fijo de la plantilla. En 3.04 la columna fusionada 'Servicio de cuidado diurno' (col C) se omite a propósito: la tabla es de tamaño fijo y esa celda queda como texto estático de la plantilla, así la tabla se modela como plana. En 3.07 los rótulos de grupo y detalle se guardan sin las viñetas ('·'/'o') que trae el Excel, que son solo formato."
+    "nota_secciones": "Sección 3 de 17 (hoja 'Unidad Productora'), completa (3.01–3.09). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. Las notas al pie y filas 'Fuente' son texto fijo de la plantilla. En 3.04 la columna fusionada 'Servicio de cuidado diurno' (col C) se omite a propósito: la tabla es de tamaño fijo y esa celda queda como texto estático de la plantilla, así la tabla se modela como plana. En 3.07 los rótulos de grupo y detalle se guardan sin las viñetas ('·'/'o') que trae el Excel, que son solo formato. IMPORTANTE (fix 2026-07-26): en tablas jerárquicas, cada nodo del árbol 'valor' debe usar como clave el id del nivel correspondiente a su profundidad (ej. {'servicio': '...', 'hijos': [{'factor': '...', 'hijos': [...]}]}), NO una clave genérica 'valor' — así lo espera nodeFromDoc() en schemaImport.ts. Y dentro de 'captura', el array de posiciones de columna Excel para jerárquicas se llama 'columnas' (igual que en tablas planas), no 'niveles' — el parser siempre lee captura.columnas sin importar el subtipo de tabla."
   },
   "secciones": [
     {
@@ -287,7 +287,7 @@
               "captura": {
                 "fila_inicial": 41,
                 "filas_base": 11,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "servicio",
                     "columna": "B",
@@ -335,12 +335,14 @@
                 {
                   "id": "servicio",
                   "nombre": "Servicio y procesos de producción",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "factor",
                   "nombre": "Tipo de Factor productivo",
-                  "tipo": "texto_corto"
+                  "tipo": "texto_corto",
+                  "combina_vertical": true
                 },
                 {
                   "id": "activo",
@@ -369,222 +371,222 @@
               ],
               "valor": [
                 {
-                  "valor": "Servicio de cuidado diurno:\n\nProcesos:\n\n1. Aprendizaje Infantil\n\n2. Cuidado y JuegoCuidado de la salud infantil en el CIAI\n\n3. Atención alimentaria y nutricional\n\n4. Fortalecimiento de Prácticas de cuidado saludable y aprendizaje en la familia usuaria",
                   "hijos": [
                     {
-                      "valor": "Infraestructura",
                       "hijos": [
                         {
-                          "valor": "Sala de cuidado diurno",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Sala de cuidado diurno"
                         },
                         {
-                          "valor": "Sala de usos múltiples",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Sala de usos múltiples"
                         },
                         {
-                          "valor": "Ambiente de recreación activa",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de recreación activa"
                         },
                         {
-                          "valor": "Ambiente de servicios generales",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de servicios generales"
                         },
                         {
-                          "valor": "Ambiente de preparación y expendio de alimentos",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de preparación y expendio de alimentos"
                         },
                         {
-                          "valor": "Almacén",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Almacén"
                         },
                         {
-                          "valor": "Cerco perimétrico",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Cerco perimétrico"
                         },
                         {
-                          "valor": "Muro de contención",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Muro de contención"
                         }
-                      ]
+                      ],
+                      "factor": "Infraestructura"
                     },
                     {
-                      "valor": "Mobiliario",
                       "hijos": [
                         {
-                          "valor": "Mobiliario de sala de cuidado diurno",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Mobiliario de sala de cuidado diurno"
                         },
                         {
-                          "valor": "Mobiliario de ambiente de preparación y expendio de alimentos- Cuna Más",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Mobiliario de ambiente de preparación y expendio de alimentos- Cuna Más"
                         }
-                      ]
+                      ],
+                      "factor": "Mobiliario"
                     },
                     {
-                      "valor": "Equipo",
                       "hijos": [
                         {
-                          "valor": "Equipo de ambiente de preparación y expendio de alimentos - Cuna Más",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Equipo de ambiente de preparación y expendio de alimentos - Cuna Más"
                         }
-                      ]
+                      ],
+                      "factor": "Equipo"
                     }
-                  ]
+                  ],
+                  "servicio": "Servicio de cuidado diurno:\n\nProcesos:\n\n1. Aprendizaje Infantil\n\n2. Cuidado y JuegoCuidado de la salud infantil en el CIAI\n\n3. Atención alimentaria y nutricional\n\n4. Fortalecimiento de Prácticas de cuidado saludable y aprendizaje en la familia usuaria"
                 }
               ]
             }
@@ -818,7 +820,7 @@
               "captura": {
                 "fila_inicial": 94,
                 "filas_base": 11,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "descripcion",
                     "columna": "I",
@@ -866,7 +868,8 @@
                 {
                   "id": "descripcion",
                   "nombre": "Descripción de las prácticas de operación, en la situación sin proyecto",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "grupo",
@@ -897,181 +900,181 @@
               ],
               "valor": [
                 {
-                  "valor": "",
                   "hijos": [
                     {
-                      "valor": "Actores comunales:",
                       "hijos": [
                         {
-                          "valor": "Madre cuidadora",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Madre cuidadora"
                         },
                         {
-                          "valor": "Madre guía",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Madre guía"
                         },
                         {
-                          "valor": "Guía de Familia",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Guía de Familia"
                         },
                         {
-                          "valor": "Socia de cocina",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Socia de cocina"
                         },
                         {
-                          "valor": "Repartidor",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Repartidor"
                         },
                         {
-                          "valor": "Apoyo de Limpieza y Vigilancia",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Apoyo de Limpieza y Vigilancia"
                         }
-                      ]
+                      ],
+                      "grupo": "Actores comunales:"
                     },
                     {
-                      "valor": "Equipo técnico profesional del PNCM:",
                       "hijos": [
                         {
-                          "valor": "Acompañantes técnicos (AT)",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Acompañantes técnicos (AT)"
                         },
                         {
-                          "valor": "Especialistas integrales",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Especialistas integrales"
                         },
                         {
-                          "valor": "Especialistas en nutrición",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Especialistas en nutrición"
                         }
-                      ]
+                      ],
+                      "grupo": "Equipo técnico profesional del PNCM:"
                     }
-                  ]
+                  ],
+                  "descripcion": ""
                 }
               ]
             },
@@ -1089,7 +1092,7 @@
               "captura": {
                 "fila_inicial": 110,
                 "filas_base": 6,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "descripcion",
                     "columna": "I",
@@ -1137,7 +1140,8 @@
                 {
                   "id": "descripcion",
                   "nombre": "Descripción de las condiciones del mantenimiento y los servicios del CIAI, en la situación sin proyecto",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "grupo",
@@ -1168,104 +1172,104 @@
               ],
               "valor": [
                 {
-                  "valor": "",
                   "hijos": [
                     {
-                      "valor": "Servicios",
                       "hijos": [
                         {
-                          "valor": "Agua y alcantarillado",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Agua y alcantarillado"
                         },
                         {
-                          "valor": "Energía eléctirca",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Energía eléctirca"
                         },
                         {
-                          "valor": "Internet",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Internet"
                         },
                         {
-                          "valor": "Seguridad",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Seguridad"
                         },
                         {
-                          "valor": "Mantenimiento",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Mantenimiento"
                         }
-                      ]
+                      ],
+                      "grupo": "Servicios"
                     }
-                  ]
+                  ],
+                  "descripcion": ""
                 }
               ]
             }

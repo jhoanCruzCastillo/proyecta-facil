@@ -5,7 +5,7 @@
     "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
     "fuente_archivo": "1_plantilla_electronica.xlsx",
     "tipo_version": "estructura",
-    "nota_secciones": "Estructura acumulada de la Ficha Técnica Estándar CIAI (Desarrollo e Inclusión Social). Se completa hoja por hoja; cada sección se extrae y verifica directamente del .xlsx real antes de agregarse aquí. Avance: 3/17 secciones."
+    "nota_secciones": "Sección 4 de 17 (hoja 'Involucrados'), completa (4.01–4.03). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. En 4.01 la fila 'Tasa de crecimiento...' (fila 13) no tiene columna '%' en el Excel — se modela igual con el campo 'porcentaje' vacío. En 4.02 la variable 'Edad' agrupa 3 categorías (de 6 a 12 / 13 a 24 / 25 a 36 meses) mediante fusión vertical en el Excel; como es tabla plana de tamaño fijo, se repite el valor 'Edad' en las 3 filas en vez de fusionar. La fila 'Género' no tiene categoría propia (celda fusionada B25:F25 sin subdivisión), se deja 'categoria' vacío. En 4.03 las columnas 'Posición' y 'Situación negativa percibida' comparten el mismo selector fijo (Cooperante/Beneficiario/Oponente/Perjudicado) — confirmado con las validaciones de datos reales del .xlsx (regla 'type=list, formula1=Involucrados' sobre el rango D38:F41 + E42:G44, que cubre ambas columnas por un solapamiento de rango inusual pero real en la plantilla oficial; lista fuente en Listas!S3:S6). Esto requirió agregar soporte nuevo: 'opciones?: string[]' en ColumnaTabla (types/index.ts), leído por buildColumnas() en schemaImport.ts, y renderizado como <select> en TableRow.vue cuando la columna trae 'opciones' en el JSON. La nota 'Importante: recoger información en estudio de campo' (B14) es texto fijo de la plantilla, se omite."
   },
   "secciones": [
     {
@@ -1429,7 +1429,7 @@
               "captura": {
                 "fila_inicial": 41,
                 "filas_base": 11,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "servicio",
                     "columna": "B",
@@ -1477,12 +1477,14 @@
                 {
                   "id": "servicio",
                   "nombre": "Servicio y procesos de producción",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "factor",
                   "nombre": "Tipo de Factor productivo",
-                  "tipo": "texto_corto"
+                  "tipo": "texto_corto",
+                  "combina_vertical": true
                 },
                 {
                   "id": "activo",
@@ -1511,222 +1513,222 @@
               ],
               "valor": [
                 {
-                  "valor": "Servicio de cuidado diurno:\n\nProcesos:\n\n1. Aprendizaje Infantil\n\n2. Cuidado y JuegoCuidado de la salud infantil en el CIAI\n\n3. Atención alimentaria y nutricional\n\n4. Fortalecimiento de Prácticas de cuidado saludable y aprendizaje en la familia usuaria",
                   "hijos": [
                     {
-                      "valor": "Infraestructura",
                       "hijos": [
                         {
-                          "valor": "Sala de cuidado diurno",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Sala de cuidado diurno"
                         },
                         {
-                          "valor": "Sala de usos múltiples",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Sala de usos múltiples"
                         },
                         {
-                          "valor": "Ambiente de recreación activa",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de recreación activa"
                         },
                         {
-                          "valor": "Ambiente de servicios generales",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de servicios generales"
                         },
                         {
-                          "valor": "Ambiente de preparación y expendio de alimentos",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Ambiente de preparación y expendio de alimentos"
                         },
                         {
-                          "valor": "Almacén",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Almacén"
                         },
                         {
-                          "valor": "Cerco perimétrico",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Cerco perimétrico"
                         },
                         {
-                          "valor": "Muro de contención",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Muro de contención"
                         }
-                      ]
+                      ],
+                      "factor": "Infraestructura"
                     },
                     {
-                      "valor": "Mobiliario",
                       "hijos": [
                         {
-                          "valor": "Mobiliario de sala de cuidado diurno",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Mobiliario de sala de cuidado diurno"
                         },
                         {
-                          "valor": "Mobiliario de ambiente de preparación y expendio de alimentos- Cuna Más",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Mobiliario de ambiente de preparación y expendio de alimentos- Cuna Más"
                         }
-                      ]
+                      ],
+                      "factor": "Mobiliario"
                     },
                     {
-                      "valor": "Equipo",
                       "hijos": [
                         {
-                          "valor": "Equipo de ambiente de preparación y expendio de alimentos - Cuna Más",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "estado": ""
                                     }
-                                  ]
+                                  ],
+                                  "cumple_sino": ""
                                 }
-                              ]
+                              ],
+                              "norma": ""
                             }
-                          ]
+                          ],
+                          "activo": "Equipo de ambiente de preparación y expendio de alimentos - Cuna Más"
                         }
-                      ]
+                      ],
+                      "factor": "Equipo"
                     }
-                  ]
+                  ],
+                  "servicio": "Servicio de cuidado diurno:\n\nProcesos:\n\n1. Aprendizaje Infantil\n\n2. Cuidado y JuegoCuidado de la salud infantil en el CIAI\n\n3. Atención alimentaria y nutricional\n\n4. Fortalecimiento de Prácticas de cuidado saludable y aprendizaje en la familia usuaria"
                 }
               ]
             }
@@ -1960,7 +1962,7 @@
               "captura": {
                 "fila_inicial": 94,
                 "filas_base": 11,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "descripcion",
                     "columna": "I",
@@ -2008,7 +2010,8 @@
                 {
                   "id": "descripcion",
                   "nombre": "Descripción de las prácticas de operación, en la situación sin proyecto",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "grupo",
@@ -2039,181 +2042,181 @@
               ],
               "valor": [
                 {
-                  "valor": "",
                   "hijos": [
                     {
-                      "valor": "Actores comunales:",
                       "hijos": [
                         {
-                          "valor": "Madre cuidadora",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Madre cuidadora"
                         },
                         {
-                          "valor": "Madre guía",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Madre guía"
                         },
                         {
-                          "valor": "Guía de Familia",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Guía de Familia"
                         },
                         {
-                          "valor": "Socia de cocina",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Socia de cocina"
                         },
                         {
-                          "valor": "Repartidor",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Repartidor"
                         },
                         {
-                          "valor": "Apoyo de Limpieza y Vigilancia",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Apoyo de Limpieza y Vigilancia"
                         }
-                      ]
+                      ],
+                      "grupo": "Actores comunales:"
                     },
                     {
-                      "valor": "Equipo técnico profesional del PNCM:",
                       "hijos": [
                         {
-                          "valor": "Acompañantes técnicos (AT)",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Acompañantes técnicos (AT)"
                         },
                         {
-                          "valor": "Especialistas integrales",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Especialistas integrales"
                         },
                         {
-                          "valor": "Especialistas en nutrición",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Especialistas en nutrición"
                         }
-                      ]
+                      ],
+                      "grupo": "Equipo técnico profesional del PNCM:"
                     }
-                  ]
+                  ],
+                  "descripcion": ""
                 }
               ]
             },
@@ -2231,7 +2234,7 @@
               "captura": {
                 "fila_inicial": 110,
                 "filas_base": 6,
-                "niveles": [
+                "columnas": [
                   {
                     "id": "descripcion",
                     "columna": "I",
@@ -2279,7 +2282,8 @@
                 {
                   "id": "descripcion",
                   "nombre": "Descripción de las condiciones del mantenimiento y los servicios del CIAI, en la situación sin proyecto",
-                  "tipo": "texto_largo"
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
                 },
                 {
                   "id": "grupo",
@@ -2310,104 +2314,104 @@
               ],
               "valor": [
                 {
-                  "valor": "",
                   "hijos": [
                     {
-                      "valor": "Servicios",
                       "hijos": [
                         {
-                          "valor": "Agua y alcantarillado",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Agua y alcantarillado"
                         },
                         {
-                          "valor": "Energía eléctirca",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Energía eléctirca"
                         },
                         {
-                          "valor": "Internet",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Internet"
                         },
                         {
-                          "valor": "Seguridad",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Seguridad"
                         },
                         {
-                          "valor": "Mantenimiento",
                           "hijos": [
                             {
-                              "valor": "",
                               "hijos": [
                                 {
-                                  "valor": "",
                                   "hijos": [
                                     {
-                                      "valor": ""
+                                      "total": ""
                                     }
-                                  ]
+                                  ],
+                                  "costo": ""
                                 }
-                              ]
+                              ],
+                              "cantidad": ""
                             }
-                          ]
+                          ],
+                          "detalle": "Mantenimiento"
                         }
-                      ]
+                      ],
+                      "grupo": "Servicios"
                     }
-                  ]
+                  ],
+                  "descripcion": ""
                 }
               ]
             }
@@ -2697,6 +2701,470 @@
                   "exposicion": "",
                   "fragilidad": "",
                   "plan_sino": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Diagnóstico de los Involucrados",
+      "tipo_nodo": "seccion",
+      "hoja": "Involucrados",
+      "campos": [
+        {
+          "id": "4.01",
+          "nombre": "Descripción de la población afectada",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "4.01.01",
+              "nombre": "Descripción de la población afectada",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 8,
+                "filas_base": 6,
+                "columnas": [
+                  {
+                    "id": "tipo",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "descripcion",
+                    "columna": "D",
+                    "abarca_columnas": 4
+                  },
+                  {
+                    "id": "unidad",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "cantidad",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "porcentaje",
+                    "columna": "J",
+                    "abarca_columnas": 2
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Tipo de población",
+                  "hijos": [
+                    "tipo",
+                    "descripcion"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "tipo",
+                  "nombre": "Tipo de población",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "descripcion",
+                  "nombre": "Descripción",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "unidad",
+                  "nombre": "Unidad de medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "cantidad",
+                  "nombre": "Cantidad",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "porcentaje",
+                  "nombre": "%",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": [
+                {
+                  "tipo": "Población Total",
+                  "descripcion": "Es la población total del área de influencia definida en el diagnóstico. Se debe considerar la información de la población de los distritos identificados en el punto Localización del área de influencia del proyecto.",
+                  "unidad": "Persona",
+                  "cantidad": "",
+                  "porcentaje": "Población del distrito de San Sebastián, al año 2023. Fuente: INEI"
+                },
+                {
+                  "tipo": "Población de Referencia",
+                  "descripcion": "Es la proporción de la población total, vinculada con el objetivo central del proyecto de inversión, es decir, que está dentro del grupo etario (de 6 a 36 meses) que podría recibir el Servicio de Cuidado Diurno, que brinda el PNCM. Para su estimación, se considera la población de dicho rango de edad, de la población total.",
+                  "unidad": "Niños y niñas",
+                  "cantidad": "",
+                  "porcentaje": "de la población total"
+                },
+                {
+                  "tipo": "Población Demandante Potencial",
+                  "descripcion": "Es el segmento de la población de referencia, que cumple con los criterios de focalización que utiliza el PNCM.",
+                  "unidad": "Niños y niñas",
+                  "cantidad": "",
+                  "porcentaje": "de la población de referencia"
+                },
+                {
+                  "tipo": "Población Demandante Efectiva",
+                  "descripcion": "Es el segmento de la población demandante potencial, que busca atención del SCD en un CIAI y accede de forma inadecuada o no accede al servicio, es decir, que es afectada por el problema central.",
+                  "unidad": "Niños y niñas",
+                  "cantidad": "",
+                  "porcentaje": "de la población demandante potencial"
+                },
+                {
+                  "tipo": "Población Objetivo",
+                  "descripcion": "Es aquella parte de la población demandante efectiva que el proyecto está en condiciones de atender de forma integral en un CIAI, considerando la política de focalización del Sector, la definición de la meta correspondiente o alguna restricción que imposibilite la atención del total de la población demandante potencial. La población objetivo es determinada por el PNCM",
+                  "unidad": "Niños y niñas",
+                  "cantidad": "",
+                  "porcentaje": "de la población demandante efectiva"
+                },
+                {
+                  "tipo": "Tasa de crecimiento de la población del área de influencia",
+                  "descripcion": "",
+                  "unidad": "Tasa",
+                  "cantidad": "",
+                  "porcentaje": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4.02",
+          "nombre": "Caracterización de la población afectada",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "4.02.01",
+              "nombre": "Niños y niñas que comprenden la población demandante potencial",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 22,
+                "filas_base": 10,
+                "columnas": [
+                  {
+                    "id": "variable",
+                    "columna": "B",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "categoria",
+                    "columna": "E",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "ninos",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ninas",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "porcentaje",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "fuente",
+                    "columna": "J",
+                    "abarca_columnas": 2
+                  }
+                ]
+              },
+              "columnas": [
+                {
+                  "id": "variable",
+                  "nombre": "Variables /indicadores",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "categoria",
+                  "nombre": "Categorías",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "ninos",
+                  "nombre": "Número de niños",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ninas",
+                  "nombre": "Número de niñas",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "porcentaje",
+                  "nombre": "% respecto a la población demandante efectiva",
+                  "tipo": "decimal"
+                },
+                {
+                  "id": "fuente",
+                  "nombre": "Fuente",
+                  "tipo": "texto_corto"
+                }
+              ],
+              "valor": [
+                {
+                  "variable": "Edad",
+                  "categoria": "de 6 a 12 meses",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Edad",
+                  "categoria": "de 13 a 24 meses",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Edad",
+                  "categoria": "de 25 a 36 meses",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Género",
+                  "categoria": "",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas con desnutrición",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas con anemia",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas que acceden a Servicio de Cuidado Diurno en el CIAI",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas que acceden al Servicio Alimentario en el CIAI",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas con adecuado nivel de desarrollo cognitivo, en base a su edad",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                },
+                {
+                  "variable": "Niños y niñas que cumplen con su control CRED",
+                  "categoria": "Cantidad de niños y niñas",
+                  "ninos": "",
+                  "ninas": "",
+                  "porcentaje": "",
+                  "fuente": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4.03",
+          "nombre": "Matriz de involucrados",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "4.03.01",
+              "nombre": "Matriz de involucrados",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 38,
+                "filas_base": 7,
+                "columnas": [
+                  {
+                    "id": "grupo",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "posicion",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "situacion",
+                    "columna": "E",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "intereses",
+                    "columna": "H",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "estrategias",
+                    "columna": "K",
+                    "abarca_columnas": 3
+                  },
+                  {
+                    "id": "acuerdos",
+                    "columna": "N",
+                    "abarca_columnas": 3
+                  }
+                ]
+              },
+              "columnas": [
+                {
+                  "id": "grupo",
+                  "nombre": "Grupos involucrados",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "posicion",
+                  "nombre": "Posición",
+                  "tipo": "texto_corto",
+                  "opciones": [
+                    "Cooperante",
+                    "Beneficiario",
+                    "Oponente",
+                    "Perjudicado"
+                  ]
+                },
+                {
+                  "id": "situacion",
+                  "nombre": "Situación negativa percibida",
+                  "tipo": "texto_largo",
+                  "opciones": [
+                    "Cooperante",
+                    "Beneficiario",
+                    "Oponente",
+                    "Perjudicado"
+                  ]
+                },
+                {
+                  "id": "intereses",
+                  "nombre": "Intereses o expectativas",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "estrategias",
+                  "nombre": "Estrategias del Proyecto de Inversión",
+                  "tipo": "texto_largo"
+                },
+                {
+                  "id": "acuerdos",
+                  "nombre": "Acuerdos y compromisos",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": [
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
+                },
+                {
+                  "grupo": "",
+                  "posicion": "",
+                  "situacion": "",
+                  "intereses": "",
+                  "estrategias": "",
+                  "acuerdos": ""
                 }
               ]
             }

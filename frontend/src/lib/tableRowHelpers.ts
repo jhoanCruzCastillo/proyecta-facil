@@ -57,6 +57,15 @@ export function createNodeChain(columns: ColumnaTabla[], config: ConfigTabla, de
   return { value, children: [createNodeChain(columns, config, depth + 1)] };
 }
 
+/** Profundidad (índice en columns) del primer nivel "hijo" después de la cadena de niveles "padre"
+ * — es el nivel que, con config.agrupador activo en una tabla jerárquica, se renderiza como fila de
+ * título de grupo de ancho completo en vez de celda fusionada a la izquierda (igual patrón visual
+ * que GroupedRowsEditor usa para tablas planas). */
+export function agrupadorProfundidad(columns: ColumnaTabla[]): number {
+  const idx = columns.findIndex((c) => c.nivel !== 'padre');
+  return idx === -1 ? 0 : idx;
+}
+
 export function parseTree(value: string, columns: ColumnaTabla[], config: ConfigTabla): TreeNode[] {
   try {
     const p = JSON.parse(value);

@@ -78,11 +78,11 @@ function updateCaptura(patch: Partial<NonNullable<ConfigTabla['captura']>>) {
       </div>
     </div>
 
-    <div v-if="!esJerarquica(config.subtipo)" class="flex items-center justify-between">
+    <div class="flex items-center justify-between">
       <label class="text-xs font-medium text-heading">Agrupar filas bajo encabezados</label>
       <div class="flex items-center gap-2">
         <button
-          v-if="config.agrupador"
+          v-if="config.agrupador && !esJerarquica(config.subtipo)"
           @click="showAgrupadorConfig = true"
           type="button"
           title="Configurar fila de título de grupo"
