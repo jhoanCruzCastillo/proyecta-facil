@@ -40,8 +40,11 @@ class Session extends BaseConfig
      *
      * The number of SECONDS you want the session to last.
      * Setting to 0 (zero) means expire when the browser is closed.
+     *
+     * TEMPORAL (solo desarrollo): 1 año para que la sesión no caduque en medio de
+     * las pruebas. Antes de producción, volver a un valor corto (ej. 7200 = 2h).
      */
-    public int $expiration = 7200;
+    public int $expiration = 31536000;
 
     /**
      * --------------------------------------------------------------------------

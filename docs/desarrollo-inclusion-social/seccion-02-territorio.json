@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0",
+  "formato": {
+    "codigo": "06-B",
+    "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
+    "fuente_archivo": "1_plantilla_electronica.xlsx",
+    "tipo_version": "estructura",
+    "nota_secciones": "Sección 2 de 17 (hoja 'Territorio'), completa (2.01–2.05). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. Las filas 'Fuente:' con enlaces son texto fijo de la plantilla y no se modelan como campos. Las tablas de 2.04-C y 2.05 son de tamaño fijo (todas sus filas vienen precargadas)."
+  },
+  "secciones": [
+    {
+      "id": "2",
+      "nombre": "Diagnóstico del Territorio",
+      "tipo_nodo": "seccion",
+      "hoja": "Territorio",
+      "campos": [
+        {
+          "id": "2.01",
+          "nombre": "Localización del área de estudio del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.01.01",
+              "nombre": "Localización del área de estudio del proyecto",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 7,
+                "filas_base": 5,
+                "columnas": [
+                  { "id": "n",         "columna": "B", "abarca_columnas": 1 },
+                  { "id": "ubigeo",    "columna": "C", "abarca_columnas": 4 },
+                  { "id": "depto",     "columna": "G", "abarca_columnas": 4 },
+                  { "id": "prov",      "columna": "K", "abarca_columnas": 4 },
+                  { "id": "dist",      "columna": "O", "abarca_columnas": 4 },
+                  { "id": "localidad", "columna": "S", "abarca_columnas": 4 }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                { "id": "n",         "nombre": "N°",                       "tipo": "numero" },
+                { "id": "ubigeo",    "nombre": "Ubigeo",                   "tipo": "texto_corto" },
+                { "id": "depto",     "nombre": "Departamento",             "tipo": "texto_corto" },
+                { "id": "prov",      "nombre": "Provincia",                "tipo": "texto_corto" },
+                { "id": "dist",      "nombre": "Distrito",                 "tipo": "texto_corto" },
+                { "id": "localidad", "nombre": "Localidad/Centro poblado", "tipo": "texto_corto" }
+              ],
+              "valor": [
+                { "n": 1, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 2, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 3, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 4, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 5, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.02",
+          "nombre": "Localización del área de influencia del proyecto",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.02.01",
+              "nombre": "Localización del área de influencia del proyecto",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 18,
+                "filas_base": 5,
+                "columnas": [
+                  { "id": "n",         "columna": "B", "abarca_columnas": 1 },
+                  { "id": "ubigeo",    "columna": "C", "abarca_columnas": 4 },
+                  { "id": "depto",     "columna": "G", "abarca_columnas": 4 },
+                  { "id": "prov",      "columna": "K", "abarca_columnas": 4 },
+                  { "id": "dist",      "columna": "O", "abarca_columnas": 4 },
+                  { "id": "localidad", "columna": "S", "abarca_columnas": 4 }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                { "id": "n",         "nombre": "N°",                       "tipo": "numero" },
+                { "id": "ubigeo",    "nombre": "Ubigeo",                   "tipo": "texto_corto" },
+                { "id": "depto",     "nombre": "Departamento",             "tipo": "texto_corto" },
+                { "id": "prov",      "nombre": "Provincia",                "tipo": "texto_corto" },
+                { "id": "dist",      "nombre": "Distrito",                 "tipo": "texto_corto" },
+                { "id": "localidad", "nombre": "Localidad/Centro poblado", "tipo": "texto_corto" }
+              ],
+              "valor": [
+                { "n": 1, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 2, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 3, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 4, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" },
+                { "n": 5, "ubigeo": "", "depto": "", "prov": "", "dist": "", "localidad": "" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.03",
+          "nombre": "Macro y micro localización del área de estudio",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.03.01",
+              "nombre": "Mapa de macrolocalización",
+              "tipo_nodo": "campo",
+              "tipo": "imagen",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 28, "abarca_columnas": 16, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.03.02",
+              "nombre": "Leyenda del mapa de macrolocalización",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 28, "abarca_columnas": 5, "abarca_filas": 1 },
+              "valor": "Leyenda\n\nMapa de macrolocalización del CIAI de la localidad/centro poblado de , del distrito de , provincia de , departamento de "
+            },
+            {
+              "id": "2.03.03",
+              "nombre": "Mapa de microlocalización",
+              "tipo_nodo": "campo",
+              "tipo": "imagen",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 32, "abarca_columnas": 16, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.03.04",
+              "nombre": "Leyenda del mapa de microlocalización",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "R", "fila": 32, "abarca_columnas": 5, "abarca_filas": 1 },
+              "valor": "Leyenda\n\nMapa de microlocalización del CIAI de la localidad/centro poblado de , del distrito de , provincia de , departamento de "
+            },
+            {
+              "id": "2.03.05",
+              "nombre": "Fuente de información",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "G", "fila": 33, "abarca_columnas": 11, "abarca_filas": 1 },
+              "valor": ""
+            }
+          ]
+        },
+        {
+          "id": "2.04",
+          "nombre": "Análisis de las características del distrito donde se ubica o ubicará el CIAI",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.04.01",
+              "nombre": "Altitud",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 42, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.02",
+              "nombre": "Temperatura media anual",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "E", "fila": 42, "abarca_columnas": 4, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.03",
+              "nombre": "Humedad",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "I", "fila": 42, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.04",
+              "nombre": "Precipitación media anual",
+              "tipo_nodo": "campo",
+              "tipo": "texto_corto",
+              "editable": true,
+              "captura": { "columna": "L", "fila": 42, "abarca_columnas": 3, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.05",
+              "nombre": "Coordenadas geográficas en decimales Latitud y Longitud",
+              "tipo_nodo": "campo",
+              "tipo": "coordenadas",
+              "editable": true,
+              "captura": { "columna": "O", "fila": 42, "abarca_columnas": 8, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.06",
+              "nombre": "Accesibilidad",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 47, "abarca_columnas": 21, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.07",
+              "nombre": "Condiciones de pobreza",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 49, "abarca_columnas": 21, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.08",
+              "nombre": "Principales características sociales y económicas",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": { "columna": "B", "fila": 51, "abarca_columnas": 21, "abarca_filas": 1 },
+              "valor": ""
+            },
+            {
+              "id": "2.04.09",
+              "nombre": "Acceso a servicios públicos en el distrito",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 55,
+                "filas_base": 4,
+                "columnas": [
+                  { "id": "servicio",   "columna": "B", "abarca_columnas": 6 },
+                  { "id": "porcentaje", "columna": "H", "abarca_columnas": 4 },
+                  { "id": "anio",       "columna": "L", "abarca_columnas": 3 },
+                  { "id": "fuente",     "columna": "O", "abarca_columnas": 8 }
+                ]
+              },
+              "cabecera": [],
+              "columnas": [
+                { "id": "servicio",   "nombre": "Servicio público",                          "tipo": "texto_corto" },
+                { "id": "porcentaje", "nombre": "Porcentaje de viviendas con acceso",        "tipo": "decimal" },
+                { "id": "anio",       "nombre": "Año de información",                        "tipo": "numero" },
+                { "id": "fuente",     "nombre": "Fuente de información (incluir enlace)",    "tipo": "texto_corto" }
+              ],
+              "valor": [
+                { "servicio": "Abastecimiento de agua por red pública dentro de la vivienda", "porcentaje": "", "anio": "", "fuente": "" },
+                { "servicio": "Servicio higiénico conectado a red pública de desagüe dentro de la vivienda", "porcentaje": "", "anio": "", "fuente": "" },
+                { "servicio": "Cuenta con alumbrado eléctrico conectado a una red pública", "porcentaje": "", "anio": "", "fuente": "" },
+                { "servicio": "Cuenta con servicio de internet", "porcentaje": "", "anio": "", "fuente": "" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.05",
+          "nombre": "Identificar los peligros que pueden ocurrir en el área de estudio",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "2.05.01",
+              "nombre": "Identificar los peligros que pueden ocurrir en el área de estudio",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": { "filas": "planas", "columnas": "fijas", "agrupador": false },
+              "captura": {
+                "fila_inicial": 66,
+                "filas_base": 16,
+                "columnas": [
+                  { "id": "peligro",             "columna": "B", "abarca_columnas": 5 },
+                  { "id": "antecedentes_sino",   "columna": "G", "abarca_columnas": 1 },
+                  { "id": "antecedentes_caract", "columna": "H", "abarca_columnas": 7 },
+                  { "id": "cambios_sino",        "columna": "O", "abarca_columnas": 1 },
+                  { "id": "cambios_caract",      "columna": "P", "abarca_columnas": 7 }
+                ]
+              },
+              "cabecera": [
+                { "titulo": "¿Existen antecedentes de ocurrencia en el área de estudio?", "hijos": ["antecedentes_sino", "antecedentes_caract"] },
+                { "titulo": "¿Existe información que indique futuros cambios en las características del peligro o los nuevos peligros?", "hijos": ["cambios_sino", "cambios_caract"] }
+              ],
+              "columnas": [
+                { "id": "peligro",             "nombre": "Peligros",                                                          "tipo": "texto_corto" },
+                { "id": "antecedentes_sino",   "nombre": "Sí / No",                                                           "tipo": "booleano", "etiquetas": { "true": "Sí", "false": "No" } },
+                { "id": "antecedentes_caract", "nombre": "Características (Intensidad, frecuencia, área de impacto, otros)",  "tipo": "texto_largo" },
+                { "id": "cambios_sino",        "nombre": "Sí/No",                                                             "tipo": "booleano", "etiquetas": { "true": "Sí", "false": "No" } },
+                { "id": "cambios_caract",      "nombre": "Características de los cambios o los nuevos peligros",              "tipo": "texto_largo" }
+              ],
+              "valor": [
+                { "peligro": "Inundaciones",        "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Movimientos en masa", "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Lluvias intensas",    "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Helada",              "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Nevadas",             "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Friaje",              "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Sismos",              "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Sequías",             "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Vulcanismo",          "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Tsunamis",            "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Incendios forestales","antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Erosión",             "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Vientos fuertes",     "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Incendios urbanos",   "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Radiación solar",     "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" },
+                { "peligro": "Otros",               "antecedentes_sino": "", "antecedentes_caract": "", "cambios_sino": "", "cambios_caract": "" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
