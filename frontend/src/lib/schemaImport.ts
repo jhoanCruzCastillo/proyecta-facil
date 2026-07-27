@@ -129,9 +129,12 @@ function gruposFromDoc(rawGrupos: unknown[], columnaDinamicaId?: string): GrupoF
     const raw = g as Record<string, unknown>;
     const agrupador = raw.agrupador as Record<string, unknown> | undefined;
     const valores = Array.isArray(raw.valores) ? raw.valores : [];
+    const valoresGrupoRaw = agrupador?.valores as Record<string, unknown> | undefined;
+    const tieneValoresPropios = valoresGrupoRaw && Object.keys(valoresGrupoRaw).length > 0;
     return {
       grupo: typeof agrupador?.nombre === 'string' ? agrupador.nombre : '',
       filas: valores.map((r) => rowFromDoc(r as Record<string, unknown>, columnaDinamicaId)),
+      valoresGrupo: tieneValoresPropios ? rowFromDoc(valoresGrupoRaw, columnaDinamicaId) : undefined,
     };
   });
 }
@@ -192,6 +195,7 @@ function campoFromDoc(rawCampo: unknown): Campo {
       subtipo,
       columnas,
       agrupador: Boolean(rawConfig.agrupador),
+      agrupadorAbarcaColumnas: typeof rawConfig.agrupador_abarca_columnas === 'number' ? rawConfig.agrupador_abarca_columnas : undefined,
       columnaDinamicaId,
       periodos,
       cabeceras: cabecerasFromDoc(raw.cabecera, columnaDinamicaId),

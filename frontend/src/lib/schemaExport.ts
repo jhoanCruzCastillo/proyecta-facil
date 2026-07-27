@@ -140,7 +140,7 @@ function valorTabla(config: ConfigTabla, raw: string | undefined): unknown {
         inicia: config.columnas[0] ? idColumna(config.columnas[0], config) : '',
         abarca_columnas: config.columnas[0]?.abarcaColumnasExcel ?? 1,
         nombre: g.grupo,
-        valores: {},
+        valores: g.valoresGrupo ? mapFila(config, g.valoresGrupo) : {},
       },
       valores: g.filas.map((f) => mapFila(config, f)),
     }));
@@ -166,6 +166,7 @@ function buildCampo(seccion: Seccion, campo: Campo, valorRaw: string | undefined
         filas: esJerarquica(config.subtipo) ? 'jerarquicas' : 'planas',
         columnas: config.columnaDinamicaId ? 'dinamicas' : 'fijas',
         agrupador: Boolean(config.agrupador),
+        ...(config.agrupadorAbarcaColumnas != null ? { agrupador_abarca_columnas: config.agrupadorAbarcaColumnas } : {}),
       },
       captura: capturaTabla(seccion, config),
       cabecera: (config.cabeceras ?? []).map((g) => ({ titulo: g.titulo, hijos: g.hijoIds })),

@@ -5,7 +5,7 @@
     "nombre": "Ficha Técnica Estándar — Centro Infantil de Atención Integral (CIAI)",
     "fuente_archivo": "1_plantilla_electronica.xlsx",
     "tipo_version": "estructura",
-    "nota_secciones": "Sección 5 de 17 (hoja 'Problema-Objetivo'), completa (5.01–5.03). Posiciones de celda y fusiones extraídas y verificadas directamente del .xlsx real. 'Valor' (UM/Valor) en 5.01.01 y 5.02.01 se guarda como número crudo ('0'), aunque Excel lo muestra con formato porcentual (0% / 0.00%). En las tablas jerárquicas 'Efectos' (5.01.03) y 'Fines' (5.02.03), el Excel fusiona verticalmente la columna DERECHA (Sustento/Fines Indirectos) sobre 2 filas de la columna IZQUIERDA (Efecto directo 2 y 3 comparten un solo 'Efecto indirecto 2'; igual con Fin directo 2 y 3 compartiendo 'Fin indirecto 2'). Como el editor exige que el orden de 'niveles' sea también el orden de la jerarquía (izquierda=padre), y aquí el padre real es la columna que en Excel aparece a la derecha, se reordenó 'niveles'/'captura.columnas' para que 'ei'/'fi' (Sustento/Fines Indirectos) sea el primer nivel (padre) y 'ed'/'fd' (Efectos/Fines Directos) el segundo — el orden visual en el editor ya NO coincide con el orden de columnas del Excel, pero la posición real de cada columna (captura.columna) sigue apuntando a su letra correcta (B para ed/fd, F para ei/fi) para el export. Así cada Efecto/Fin Indirecto queda como raíz con sus Efectos/Fines Directos como hijos reales (2026-07-26, corregido tras feedback: la primera versión duplicaba el texto compartido en vez de modelar la jerarquía real). 'Medios fundamentales' (5.02.02) en el Excel real permite hasta 4 acciones por medio fundamental (fusiones B40:B43+C40:F43 con 4 celdas G40:J40..G43:J43 sueltas) pero se modela como tabla plana de 1 fila por medio (4 filas totales), tal como se indicó explícitamente — se pierde la multiplicidad de acciones por medio, aceptable porque están vacías en la plantilla. El campo 5.03.01 (F65:N67) tenía en el .xlsx un valor cacheado ', , , , , , , ' (artefacto de fórmula, no contenido real) — se trata como vacío. Recordatorio del fix 2026-07-26: cada nodo del árbol 'valor' en tablas jerárquicas usa como clave el id del nivel correspondiente a su profundidad (no una clave genérica 'valor'); 'columnas' dentro de 'captura' es el nombre correcto para cualquier subtipo de tabla; 'combina_vertical' se declara en cada entrada de 'niveles', no en 'captura.columnas'."
+    "nota_secciones": "Sección 7 de 17 (hoja 'Brecha'), completa (7.01–7.06). Posiciones de celda y fusiones verificadas directamente del .xlsx real. 7.01 conserva el texto exacto de la celda B6 con sus saltos de línea y viñetas ('- '), incluido el typo original 'Diuirno' (así está en la plantilla oficial, no se corrige). Todos los valores 'por defecto' de las tablas 7.02/7.03/7.05/7.06 son literalmente '0' porque así están cacheados en el .xlsx real (NO son la proyección poblacional de ejemplo que se usó como referencia visual en la conversación — esos números eran solo un ejemplo ilustrativo del usuario, no datos reales de la plantilla). En 7.02 y 7.03 se agregó una fila sintética 'Año' (sin equivalente real en el Excel, colocada en una fila en blanco real e inmediatamente anterior a los datos — fila 14 y 28 respectivamente, ambas vacías en el .xlsx original) para que el usuario tipee el año calendario específico bajo cada columna 'Año N'; queda vacía por defecto. En 7.03 también se agregó una cabecera 'Año' agrupando las 11 columnas — no existe en el Excel real (headers 27 no la trae) pero se pidió explícitamente para claridad visual en el editor. 7.03.01 usa agrupador=true con 2 grupos: uno sin nombre (contiene la fila Año + las 2 filas normales) y 'Nivel de cobertura de la población demandante efectiva' (fusiona Detalle+Unidad en 2 columnas — confirmado con el merge real B31:C31 — y tiene sus propios valores por año a la derecha, sin filas hijas). Esto requirió extender GroupedRowsEditor.vue (2026-07-26): nuevo campo 'valoresGrupo' en GrupoFilas, leído desde 'agrupador.valores' en el JSON (esquema que schemaExport.ts ya reservaba pero dejaba siempre vacío) y ahora renderizado como celdas editables reales en el área a la derecha de 'agrupador.abarca_columnas', en vez del placeholder en blanco anterior. Efecto secundario cosmético aceptado: el grupo sin nombre sigue mostrando una barra de título vacía (con placeholder 'Nombre del grupo…') sobre sus filas — no se ocultó para no quitarle al usuario la posibilidad de nombrarlo después desde la UI. 7.04 es jerárquica: en el Excel, 'Condiciones para optimización de la oferta', 'Capacidad actual del CIAI' y 'Capacidad optimizada del CIAI' fusionan las 4 filas verticalmente (como 'Factor'/'Acción' varían por fila), pero 'Capacidad optimizada' está a la DERECHA de Factor/Acción en Excel — igual que el caso de Efectos/Fines de la sección 5, se reordenó en 'niveles' (capacidad_optimizada antes que factor/accion) para que el nivel que realmente actúa como padre compartido quede primero en la jerarquía del editor; la posición real en Excel (columna N) se conserva en captura.columnas para el export. Todas las celdas de 7.04 están vacías en el .xlsx real (sin datos de ejemplo). Actualización 2026-07-27 (feedback del usuario): en 7.05.01 y 7.06.01 se agregó una fila 'Detalle'/'Unidad de medida' al inicio (repitiendo el texto del encabezado, ya que las columnas de año no traían encabezado propio en el Excel), posicionada en la fila real del encabezado (B47 y B54 respectivamente). Entre esa fila y la primera fila de datos real hay una fila vacía en el .xlsx (48 y 55) — como writeCampoTabla() en excelWriter.ts escribe cada fila de 'valor' en filas consecutivas sin saltos, se agregó una fila intermedia totalmente vacía para no perder esa posición y que las filas de datos reales (49 en 7.05; 56-58 en 7.06) no se desplacen una fila hacia arriba al exportar. fila_inicial bajó de 49→47 (7.05.01) y de 56→54 (7.06.01); filas_base subió de 1→3 y de 3→5 respectivamente."
   },
   "secciones": [
     {
@@ -3881,6 +3881,1126 @@
                 "abarca_filas": 1
               },
               "valor": "10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "nombre": "Análisis de Mercado",
+      "tipo_nodo": "seccion",
+      "hoja": "Brecha",
+      "campos": [
+        {
+          "id": "7.01",
+          "nombre": "Definición y caracterización del Servicio de Cuidado Diurno",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.01.01",
+              "nombre": "Definición y caracterización del Servicio de Cuidado Diurno",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "columna": "B",
+                "fila": 6,
+                "abarca_columnas": 13,
+                "abarca_filas": 1
+              },
+              "valor": "El Servicio de Cuidado Diuirno consiste en brindar atención integral a niños entre 6 y 36 meses de edad, que viven en zonas de pobreza y pobreza extrema, y requieren de atención en sus necesidades básicas de salud, nutrición, seguridad, protección, afecto, descanso, juego, aprendizaje y desarrollo de habilidades. Comprende:\n\n- Aprendizaje Infantil: Cuidado y Juego.\n- Promoción de prácticas en el cuidado de la salud en la niña o niño.\n- Atención alimentaria y nutricional.\n- Fortalecimiento de prácticas de cuidado saludable y aprendizaje en la familia usuaria.\n\nLa unidad de medida del servicio es: niños y niñas atendidos en el CIAI"
+            }
+          ]
+        },
+        {
+          "id": "7.02",
+          "nombre": "Análisis y proyección de la demanda del servicio",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.02.01",
+              "nombre": "Análisis y proyección de la demanda del servicio",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 14,
+                "filas_base": 6,
+                "columnas": [
+                  {
+                    "id": "tipo_poblacion",
+                    "columna": "B",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "ano0",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano1",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano2",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano3",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano4",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano5",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano6",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano7",
+                    "columna": "K",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano8",
+                    "columna": "L",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano9",
+                    "columna": "M",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano10",
+                    "columna": "N",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Año",
+                  "hijos": [
+                    "ano0",
+                    "ano1",
+                    "ano2",
+                    "ano3",
+                    "ano4",
+                    "ano5",
+                    "ano6",
+                    "ano7",
+                    "ano8",
+                    "ano9",
+                    "ano10"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "tipo_poblacion",
+                  "nombre": "Tipo de población",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "ano0",
+                  "nombre": "Año 0",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano1",
+                  "nombre": "Año 1",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano2",
+                  "nombre": "Año 2",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano3",
+                  "nombre": "Año 3",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano4",
+                  "nombre": "Año 4",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano5",
+                  "nombre": "Año 5",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano6",
+                  "nombre": "Año 6",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano7",
+                  "nombre": "Año 7",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano8",
+                  "nombre": "Año 8",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano9",
+                  "nombre": "Año 9",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano10",
+                  "nombre": "Año 10",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "tipo_poblacion": "Año",
+                  "ano0": "",
+                  "ano1": "",
+                  "ano2": "",
+                  "ano3": "",
+                  "ano4": "",
+                  "ano5": "",
+                  "ano6": "",
+                  "ano7": "",
+                  "ano8": "",
+                  "ano9": "",
+                  "ano10": ""
+                },
+                {
+                  "tipo_poblacion": "Población Total",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "tipo_poblacion": "Población de Referencia",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "tipo_poblacion": "Población Demandante Potencial",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "tipo_poblacion": "Población Demandante Efectiva",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "tipo_poblacion": "Población Objetivo",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                }
+              ]
+            },
+            {
+              "id": "7.02.02",
+              "nombre": "Consideraciones para definir la demanda del servicio",
+              "tipo_nodo": "campo",
+              "tipo": "texto_largo",
+              "editable": true,
+              "captura": {
+                "columna": "B",
+                "fila": 22,
+                "abarca_columnas": 13,
+                "abarca_filas": 1
+              },
+              "valor": "Población Total: es la población total del área de influencia definida en el diagnóstico. \n\nPoblación de Referencia: es la proporción de la población total, vinculada con el objetivo central del proyecto de inversión, es decir, que está dentro del grupo etario que podría recibir el Servicio de Cuidado Diurno.\n\nPoblación Demandante Potencial: es el segmento de la población de referencia, que es afectada por el problema central, que no accede al Servicio de Cuidado Diurno o accede de forma inadecuada. \n\nPoblación Demandante Efectiva: es el segmento de la población demandante potencial que cumple con los criterios de focalización definidos por el Sector para acceder al Servicio de Cuidado Diurno, en un CIAI.\n\nPoblación Objetivo: es aquella parte de la población demandante efectiva que el proyecto  está en condiciones de atender de forma integral en un CIAI, considerando la política de focalización del Sector y la definición de la meta correspondiente. Es definida por el Programa Nacional Cuna Más."
+            }
+          ]
+        },
+        {
+          "id": "7.03",
+          "nombre": "Proyección de la demanda del Servicio de Cuidado Diurno",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.03.01",
+              "nombre": "Proyección de la demanda del Servicio de Cuidado Diurno",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": true,
+                "agrupador_abarca_columnas": 2
+              },
+              "captura": {
+                "fila_inicial": 28,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "detalle",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "unidad",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano0",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano1",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano2",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano3",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano4",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano5",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano6",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano7",
+                    "columna": "K",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano8",
+                    "columna": "L",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano9",
+                    "columna": "M",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano10",
+                    "columna": "N",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Año",
+                  "hijos": [
+                    "ano0",
+                    "ano1",
+                    "ano2",
+                    "ano3",
+                    "ano4",
+                    "ano5",
+                    "ano6",
+                    "ano7",
+                    "ano8",
+                    "ano9",
+                    "ano10"
+                  ]
+                }
+              ],
+              "columnas": [
+                {
+                  "id": "detalle",
+                  "nombre": "Detalle",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "ano0",
+                  "nombre": "Año 0",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano1",
+                  "nombre": "Año 1",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano2",
+                  "nombre": "Año 2",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano3",
+                  "nombre": "Año 3",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano4",
+                  "nombre": "Año 4",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano5",
+                  "nombre": "Año 5",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano6",
+                  "nombre": "Año 6",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano7",
+                  "nombre": "Año 7",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano8",
+                  "nombre": "Año 8",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano9",
+                  "nombre": "Año 9",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano10",
+                  "nombre": "Año 10",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "agrupador": {
+                    "nombre": "",
+                    "valores": {}
+                  },
+                  "valores": [
+                    {
+                      "detalle": "Año",
+                      "unidad": "",
+                      "ano0": "",
+                      "ano1": "",
+                      "ano2": "",
+                      "ano3": "",
+                      "ano4": "",
+                      "ano5": "",
+                      "ano6": "",
+                      "ano7": "",
+                      "ano8": "",
+                      "ano9": "",
+                      "ano10": ""
+                    },
+                    {
+                      "detalle": "Población Demandante Efectiva",
+                      "unidad": "Niños y niñas",
+                      "ano0": "0",
+                      "ano1": "0",
+                      "ano2": "0",
+                      "ano3": "0",
+                      "ano4": "0",
+                      "ano5": "0",
+                      "ano6": "0",
+                      "ano7": "0",
+                      "ano8": "0",
+                      "ano9": "0",
+                      "ano10": "0"
+                    },
+                    {
+                      "detalle": "Población Objetivo",
+                      "unidad": "Niños y niñas",
+                      "ano0": "0",
+                      "ano1": "0",
+                      "ano2": "0",
+                      "ano3": "0",
+                      "ano4": "0",
+                      "ano5": "0",
+                      "ano6": "0",
+                      "ano7": "0",
+                      "ano8": "0",
+                      "ano9": "0",
+                      "ano10": "0"
+                    }
+                  ]
+                },
+                {
+                  "agrupador": {
+                    "nombre": "Nivel de cobertura de la población demandante efectiva",
+                    "valores": {
+                      "ano0": "",
+                      "ano1": "",
+                      "ano2": "",
+                      "ano3": "",
+                      "ano4": "",
+                      "ano5": "",
+                      "ano6": "",
+                      "ano7": "",
+                      "ano8": "",
+                      "ano9": "",
+                      "ano10": ""
+                    }
+                  },
+                  "valores": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7.04",
+          "nombre": "Estimación de la oferta optimizada (sin proyecto)",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.04.01",
+              "nombre": "Estimación de la oferta optimizada (sin proyecto)",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "jerarquicas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 39,
+                "filas_base": 4,
+                "columnas": [
+                  {
+                    "id": "condiciones",
+                    "columna": "B",
+                    "abarca_columnas": 5
+                  },
+                  {
+                    "id": "capacidad_actual",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "capacidad_optimizada",
+                    "columna": "N",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "factor",
+                    "columna": "H",
+                    "abarca_columnas": 2
+                  },
+                  {
+                    "id": "accion",
+                    "columna": "J",
+                    "abarca_columnas": 4
+                  }
+                ]
+              },
+              "cabecera": [
+                {
+                  "titulo": "Acciones de optimización (solo en caso de que se pueda optimizar la oferta actual)",
+                  "hijos": [
+                    "factor",
+                    "accion"
+                  ]
+                }
+              ],
+              "niveles": [
+                {
+                  "id": "condiciones",
+                  "nombre": "Condiciones para optimización de la oferta",
+                  "tipo": "texto_largo",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "capacidad_actual",
+                  "nombre": "Capacidad actual del CIAI",
+                  "tipo": "decimal",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "capacidad_optimizada",
+                  "nombre": "Capacidad optimizada del CIAI",
+                  "tipo": "decimal",
+                  "combina_vertical": true
+                },
+                {
+                  "id": "factor",
+                  "nombre": "Factor de producción a optimizar",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "accion",
+                  "nombre": "Acción para optimizar la oferta actual",
+                  "tipo": "texto_largo"
+                }
+              ],
+              "valor": [
+                {
+                  "condiciones": "",
+                  "hijos": [
+                    {
+                      "capacidad_actual": "",
+                      "hijos": [
+                        {
+                          "capacidad_optimizada": "",
+                          "hijos": [
+                            {
+                              "factor": "",
+                              "hijos": [
+                                {
+                                  "accion": ""
+                                }
+                              ]
+                            },
+                            {
+                              "factor": "",
+                              "hijos": [
+                                {
+                                  "accion": ""
+                                }
+                              ]
+                            },
+                            {
+                              "factor": "",
+                              "hijos": [
+                                {
+                                  "accion": ""
+                                }
+                              ]
+                            },
+                            {
+                              "factor": "",
+                              "hijos": [
+                                {
+                                  "accion": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7.05",
+          "nombre": "Proyección de la oferta del Servicio de Cuidado Diurno",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.05.01",
+              "nombre": "Proyección de la oferta del Servicio de Cuidado Diurno",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 47,
+                "filas_base": 3,
+                "columnas": [
+                  {
+                    "id": "detalle",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "unidad",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano0",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano1",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano2",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano3",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano4",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano5",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano6",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano7",
+                    "columna": "K",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano8",
+                    "columna": "L",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano9",
+                    "columna": "M",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano10",
+                    "columna": "N",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "columnas": [
+                {
+                  "id": "detalle",
+                  "nombre": "Detalle",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "ano0",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano1",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano2",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano3",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano4",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano5",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano6",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano7",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano8",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano9",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano10",
+                  "nombre": "",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "detalle": "Detalle",
+                  "unidad": "Unidad de medida",
+                  "ano0": "",
+                  "ano1": "",
+                  "ano2": "",
+                  "ano3": "",
+                  "ano4": "",
+                  "ano5": "",
+                  "ano6": "",
+                  "ano7": "",
+                  "ano8": "",
+                  "ano9": "",
+                  "ano10": ""
+                },
+                {
+                  "detalle": "",
+                  "unidad": "",
+                  "ano0": "",
+                  "ano1": "",
+                  "ano2": "",
+                  "ano3": "",
+                  "ano4": "",
+                  "ano5": "",
+                  "ano6": "",
+                  "ano7": "",
+                  "ano8": "",
+                  "ano9": "",
+                  "ano10": ""
+                },
+                {
+                  "detalle": "Servicio de Cuidado Diurno",
+                  "unidad": "Niños y niñas",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7.06",
+          "nombre": "Brecha del Servicio de Cuidado Diurno",
+          "tipo_nodo": "grupo",
+          "campos": [
+            {
+              "id": "7.06.01",
+              "nombre": "Brecha del Servicio de Cuidado Diurno",
+              "tipo_nodo": "campo",
+              "tipo": "tabla",
+              "editable": true,
+              "config": {
+                "filas": "planas",
+                "columnas": "fijas",
+                "agrupador": false
+              },
+              "captura": {
+                "fila_inicial": 54,
+                "filas_base": 5,
+                "columnas": [
+                  {
+                    "id": "detalle",
+                    "columna": "B",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "unidad",
+                    "columna": "C",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano0",
+                    "columna": "D",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano1",
+                    "columna": "E",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano2",
+                    "columna": "F",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano3",
+                    "columna": "G",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano4",
+                    "columna": "H",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano5",
+                    "columna": "I",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano6",
+                    "columna": "J",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano7",
+                    "columna": "K",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano8",
+                    "columna": "L",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano9",
+                    "columna": "M",
+                    "abarca_columnas": 1
+                  },
+                  {
+                    "id": "ano10",
+                    "columna": "N",
+                    "abarca_columnas": 1
+                  }
+                ]
+              },
+              "columnas": [
+                {
+                  "id": "detalle",
+                  "nombre": "Detalle",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "unidad",
+                  "nombre": "Unidad de Medida",
+                  "tipo": "texto_corto"
+                },
+                {
+                  "id": "ano0",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano1",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano2",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano3",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano4",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano5",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano6",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano7",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano8",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano9",
+                  "nombre": "",
+                  "tipo": "numero"
+                },
+                {
+                  "id": "ano10",
+                  "nombre": "",
+                  "tipo": "numero"
+                }
+              ],
+              "valor": [
+                {
+                  "detalle": "Detalle",
+                  "unidad": "Unidad de medida",
+                  "ano0": "",
+                  "ano1": "",
+                  "ano2": "",
+                  "ano3": "",
+                  "ano4": "",
+                  "ano5": "",
+                  "ano6": "",
+                  "ano7": "",
+                  "ano8": "",
+                  "ano9": "",
+                  "ano10": ""
+                },
+                {
+                  "detalle": "",
+                  "unidad": "",
+                  "ano0": "",
+                  "ano1": "",
+                  "ano2": "",
+                  "ano3": "",
+                  "ano4": "",
+                  "ano5": "",
+                  "ano6": "",
+                  "ano7": "",
+                  "ano8": "",
+                  "ano9": "",
+                  "ano10": ""
+                },
+                {
+                  "detalle": "Población Demandante Efectiva",
+                  "unidad": "Niños y niñas",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "detalle": "Oferta",
+                  "unidad": "Niños y niñas",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                },
+                {
+                  "detalle": "Brecha",
+                  "unidad": "Niños y niñas",
+                  "ano0": "0",
+                  "ano1": "0",
+                  "ano2": "0",
+                  "ano3": "0",
+                  "ano4": "0",
+                  "ano5": "0",
+                  "ano6": "0",
+                  "ano7": "0",
+                  "ano8": "0",
+                  "ano9": "0",
+                  "ano10": "0"
+                }
+              ]
             }
           ]
         }

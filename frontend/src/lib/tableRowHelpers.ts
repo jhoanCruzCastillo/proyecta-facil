@@ -1,7 +1,14 @@
 import type { ColumnaTabla, ConfigTabla, SubtipoTabla } from '../types';
 
 export interface FilaDinamica { [colId: string]: string | string[] }
-export interface GrupoFilas { grupo: string; filas: FilaDinamica[] }
+export interface GrupoFilas {
+  grupo: string;
+  filas: FilaDinamica[];
+  /** Valores propios de la fila de título del grupo, en las columnas que quedan a la derecha de
+   * `agrupadorAbarcaColumnas` (ej. una fila-resumen como "Nivel de cobertura..." que no tiene filas
+   * hijas propias, solo un valor por columna en su propia fila fusionada). */
+  valoresGrupo?: FilaDinamica;
+}
 
 /** 'jerarquica' y 'jerarquica_dinamica' comparten el mismo árbol de niveles (la variante dinámica
  * solo agrega una columna que se repite por período) — este helper evita repetir el OR en cada

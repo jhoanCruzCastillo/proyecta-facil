@@ -5,7 +5,7 @@ import { faPlus, faTrash } from '@/lib/icons';
 import TableHeaderRow from './TableHeaderRow.vue';
 import TableRow from './TableRow.vue';
 import { parseGroupedRows, newEmptyRow, getPeriodos, type GrupoFilas } from '@/lib/tableRowHelpers';
-import type { ConfigTabla } from '@/types';
+import type { ConfigTabla, ColumnaTabla } from '@/types';
 
 // Filas planas agrupadas bajo un encabezado de grupo (config.agrupador === true). Una sola tabla:
 // el encabezado de columnas una vez arriba, y cada grupo como una fila de título fusionada (abarca
@@ -29,6 +29,18 @@ function persist(next: GrupoFilas[]) {
 
 function updateGrupoNombre(gi: number, nombre: string) {
   persist(grupos.value.map((g, i) => (i === gi ? { ...g, grupo: nombre } : g)));
+}
+function updateValorGrupo(gi: number, colId: string, val: string) {
+  persist(grupos.value.map((g, i) => (i !== gi ? g : { ...g, valoresGrupo: { ...(g.valoresGrupo ?? {}), [colId]: val } })));
+}
+function updateValorGrupoPeriodo(gi: number, colId: string, pi: number, val: string) {
+  persist(grupos.value.map((g, i) => {
+    if (i !== gi) return g;
+    const actual = g.valoresGrupo?.[colId];
+    const arr = Array.isArray(actual) ? [...actual] : [];
+    arr[pi] = val;
+    return { ...g, valoresGrupo: { ...(g.valoresGrupo ?? {}), [colId]: arr } };
+  }));
 }
 function updateCell(gi: number, ri: number, colId: string, val: string) {
   persist(grupos.value.map((g, i) => (i !== gi ? g : { ...g, filas: g.filas.map((r, j) => (j === ri ? { ...r, [colId]: val } : r)) })));
@@ -69,6 +81,20 @@ const periodos = computed(() => getPeriodos(props.config));
 const totalCols = computed(() => props.config.columnas.reduce((sum, c) => sum + (c.id === props.config.columnaDinamicaId && periodos.value.length > 0 ? periodos.value.length : 1), 0));
 const abarca = computed(() => Math.min(props.config.agrupadorAbarcaColumnas ?? totalCols.value, totalCols.value));
 const restCols = computed(() => totalCols.value - abarca.value);
+
+// Columnas reales (sin expandir por período) que quedan a la derecha de `abarca` — ahí se rendiza
+// la fila de título del grupo como si fuera una fila de datos más, para grupos "resumen" que no
+// tienen filas hijas propias (ej. "Nivel de cobertura...": título fusionado + un valor por año).
+function columnasResto(cols: ColumnaTabla[], abarcaN: number, dinamicaId: string | undefined, numPeriodos: number): ColumnaTabla[] {
+  let acc = 0;
+  let i = 0;
+  for (; i < cols.length; i++) {
+    if (acc >= abarcaN) break;
+    acc += cols[i].id === dinamicaId && numPeriodos > 0 ? numPeriodos : 1;
+  }
+  return cols.slice(i);
+}
+const restColumnas = computed(() => columnasResto(props.config.columnas, abarca.value, props.config.columnaDinamicaId, periodos.value.length));
 </script>
 
 <template>
@@ -105,7 +131,31 @@ const restCols = computed(() => totalCols.value - abarca.value);
                   </button>
                 </div>
               </td>
-              <td v-if="restCols > 0" :colspan="restCols" class="bg-brand-50/60" />
+              <template v-for="col in restColumnas" :key="col.id">
+                <template v-if="col.id === config.columnaDinamicaId && periodos.length > 0">
+                  <td v-for="(p, pi) in periodos" :key="`${col.id}-${pi}`" class="px-1 py-0.5 bg-brand-50/60">
+                    <input
+                      :value="(Array.isArray(grupo.valoresGrupo?.[col.id]) ? (grupo.valoresGrupo?.[col.id] as string[])[pi] : '') || ''"
+                      @input="updateValorGrupoPeriodo(gi, col.id, pi, ($event.target as HTMLInputElement).value)"
+                      @click.stop
+                      type="text"
+                      :title="p"
+                      placeholder="—"
+                      class="w-16 px-1 py-1 rounded border border-transparent hover:border-amber-200 focus:border-amber-400 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-amber-500/30 bg-transparent"
+                    />
+                  </td>
+                </template>
+                <td v-else class="px-1 py-0.5 bg-brand-50/60 align-top">
+                  <textarea
+                    :value="(grupo.valoresGrupo?.[col.id] as string) || ''"
+                    @input="updateValorGrupo(gi, col.id, ($event.target as HTMLTextAreaElement).value)"
+                    @click.stop
+                    rows="1"
+                    placeholder="—"
+                    class="block w-full px-1.5 py-1 rounded border border-transparent hover:border-gray-200 focus:border-brand-300 text-xs text-heading focus:outline-none focus:ring-1 focus:ring-brand-500/30 bg-transparent resize-none overflow-y-auto max-h-[15lh] [field-sizing:content]"
+                  />
+                </td>
+              </template>
               <td class="bg-brand-50/60" />
             </tr>
             <TableRow

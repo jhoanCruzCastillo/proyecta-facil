@@ -44,6 +44,7 @@ const isTableField = computed(() => props.campo.tipo === 'tabla' || props.campo.
 const isCoordField = computed(() => props.campo.tipo === 'mapa_coordenadas');
 const faltaCaptura = computed(() => campoFaltaCaptura(props.campo));
 const esCampoTexto = computed(() => props.campo.tipo === 'texto_corto' || props.campo.tipo === 'texto_largo');
+const esTextoLargo = computed(() => props.campo.tipo === 'texto_largo');
 
 const sugerenciaIA = ref<string | null>(null);
 const cargandoIA = ref(false);
@@ -154,6 +155,14 @@ function handleClick() {
             @update:model-value="emit('update-default-value', $event)"
             @update:config="emit('update-config-tabla', $event)"
           />
+          <textarea
+            v-else-if="esTextoLargo"
+            :value="campo.valorEjemplo || ''"
+            @input="emit('update-default-value', ($event.target as HTMLTextAreaElement).value)"
+            rows="1"
+            placeholder="Valor inicial por defecto..."
+            class="block w-full mt-1 px-2 py-1.5 rounded border border-gray-200 bg-white text-sm text-heading focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-400 resize-none overflow-y-auto max-h-[15lh] [field-sizing:content]"
+          />
           <input
             v-else
             :value="campo.valorEjemplo || ''"
@@ -193,7 +202,17 @@ function handleClick() {
             @update:model-value="emit('update-example-value', $event)"
           />
           <template v-else>
+            <textarea
+              v-if="esTextoLargo"
+              :value="displayValue || ''"
+              @input="emit('update-example-value', ($event.target as HTMLTextAreaElement).value)"
+              rows="1"
+              placeholder="Escribe el valor de ejemplo..."
+              class="block w-full mt-1 px-2 py-1.5 rounded border bg-white text-sm text-heading focus:outline-none focus:ring-2 resize-none overflow-y-auto max-h-[15lh] [field-sizing:content]"
+              :class="error ? 'border-red-400 focus:ring-red-300 focus:border-red-400' : 'border-brand-200 focus:ring-brand-500/30 focus:border-brand-500'"
+            />
             <input
+              v-else
               :value="displayValue || ''"
               @input="emit('update-example-value', ($event.target as HTMLInputElement).value)"
               type="text"
