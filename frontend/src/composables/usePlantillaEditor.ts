@@ -117,7 +117,7 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
     // Copia propia del Excel asignado a la plantilla
     await setExcelEjemplo.mutateAsync({
       ejemploId: nuevo.id,
-      archivo: { id: generateId(), nombre: archivoExcelAsignado.value.nombre, dataUrl: archivoExcelAsignado.value.dataUrl, fechaSubida: new Date().toLocaleDateString('es-PE') },
+      archivo: { id: generateId(), nombre: archivoExcelAsignado.value.nombre, dataUrl: archivoExcelAsignado.value.dataUrl, fechaSubida: new Date().toISOString().slice(0, 10) },
     });
 
     await pushActividad.mutateAsync({ mensaje: `Nuevo ejemplo "${nombre}" creado`, color: 'green' });
@@ -317,7 +317,8 @@ export function usePlantillaEditor(plantillaId: Ref<string>) {
 
   async function handleSave() {
     if (!editData.value) return;
-    const fechaActualizacion = new Date().toLocaleDateString('es-PE');
+    // ISO Y-m-d: PostgreSQL DATE rejects locale d/m/Y from toLocaleDateString('es-PE').
+    const fechaActualizacion = new Date().toISOString().slice(0, 10);
     await actualizarPlantilla.mutateAsync({ id: editData.value.id, data: { ...editData.value, fechaActualizacion } });
 
     if (activeTab.value === 'ejemplos' && activeEjemplo.value) {

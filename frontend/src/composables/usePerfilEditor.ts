@@ -143,7 +143,7 @@ export function usePerfilEditor(plantillaId: Ref<string>, sectorId: Ref<string>)
 
   async function handleSave() {
     if (!editData.value) return;
-    const fechaActualizacion = new Date().toLocaleDateString('es-PE');
+    const fechaActualizacion = new Date().toISOString().slice(0, 10);
     await actualizarPlantilla.mutateAsync({ id: editData.value.id, data: { ...editData.value, fechaActualizacion } });
 
     if (activeTab.value === 'ejemplos' && activeEjemplo.value) {
