@@ -80,7 +80,6 @@ const periodos = computed(() => getPeriodos(props.config));
 // para calcular cuántas quedan sueltas a la derecha de la fila de grupo.
 const totalCols = computed(() => props.config.columnas.reduce((sum, c) => sum + (c.id === props.config.columnaDinamicaId && periodos.value.length > 0 ? periodos.value.length : 1), 0));
 const abarca = computed(() => Math.min(props.config.agrupadorAbarcaColumnas ?? totalCols.value, totalCols.value));
-const restCols = computed(() => totalCols.value - abarca.value);
 
 // Columnas reales (sin expandir por período) que quedan a la derecha de `abarca` — ahí se rendiza
 // la fila de título del grupo como si fuera una fila de datos más, para grupos "resumen" que no

@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faHouse, faPlus, faTrash, faInbox, faGraduationCap, faUserGroup, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
+import { faHouse, faPlus, faTrash, faInbox, faGraduationCap, faHeadset, faUserGroup, instrumentoIcons, instrumentoLabels } from '@/lib/icons';
 import PageShell from '@/components/PageShell.vue';
 import { useEjemplosQuery, useEliminarEjemplo, useActualizarEjemplo } from '@/composables/useEjemplos';
 import { usePlantillasQuery } from '@/composables/usePlantillas';
@@ -11,6 +11,7 @@ import { useUsuariosQuery } from '@/composables/useUsuarios';
 import { useHistorialCambiosQuery } from '@/composables/useHistorialCambios';
 import { usePushActividad } from '@/composables/useActividad';
 import { useEstadoEntrenamiento } from '@/composables/useEstadoEntrenamiento';
+import { useMisSolicitudesQuery } from '@/composables/useAsesoria';
 import { useSessionStore } from '@/stores/session';
 import { useUiStore } from '@/stores/ui';
 import { cuentaEfectivaDe, puedeVerFicha } from '@/lib/permisos';
@@ -40,7 +41,11 @@ const { data: historialData } = useHistorialCambiosQuery();
 const eliminarEjemplo = useEliminarEjemplo();
 const actualizarEjemplo = useActualizarEjemplo();
 const pushActividad = usePushActividad();
-const { esNivel0, vencido, diasRestantes, limiteFichas, numeroNivel } = useEstadoEntrenamiento();
+const { esNivel0, vencido, diasRestantes, limiteFichas, limiteConsultas, numeroNivel } = useEstadoEntrenamiento();
+const clienteId = computed(() => session.sesion?.usuarioId ?? '');
+const { data: misSolicitudes } = useMisSolicitudesQuery(clienteId, 'cliente');
+const consultasUsadas = computed(() => (misSolicitudes.value ?? []).length);
+const consultasAgotadas = computed(() => consultasUsadas.value >= limiteConsultas.value);
 
 const plantillas = computed(() => plantillasData.value ?? []);
 const sectores = computed(() => sectoresData.value ?? []);
@@ -118,6 +123,14 @@ function ultimoCambioDe(ejemploId: string) {
       <template v-else>
         {{ misFichas.length }}/{{ limiteFichas }} plantillas simultáneas{{ limiteAlcanzado ? ' — compra "Plantilla adicional" en Facturación para sumar más' : '' }}
       </template>
+    </div>
+
+    <div
+      class="flex items-center gap-2 px-4 py-2.5 rounded-lg border text-xs mb-6"
+      :class="consultasAgotadas ? 'bg-amber-50 border-amber-200 text-amber-700' : 'bg-violet-50 border-violet-200 text-violet-700'"
+    >
+      <FontAwesomeIcon :icon="faHeadset" class="w-3.5 h-3.5 shrink-0" />
+      {{ consultasUsadas }}/{{ limiteConsultas }} consulta{{ limiteConsultas === 1 ? '' : 's' }} con docente{{ consultasAgotadas ? ' — compra "Consultoría 1 a 1" en Facturación para sumar más' : ' disponibles' }}
     </div>
 
     <div class="rounded-xl border border-gray-100 overflow-hidden divide-y divide-gray-50">
